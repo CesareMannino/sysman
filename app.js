@@ -15,10 +15,12 @@ app.get('/', (req, res) => {
     res.render('home', {layout: 'main2'}) 
 })
 
-app.use("/",routes);
-
 app.use(express.json()); //To parse the incoming requests with JSON payloads
 app.use(express.urlencoded({extended: true})); //New
+
+app.use("/",routes);
+
+
 
 
 //to load static file
