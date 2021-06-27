@@ -7,7 +7,7 @@ const clientController = require('../controllers/clientController');
 
 //create, find, update,delete
 //client controller
-router.get('/', clientController.view);
+// router.get('/', clientController.view);
 //user contoller
 router.get('/', userController.view);
 router.post('/', userController.find);
