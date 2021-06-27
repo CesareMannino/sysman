@@ -19,9 +19,7 @@ app.use(express.json()); //To parse the incoming requests with JSON payloads
 
 //make the home page as first page/landing page
 const routes = require('./server/routes/user');
-app.get('/', (req, res) => {
-    res.render('home', {layout: 'main2'}) 
-})
+app.use('/', routes);
 
 
 
