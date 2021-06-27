@@ -1,10 +1,13 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
-// const bodyParser = require('body-parser');
-// const mysql = require('mysql');
+const bodyParser = require('body-parser');
+const mysql = require('mysql');
 
 // Parsing middleware
 const app = express();
+//Listen on port 5000
+const port = process.env.PORT || 5000;
+app.listen(port, () => console.log(`Listening on port ${port}`));
 app.use(express.json()); //To parse the incoming requests with JSON payloads
 app.use(express.urlencoded({extended: true})); //New
 
@@ -34,6 +37,3 @@ app.set("view engine","hbs");
 
 
 
-//Listen on port 5000
-const port = process.env.PORT || 5000;
-app.listen(port, () => console.log(`Listening on port ${port}`));
