@@ -1,0 +1,42 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {{!-- Datepicker --}}
+  <title>jQuery UI Datepicker - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <script>
+    $(function () {
+      $("#datepicker").datepicker();
+      $("#datepickerPSSR").datepicker();
+      $("#datepickerFFB").datepicker();
+      $("#datepickerADV").datepicker();
+    });
+  </script>
+</head>
+
+
+
+
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/ui">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Add Crew Member</li>
+  </ol>
+</nav>
+<br>
+
+{{#if alert}}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  {{alert}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+<form class="row g-1 needs-validation" method="POST" action="/addcrew" novalidate>
+{{> crew-form}}
+</form>
