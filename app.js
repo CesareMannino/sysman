@@ -5,8 +5,6 @@ const exphbs = require("express-handlebars");
 
 // Parsing middleware
 const app = express();
-app.use(express.json()); //To parse the incoming requests with JSON payloads
-app.use(express.urlencoded({extended: true})); //New
 
 
 
@@ -29,6 +27,8 @@ app.use(express.static("public"));
 app.engine("hbs", exphbs({extname:".hbs"}));
 app.set("view engine","hbs");
 
+app.use(express.json()); //To parse the incoming requests with JSON payloads
+app.use(express.urlencoded({extended: true})); //New
 
 
 //Listen on port 5000
