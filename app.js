@@ -5,6 +5,8 @@ const exphbs = require("express-handlebars");
 
 // Parsing middleware
 const app = express();
+app.use(express.json()); //To parse the incoming requests with JSON payloads
+app.use(express.urlencoded({extended: true})); //New
 
 require("dotenv").config();
 
@@ -15,8 +17,7 @@ app.get('/', (req, res) => {
     res.render('home', {layout: 'main2'}) 
 })
 
-app.use(express.json()); //To parse the incoming requests with JSON payloads
-app.use(express.urlencoded({extended: true})); //New
+
 
 app.use("/",routes);
 
