@@ -1,3 +1,40 @@
 img{
     border-radius:15% ;
 }
+
+body{
+    background-image:url("/images/Design Thinking Diagram.svg");
+    background-size:950px;
+    background-repeat: no-repeat;
+    // background-color:#00ACB7;
+}
+
+ .jumbotron{
+    // padding:0px 90px;
+    margin-left: 900px;
+    width: 250px;    
+}
+
+nav{
+    padding:0px 90px;
+    display:flex;
+    
+    justify-content: space-between;
+}
+
+nav ul{
+    display:flex;
+    justify-content:space-around;
+    align-items: center;
+}
+
+nav li{
+    list-style: none;
+}
+
+nav li a{
+    color: black;
+    text-decoration: none;
+    font-weight:bold;
+    padding:5px 8px;
+}
