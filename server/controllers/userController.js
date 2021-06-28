@@ -2,12 +2,11 @@ const mysql = require('mysql');
 
 var db_config = {
     host: "us-cdbr-east-04.cleardb.com",
-    user: "bfad2a9ef20ba8",
-    password: "5654e716",
-    database: "heroku_8c0c589ad69aad2"
+    user: "b78b7bce7d4d40",
+    password: "f883fc91",
+    database: "heroku_d6ddb37c373930d"
 };
-
-
+ 
 
 function handleDisconnect() {
     connection = mysql.createConnection(db_config); // Recreate the connection, since
