@@ -1,12 +1,13 @@
 const mysql = require('mysql');
 
-let connection = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_NAME
-  });
-  
+var db_config = {
+    host: "us-cdbr-east-04.cleardb.com",
+    user: "bfad2a9ef20ba8",
+    password: "5654e716",
+    database: "heroku_8c0c589ad69aad2"
+};
+
+
 
 // View Users
 exports.view = (req, res) => {
