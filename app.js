@@ -16,11 +16,18 @@ app.use(express.urlencoded({extended: true})); //New
 require("dotenv").config();
 
 
-//make the home page as first page/landing page
+//make the home page as first page/landing page is connected to routes
 const routes = require('./server/routes/user');
 app.get('/', (req, res) => {
     res.render('home', {layout: 'main2'}) 
 })
+
+
+//get straight the page with app.get to render register
+app.get('/register', (req, res) => {
+    res.render('register', {layout: 'main2'}) 
+})
+
 
 
 

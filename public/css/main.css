@@ -76,4 +76,44 @@ nav li a {
   font-weight: bold;
   padding: 5px 8px;
 }
+
+navreg {
+  padding: 10px;
+  background-color: purple;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+navreg ul {
+  margin-top: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+navreg li {
+  list-style: none;
+}
+
+navreg li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 8px;
+}
+
+navreg li a:hover {
+  color: #e5ff00;
+}
+
+.container {
+  max-width: 50vw;
+}
 /*# sourceMappingURL=main.css.map */
