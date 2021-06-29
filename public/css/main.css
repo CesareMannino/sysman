@@ -1,26 +1,57 @@
-img {
-  border-radius: 15%;
-}
-
-body {
+/* Split the screen in half */
+.split_left {
   background-image: url("/images/Design Thinking Diagram.svg");
   background-size: 950px;
-  background-repeat: no-repeat;
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
 }
 
-.jumbotron {
-  margin-left: 900px;
-  width: 250px;
+.split_right {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Control the left side */
+.split_left {
+  left: 0;
+}
+
+/* Control the right side */
+.split_right {
+  right: 0;
+}
+
+/* If you want the content centered horizontally and vertically */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* Style the image inside the centered container, if needed */
+.centered img {
+  width: 150px;
+  border-radius: 50%;
 }
 
 nav {
-  padding: 0px 90px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 10px;
+  overflow-x: hidden;
+  padding-top: 20px;
 }
 
 nav ul {
@@ -29,12 +60,13 @@ nav ul {
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 nav li {
+  padding: 0px 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   list-style: none;
 }
 

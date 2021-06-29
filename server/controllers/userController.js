@@ -106,19 +106,18 @@ exports.update = (req, res) => {
 
 //delete crew
 exports.delete = (req, res) => {
-    // User the connection
-    connection.query('DELETE FROM user WHERE id = ?', [req.params.id], (err, rows) => {
-        if (!err) {
-            let removedUser = encodeURIComponent();
-            res.redirect('/ui?removed=' + removedUser);
-        } else {
-            console.log(err);
-        }
-        console.log('The data from user table: \n', rows);
+ // User the connection
+  connection.query('DELETE FROM user WHERE id = ?', [req.params.id], (err, rows) => {
 
-    });
+    if(!err) {
+      res.redirect('/ui');
+    } else {
+      console.log(err);
+    }
+    console.log('The data from user table: \n', rows);
+
+  });
 }
-
 
 // hide user
 // connection.query('UPDATE user SET status = ? WHERE id = ?', ['removed', req.params.id], (err, rows) => {
