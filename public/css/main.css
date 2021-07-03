@@ -114,6 +114,12 @@ navreg li a:hover {
 }
 
 .container {
-  max-width: 50vw;
+  max-width: 40%;
+}
+
+@media screen and (max-width: 900px) {
+  .container {
+    max-width: 80%;
+  }
 }
 /*# sourceMappingURL=main.css.map */

@@ -9,30 +9,18 @@ const mysql = require('mysql');
 const app = express();
 //Listen on port 5000
 
-app.use(express.json()); //To parse the incoming requests with JSON payloads
-app.use(express.urlencoded({extended: true})); //New
+app.use(express.json()); //To parse the incoming requests with JSON bodies
+app.use(express.urlencoded({extended: true})); //To parse URL-encoded bodies (as sent by HTML forms)
 
 
 require("dotenv").config();
 
 
-//make the home page as first page/landing page is connected to routes
+
+//link that tell to the server express.js to get the routeing from user.js
 const routes = require('./server/routes/user');
-app.get('/', (req, res) => {
-    res.render('home', {layout: 'main2'}) 
-})
-
-
-//get straight the page with app.get to render register
-app.get('/register', (req, res) => {
-    res.render('register', {layout: 'main2'}) 
-})
-
-
-
-
 app.use("/",routes);
-
+app.use('/auth', require('./server/routes/auth'));
 
 
 

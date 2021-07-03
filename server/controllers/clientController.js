@@ -22,3 +22,5 @@ connection.connect( (error) => {
 exports.view = (req, res) => {
 res.render('home');
 }
+
+
