@@ -3,12 +3,21 @@ const mysql = require('mysql');
 const bcrypt = require('bcryptjs');
 const { promisify } = require('util');
 
-const connection = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: 'nodejs-login'
-});
+// const connection = mysql.createConnection({
+//     host: process.env.DB_HOST,
+//     user: process.env.DB_USER,
+//     password: process.env.DB_PASS,
+//     database: 'nodejs-login'
+// });
+
+let connection = {
+    host: "us-cdbr-east-04.cleardb.com",
+    user: "b78b7bce7d4d40",
+    password: "f883fc91",
+    database: "heroku_d6ddb37c373930d"
+};
+ 
+
 
 
 exports.login = async (req, res) => {
