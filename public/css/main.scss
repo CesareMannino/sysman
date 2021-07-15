@@ -4,7 +4,7 @@
 
 /* Split the screen in half */
 .split_left {
-    background-image:url("/images/Design Thinking Diagram.svg");
+    background-image:url("/images/Design Thinking Diagram.png");
     background-size:950px;
     height: 100%;
     width: 50%;
@@ -93,6 +93,19 @@ nav li a{
 
 //register css
 
+
+navreg h4,a{
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-weight:bold;
+  padding:5px 8px;
+}
+
+navreg h4 a:hover{
+  color:rgb(229, 255, 0);
+}
+
+
 navreg {
   padding: 10px;
   // position: fixed;
@@ -141,4 +154,15 @@ navreg li a:hover{
   .container {
     max-width: 80%;
   }
+}
+
+
+.avatar-ctn{
+  background-color:orange;
+  text-align:center;
+}
+
+.avatar {
+  width:65%;
+  border-bottom:1px solid rgba(0,0,0,0.125);
 }
