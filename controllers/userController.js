@@ -8,7 +8,7 @@ const mysql = require('mysql');
 //   });
   
 
-var connection = {
+var db_config = {
     host: "us-cdbr-east-04.cleardb.com",
     user: "bfad2a9ef20ba8",
     password: "5654e716",
