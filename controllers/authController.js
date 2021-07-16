@@ -88,13 +88,13 @@ exports.login = async (req, res) => {
 }
 
 
-db_config.connect((error) => {
-    if (error) {
-        console.log(error);
-    } else {
-        console.log('MySQL nodejs-login connected...')
-    }
-});
+// db_config.connect((error) => {
+//     if (error) {
+//         console.log(error);
+//     } else {
+//         console.log('MySQL nodejs-login connected...')
+//     }
+// });
 
 
 // // home page

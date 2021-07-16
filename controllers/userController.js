@@ -42,13 +42,13 @@ handleDisconnect();
 
 
   
-db_config.connect( (error) => {
-    if(error){
-        console.log(error);
-    }else{
-        console.log('MySQL user Connected...')
-    }
-});
+// db_config.connect( (error) => {
+//     if(error){
+//         console.log(error);
+//     }else{
+//         console.log('MySQL user Connected...')
+//     }
+// });
 
 
 // View Users
