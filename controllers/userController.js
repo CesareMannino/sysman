@@ -42,7 +42,7 @@ handleDisconnect();
 
 
   
-connection.connect( (error) => {
+db_config.connect( (error) => {
     if(error){
         console.log(error);
     }else{
@@ -54,7 +54,7 @@ connection.connect( (error) => {
 // View Users
 exports.view = (req, res) => {
     //User the connection
-    connection.query('SELECT * FROM user WHERE status="active"', (err, rows) => {
+    db_config.query('SELECT * FROM user WHERE status="active"', (err, rows) => {
         //when done with the connection, release it
         if (!err) {
             let removedUser = req.query.removed;
@@ -71,7 +71,7 @@ exports.view = (req, res) => {
 exports.find = (req, res) => {
     let searchTerm = req.body.search;
     //User the connection
-    connection.query('SELECT * FROM user WHERE first_name LIKE ? OR last_name LIKE ?', ['%' + searchTerm + '%', '%' + searchTerm + '%'], (err, rows) => {
+    db_config.query('SELECT * FROM user WHERE first_name LIKE ? OR last_name LIKE ?', ['%' + searchTerm + '%', '%' + searchTerm + '%'], (err, rows) => {
         if (!err) {
             res.render('ui', { rows });
         } else {
@@ -91,7 +91,7 @@ exports.create = (req, res) => {
     // let searchTerm = req.body.search;
 
     //User the connection
-    connection.query('INSERT INTO user SET first_name = ?,last_name = ?,email = ?,phone = ?,coc=?,expiration=?,PSSR=?,FFB=?,ADV=?', [first_name, last_name, email, phone, coc, expiration, PSSR, FFB, ADV], (err, rows) => {
+    db_config.query('INSERT INTO user SET first_name = ?,last_name = ?,email = ?,phone = ?,coc=?,expiration=?,PSSR=?,FFB=?,ADV=?', [first_name, last_name, email, phone, coc, expiration, PSSR, FFB, ADV], (err, rows) => {
         if (!err) {
             res.render('add-crew', { alert: 'Crew member added succesfully!' });
         } else {
@@ -105,7 +105,7 @@ exports.create = (req, res) => {
 // edit crew function
 exports.edit = (req, res) => {
     //User the connection
-    connection.query('SELECT * FROM user WHERE id = ?', [req.params.id], (err, rows) => {
+    db_config.query('SELECT * FROM user WHERE id = ?', [req.params.id], (err, rows) => {
         if (!err) {
             res.render('edit-crew', { rows });
         } else {
@@ -118,7 +118,7 @@ exports.edit = (req, res) => {
 exports.update = (req, res) => {
     const { first_name, last_name, email, phone, coc, expiration, PSSR, FFB, ADV } = req.body;
 
-    connection.query('UPDATE user SET first_name=? ,last_name=?, email=?, phone=?, coc=?, expiration=?, PSSR=?, FFB=?, ADV=? WHERE id = ?', [first_name, last_name, email, phone, coc, expiration, PSSR, FFB, ADV, req.params.id], (err, rows) => {
+    db_config.query('UPDATE user SET first_name=? ,last_name=?, email=?, phone=?, coc=?, expiration=?, PSSR=?, FFB=?, ADV=? WHERE id = ?', [first_name, last_name, email, phone, coc, expiration, PSSR, FFB, ADV, req.params.id], (err, rows) => {
         if (!err) {
             connection.query('SELECT * FROM user WHERE id = ?', [req.params.id], (err, rows) => {
                 //when done with the connection release it
@@ -141,7 +141,7 @@ exports.update = (req, res) => {
 //delete crew
 exports.delete = (req, res) => {
  // User the connection
-  connection.query('DELETE FROM user WHERE id = ?', [req.params.id], (err, rows) => {
+ db_config.query('DELETE FROM user WHERE id = ?', [req.params.id], (err, rows) => {
 
     if(!err) {
       res.redirect('/ui');
@@ -170,7 +170,7 @@ exports.delete = (req, res) => {
 //view crew
 exports.viewall = (req, res) => {
     //User the connection
-    connection.query('SELECT * FROM user WHERE id=?', [req.params.id], (err, rows) => {
+    db_config.query('SELECT * FROM user WHERE id=?', [req.params.id], (err, rows) => {
         //when done with the connection, release it
         if (!err) {
             res.render('view-crew', { rows });
