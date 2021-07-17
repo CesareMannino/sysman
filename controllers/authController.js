@@ -10,6 +10,9 @@ const { promisify } = require('util');
 //     database: 'nodejs-login'
 // });
 
+
+// connection
+
 var db_config = {
     host: "us-cdbr-east-04.cleardb.com",
     user: "bbaaff48f634c6",
@@ -55,7 +58,7 @@ exports.login = async (req, res) => {
             })
         }
 
-        db_config.query('SELECT * FROM login WHERE email=?', [email], async (error, results) => {
+        connection.query('SELECT * FROM login WHERE email=?', [email], async (error, results) => {
             console.log(results);
             if (!results || !(await bcrypt.compare(password, results[0].password))) {
                 res.status(401).render('login', {
@@ -87,7 +90,7 @@ exports.login = async (req, res) => {
 }
 
 
-// db_config.connect((error) => {
+// connection.connect((error) => {
 //     if (error) {
 //         console.log(error);
 //     } else {
@@ -114,7 +117,7 @@ exports.register = (req, res) => {
     // Destructor
     const { name, email, password, passwordConfirm } = req.body;
     //query that order to MySQL to get the user email only once
-    db_config.query('SELECT email FROM login WHERE email = ?', [email], async (error, results) => {
+    connection.query('SELECT email FROM login WHERE email = ?', [email], async (error, results) => {
         if (error) {
             console.log(error);
         }
@@ -131,7 +134,7 @@ exports.register = (req, res) => {
         let hashedPassword = await bcrypt.hash(password, 8);
         console.log(hashedPassword);
 
-        db_config.query('INSERT INTO login SET ?', { name: name, email: email, password: hashedPassword }, (error, results) => {
+        connection.query('INSERT INTO login SET ?', { name: name, email: email, password: hashedPassword }, (error, results) => {
             if (error) {
                 console.log(error);
             } else {
@@ -159,7 +162,7 @@ exports.isLoggedIn = async (req, res, next) => {
 
             console.log(decoded);
             //2) Check if the user still exists
-            db_config.query('SELECT * FROM login WHERE id = ?', [decoded.id], (error, result) => {
+            connection.query('SELECT * FROM login WHERE id = ?', [decoded.id], (error, result) => {
                 console.log(result);
 
                 if(!result){
