@@ -10,9 +10,9 @@ const mysql = require('mysql');
 
 var db_config = {
     host: "us-cdbr-east-04.cleardb.com",
-    user: "b78b7bce7d4d40",
-    password: "f883fc91",
-    database: "heroku_d6ddb37c373930d"
+    user: "bbaaff48f634c6",
+    password: "dacbf7fa",
+    database: "heroku_c7ad469172e97f3"
 };
 
 
