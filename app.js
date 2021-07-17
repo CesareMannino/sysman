@@ -25,7 +25,7 @@ app.set("view engine","hbs");
 //link that tell to the server express.js to get the routeing from user.js
 // const routes = require('./server/routes/user');
 app.use("/",require('./routes/user'));
-// app.use('/auth', require('./routes/auth'));
+app.use('/auth', require('./routes/auth'));
 
 
 
