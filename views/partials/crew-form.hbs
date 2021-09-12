@@ -1,81 +1,204 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {{!-- Datepicker --}}
+  <title>jQuery UI Datepicker - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <script>
+    $(function () {
+      $("#datepicker").datepicker({
+        changeMonth: true,
+        changeYear: true
+      });
+      $("#datepickerSURV").datepicker({
+        changeMonth: true,
+        changeYear: true
+      });
+      $("#datepickerPSSR").datepicker({
+        changeMonth: true,
+        changeYear: true
+      });
+      $("#datepickerFFB").datepicker({
+        changeMonth: true,
+        changeYear: true
+      });
+      $("#datepickerADV").datepicker({
+        changeMonth: true,
+        changeYear: true
+      });
+      $("#datepickerELEM").datepicker({
+        changeMonth: true,
+        changeYear: true
+      });
+      $("#datepickerFRC").datepicker({
+        changeMonth: true,
+        changeYear: true
+      });
+      $("#datepickermedical_first").datepicker({
+        changeMonth: true,
+        changeYear: true
+      });
+      $('#datepickermedical_care').datepicker({
+        changeMonth: true,
+        changeYear: true
+      });
+      $('#datepickerGMDSS').datepicker({
+        changeMonth: true,
+        changeYear: true
+      });
+      $('#datepickerRADAR').datepicker({
+        changeMonth: true,
+        changeYear: true
+      });
+      $('#datepickerARPA').datepicker({
+        changeMonth: true,
+        changeYear: true
+      });
+      $('#datepickerarpa_btw').datepicker({
+        changeMonth: true,
+        changeYear: true
+      });
+      $('#datepickerecdis_gen').datepicker({
+        changeMonth: true,
+        changeYear: true
+      });
+      $('#datepickerSSO').datepicker({
+        changeMonth: true,
+        changeYear: true
+      });
+      $('#datepickerleadership_managerial').datepicker({
+        changeMonth: true,
+        changeYear: true
+      });
+      $('#datepickerhigh_voltage').datepicker({
+        changeMonth: true,
+        changeYear: true
+      });
+      $('#datepickerleader_teamwork_engine').datepicker({
+        changeMonth: true,
+        changeYear: true
+      });
+      $('#datepickerleader_teamwork_deck').datepicker({
+        changeMonth: true,
+        changeYear: true
+      });
+      $('#datepickersecurity_awa').datepicker({
+        changeMonth: true,
+        changeYear: true
+      });
+      $('#datepickersecurity_duties').datepicker({
+        changeMonth: true,
+        changeYear: true
+      });
+      $('#datepickerbasic_saf_fam').datepicker({
+        changeMonth: true,
+        changeYear: true
+      });
+      $('#datepickersecurity_related_fam').datepicker({
+        changeMonth: true,
+        changeYear: true
+      });
+      $('#datepickerecdis_specific').datepicker({
+        changeMonth: true,
+        changeYear: true
+      });
+
+    });
+  </script>
+</head>
+
+
+
+
+
 {{!-- First name --}}
 <div class="row">
   <div class="col-md-2">
-    <input type="text" class="form-control" id="floatingInput" value="{{this.first_name}}" placeholder="First Name"
-      name="first_name">
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">First Name</label>
+      <input type="text" class="form-control" id="floatingInput" value="{{this.first_name}}" placeholder="First Name"
+        name="first_name">
+    </div>
   </div>
   {{!-- Last name --}}
   <div class="col-md-2">
+    <label for="exampleFormControlSelect1">Last Name</label>
     <input type="text" class="form-control" id="floatingInput" value="{{this.last_name}}" placeholder="Last Name"
       name="last_name">
   </div>
 
   {{!-- drop down menu stcw coc --}}
-  <div class="col-md-3">
-    <select class="form-select" id="inputGroupSelect01" value="{{this.coc}}" name='coc'>
-      <option selected>Certificate of Competency/Proficiency</option>
-      <option value="Master DP II/2 IV/2">Master DP II/2 IV/2</option>
-      <option value="Master II/2 IV/2">Master II/2 IV/2</option>
-      <option value="Chief Mate DP II/2 IV/2">Chief Mate DP II/2 IV/2</option>
-      <option value="Chief Mate II/2 IV/2">Chief Mate II/2 IV/2</option>
-      <option value="OOW Navigational Watch DP II1/IV2">OOW Navigational Watch DP II1/IV2</option>
-      <option value="OOW Navigational Watch II1/IV2">OOW Navigational Watch II1/IV2</option>
-      <option value="Deck Cadet">Deck Cadet</option>
-      <option value="Radio operator IV/2">Radio operator IV/2</option>
-    </select>
-
-
-
-
-    {{!-- date picker coc--}}
-
-  </div>
 
   <div class="col-md-3">
+    {{!-- <form>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Email address</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+      </div> --}}
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Certificate of Competency/Proficiency</label>
+        <select class="form-control" id="inputGroupSelect01" value="{{this.coc}}" name='coc'>
+          <option selected>{{this.coc}}</option>
+          <option value="Master DP II/2 IV/2">Master DP II/2 IV/2</option>
+          <option value="Master II/2 IV/2">Master II/2 IV/2</option>
+          <option value="Chief Mate DP II/2 IV/2">Chief Mate DP II/2 IV/2</option>
+          <option value="Chief Mate II/2 IV/2">Chief Mate II/2 IV/2</option>
+          <option value="OOW Navigational Watch DP II1/IV2">OOW Navigational Watch DP II1/IV2</option>
+          <option value="OOW Navigational Watch II1/IV2">OOW Navigational Watch II1/IV2</option>
+          <option value="Deck Cadet">Deck Cadet</option>
+          <option value="Radio operator IV/2">Radio operator IV/2</option>
+        </select>
+      </div>
 
-    <input type="text" id="datepicker" value="{{this.expiration}}" placeholder="exp. date (mm/dd/yy)" name='expiration'>
+
+      {{!-- <select class="form-select" id="inputGroupSelect01" value="{{this.coc}}" name='coc'>
+
+        <option selected>{{this.coc}}</option>
+        <option value="Master DP II/2 IV/2">Master DP II/2 IV/2</option>
+        <option value="Master II/2 IV/2">Master II/2 IV/2</option>
+        <option value="Chief Mate DP II/2 IV/2">Chief Mate DP II/2 IV/2</option>
+        <option value="Chief Mate II/2 IV/2">Chief Mate II/2 IV/2</option>
+        <option value="OOW Navigational Watch DP II1/IV2">OOW Navigational Watch DP II1/IV2</option>
+        <option value="OOW Navigational Watch II1/IV2">OOW Navigational Watch II1/IV2</option>
+        <option value="Deck Cadet">Deck Cadet</option>
+        <option value="Radio operator IV/2">Radio operator IV/2</option>
+      </select> --}}
+
   </div>
-
-
-
-  {{!-- phone number --}}
-  <div class="row">
-
-    <div class="col-md-2 mb-5">
-      <br>
-      <input type="text" class="form-control" value="{{this.phone}}" placeholder="Phone" name="phone">
-
-    </div>
-{{!-- email --}}
-    <div class="col-md-3 mb-5">
-      <br>
-      <input type="email" class="form-control" value="{{this.email}}" placeholder="email@email.com" name="email">
-    </div>
-  </div>
-{{!-- <h1>COURSES</h1> --}}
-  {{!-- PSSR --}}
-  <div class="row">
-
-    <div class="col-md-4 mt-5">
-      <br>
-      <input class="form-control" type="text" placeholder="PSSR A-VI/1 - 1" aria-label="readonly input example"
-        readonly>
-
-    </div>
-
-    <div class="col-md-3 mt-5">
-      <br>
-      <input type="text" id="datepickerPSSR" value="{{this.PSSR}}" placeholder="exp. date (mm/dd/yy)" name="PSSR">
-
-    </div>
-  </div>
-
-
   <style>
+    #label_coc {
+      margin-top: auto;
+    }
+
     #datepicker,
+    #datepickerSURV,
     #datepickerPSSR,
     #datepickerFFB,
-    #datepickerADV {
+    #datepickerADV,
+    #datepickerELEM,
+    #datepickerFRC,
+    #datepickermedical_first,
+    #datepickermedical_care,
+    #datepickerGMDSS,
+    #datepickerRADAR,
+    #datepickerARPA,
+    #datepickerarpa_btw,
+    #datepickerecdis_gen,
+    #datepickerSSO,
+    #datepickerleadership_managerial,
+    #datepickerhigh_voltage,
+    #datepickerleader_teamwork_engine,
+    #datepickerleader_teamwork_deck,
+    #datepickersecurity_awa,
+    #datepickersecurity_duties,
+    #datepickerbasic_saf_fam,
+    #datepickersecurity_related_fam,
+    #datepickerecdis_specific {
       padding: 5.5px;
       border-radius: 5px;
       border: 1.2px solid rgb(184, 184, 184);
@@ -85,356 +208,478 @@
   </style>
 
 
-  <div class="row">
 
-    <div class="col-md-4">
-      <br>
-      <input class="form-control" type="text" placeholder="FIRE PREVENTION AND FIREFIGHTING (STCW A-VI/1-2)"
-        aria-label="readonly input example" readonly>
+  {{!-- date picker coc--}}
 
-    </div>
 
-    <div class="col-md-3">
-      <br>
-      <input type="text" id="datepickerFFB" value="{{this.FFB}}" placeholder="exp. date (mm/dd/yy)" name='FFB'>
-    </div>
+  <div class="col-md-3">
+<label for="exampleFormControlSelect1">exp. date (mm/dd/yy)</label>
+    <input type="text" id="datepicker" value="{{this.expiration}}" placeholder="exp. date (mm/dd/yy)" name='expiration'>
+  </div>
+</div>
+
+
+
+{{!-- phone number --}}
+<div class="row">
+
+  <div class="col-md-2 mb-5">
+    
+    <label for="exampleFormControlSelect1">Phone</label>
+    <br>
+    <input type="text" class="form-control" value="{{this.phone}}" placeholder="Phone" name="phone">
+
+  </div>
+  {{!-- email --}}
+  <div class="col-md-3 mb-5">
+    
+    <label for="exampleFormControlSelect1">email</label>
+    <br>
+    <input type="email" class="form-control" value="{{this.email}}" placeholder="email@email.com" name="email">
+  </div>
+</div>
+
+
+
+{{!-- PSSR --}}
+<div class="row">
+
+  <div class="col-md-4 mt-5">
+    <br>
+    <input class="form-control" type="text" placeholder="PSSR A-VI/1 - 1" aria-label="readonly input example" readonly>
+
   </div>
 
+  <div class="col-md-3 mt-5">
+    <br>
+    <input type="text" id="datepickerPSSR" value="{{this.PSSR}}" placeholder="exp. date (mm/dd/yy)" name="PSSR">
 
-  <div class="row">
+  </div>
+</div>
 
-    <div class="col-md-4">
-      <br>
+{{!-- PERSONAL SURVIVAL TECHNIQUES --}}
+<div class="row">
 
-      <input class="form-control" type="text" placeholder="ADVANCED FIRE FIGHTING (STCW A-VI/3)"
-        aria-label="readonly input example" readonly>
-    </div>
+  <div class="col-md-4">
+    <br>
+    <input class="form-control" type="text" placeholder="PERSONAL SURVIVAL TECHNIQUES STCW A-VI/1-1" aria-label="readonly input example" readonly>
 
-    <div class="col-md-3">
-      <br>
-      <input type="text" id="datepickerADV" value="{{this.ADV}}" placeholder="exp. date (mm/dd/yy)" name='ADV'>
-    </div>
   </div>
 
+  <div class="col-md-3">
+    <br>
+    <input type="text" id="datepickerSURV" value="{{this.SURV}}" placeholder="exp. date (mm/dd/yy)" name="SURV">
 
-  <div class="row">
-
-    <div class="col-md-4">
-      <br>
-
-      <input class="form-control" type="text" placeholder="ELEMENTARY FIRST AID (STCW A-VI/1 - 3)"
-        aria-label="readonly input example" readonly>
-    </div>
-
-    <div class="col-md-3">
-      <br>
-      <input type="text" id="datepickerADV" value="{{this.ADV}}" placeholder="exp. date (mm/dd/yy)" name='ADV'>
-    </div>
   </div>
+</div>
 
 
-  <div class="row">
-
-    <div class="col-md-4">
-      <br>
-
-      <input class="form-control" type="text" placeholder="FAST RESCUE BOATS (STCW  A-VI/2)"
-        aria-label="readonly input example" readonly>
-    </div>
-
-    <div class="col-md-3">
-      <br>
-      <input type="text" id="datepickerADV" value="{{this.ADV}}" placeholder="exp. date (mm/dd/yy)" name='ADV'>
-    </div>
-  </div>
 
 
-  <div class="row">
-
-    <div class="col-md-4">
-      <br>
-
-      <input class="form-control" type="text" placeholder="MEDICAL FIRST AID (STCW  A-VI/4-1)"
-        aria-label="readonly input example" readonly>
-    </div>
-
-    <div class="col-md-3">
-      <br>
-      <input type="text" id="datepickerADV" value="{{this.ADV}}" placeholder="exp. date (mm/dd/yy)" name='ADV'>
-    </div>
-  </div>
-
-
-  <div class="row">
-
-    <div class="col-md-4">
-      <br>
-
-      <input class="form-control" type="text" placeholder="MEDICAL CARE (STCW A-VI/4-2)"
-        aria-label="readonly input example" readonly>
-    </div>
-
-    <div class="col-md-3">
-      <br>
-      <input type="text" id="datepickerADV" value="{{this.ADV}}" placeholder="exp. date (mm/dd/yy)" name='ADV'>
-    </div>
-  </div>
-
-
-  <div class="row">
-
-    <div class="col-md-4">
-      <br>
-
-      <input class="form-control" type="text" placeholder="GMDSS GOC (STCW A- IV/2)"
-        aria-label="readonly input example" readonly>
-    </div>
-
-    <div class="col-md-3">
-      <br>
-      <input type="text" id="datepickerADV" value="{{this.ADV}}" placeholder="exp. date (mm/dd/yy)" name='ADV'>
-    </div>
-  </div>
-
-
-  <div class="row">
-
-    <div class="col-md-4">
-      <br>
-
-      <input class="form-control" type="text" placeholder="RADAR (STCW REG A-II/1")
-        aria-label="readonly input example" readonly>
-    </div>
-
-    <div class="col-md-3">
-      <br>
-      <input type="text" id="datepickerADV" value="{{this.ADV}}" placeholder="exp. date (mm/dd/yy)" name='ADV'>
-    </div>
-  </div>
-
-
-  <div class="row">
-
-    <div class="col-md-4">
-      <br>
-
-      <input class="form-control" type="text" placeholder="ARPA (STCW A-II/1 - A-II/2)"
-        aria-label="readonly input example" readonly>
-    </div>
-
-    <div class="col-md-3">
-      <br>
-      <input type="text" id="datepickerADV" value="{{this.ADV}}" placeholder="exp. date (mm/dd/yy)" name='ADV'>
-    </div>
-  </div>
-
-
-  <div class="row">
-
-    <div class="col-md-4">
-      <br>
-
-      <input class="form-control" type="text" placeholder="RADAR A.R.P.A.-BRIDGE TEAM WORK S(TCW A-II/2)"
-        aria-label="readonly input example" readonly>
-    </div>
-
-    <div class="col-md-3">
-      <br>
-      <input type="text" id="datepickerADV" value="{{this.ADV}}" placeholder="exp. date (mm/dd/yy)" name='ADV'>
-    </div>
-  </div>
-
-
-  <div class="row">
-
-    <div class="col-md-4">
-      <br>
-
-      <input class="form-control" type="text" placeholder="ECDIS Generic Training  (STCW A-II/1, A-II/2)"
-        aria-label="readonly input example" readonly>
-    </div>
-
-    <div class="col-md-3">
-      <br>
-      <input type="text" id="datepickerADV" value="{{this.ADV}}" placeholder="exp. date (mm/dd/yy)" name='ADV'>
-    </div>
-  </div>
-
-
-  <div class="row">
-
-    <div class="col-md-4">
-      <br>
-
-      <input class="form-control" type="text" placeholder="BASIC SAFETY FAMILIARISATION A-VI/1"
-        aria-label="readonly input example" readonly>
-    </div>
-
-    <div class="col-md-3">
-      <br>
-      <input type="text" id="datepickerADV" value="{{this.ADV}}" placeholder="exp. date (mm/dd/yy)" name='ADV'>
-    </div>
-  </div>
-
-
-  <div class="row">
-
-    <div class="col-md-4">
-      <br>
-
-      <input class="form-control" type="text" placeholder="SECURITY -RELATED FAMILIARISATION   REG A-VI/6"
-        aria-label="readonly input example" readonly>
-    </div>
-
-    <div class="col-md-3">
-      <br>
-      <input type="text" id="datepickerADV" value="{{this.ADV}}" placeholder="exp. date (mm/dd/yy)" name='ADV'>
-    </div>
-  </div>
-
+{{!-- FIRE PREVENTION AND FIREFIGHTING (STCW A-VI/1-2) --}}
 
 <div class="row">
 
-    <div class="col-md-4">
-      <br>
+  <div class="col-md-4">
+    <br>
+    <input class="form-control" type="text" placeholder="FIRE PREVENTION AND FIREFIGHTING (STCW A-VI/1-2)"
+      aria-label="readonly input example" readonly>
 
-      <input class="form-control" type="text" placeholder="ECDIS Ship Specific Equipment Familiarisation Training"
-        aria-label="readonly input example" readonly>
-    </div>
-
-    <div class="col-md-3">
-      <br>
-      <input type="text" id="datepickerADV" value="{{this.ADV}}" placeholder="exp. date (mm/dd/yy)" name='ADV'>
-    </div>
   </div>
 
+  <div class="col-md-3">
+    <br>
+    <input type="text" id="datepickerFFB" value="{{this.FFB}}" placeholder="exp. date (mm/dd/yy)" name='FFB'>
+  </div>
+</div>
 
+
+
+{{!-- ELEMENTARY FIRST AID (STCW A-VI/1 - 3) --}}
 
 <div class="row">
 
-    <div class="col-md-4">
-      <br>
+  <div class="col-md-4">
+    <br>
 
-      <input class="form-control" type="text" placeholder="SECURITY AWARNESS REG A-VI/6-1 (3)*"
-        aria-label="readonly input example" readonly>
-    </div>
-
-    <div class="col-md-3">
-      <br>
-      <input type="text" id="datepickerADV" value="{{this.ADV}}" placeholder="exp. date (mm/dd/yy)" name='ADV'>
-    </div>
+    <input class="form-control" type="text" placeholder="ELEMENTARY FIRST AID (STCW A-VI/1 - 3)"
+      aria-label="readonly input example" readonly>
   </div>
 
+  <div class="col-md-3">
+    <br>
+    <input type="text" id="datepickerELEM" value="{{this.elementary}}" placeholder="exp. date (mm/dd/yy)"
+      name='elementary'>
+  </div>
+</div>
+
+{{!-- ADVANCED FIRE FIGHTING (STCW A-VI/3) --}}
+<div class="row">
+
+  <div class="col-md-4">
+    <br>
+
+    <input class="form-control" type="text" placeholder="ADVANCED FIRE FIGHTING (STCW A-VI/3)"
+      aria-label="readonly input example" readonly>
+  </div>
+
+  <div class="col-md-3">
+    <br>
+    <input type="text" id="datepickerADV" value="{{this.ADV}}" placeholder="exp. date (mm/dd/yy)" name='ADV'>
+  </div>
+</div>
+
+{{!-- FAST RESCUE BOATS (STCW A-VI/2) --}}
 
 <div class="row">
 
-    <div class="col-md-4">
-      <br>
+  <div class="col-md-4">
+    <br>
 
-      <input class="form-control" type="text" placeholder="SEAFARERS WITH DESIGNATED SECURITY DUTIES A-VI/6-2 (3)*"
-        aria-label="readonly input example" readonly>
-    </div>
-
-    <div class="col-md-3">
-      <br>
-      <input type="text" id="datepickerADV" value="{{this.ADV}}" placeholder="exp. date (mm/dd/yy)" name='ADV'>
-    </div>
+    <input class="form-control" type="text" placeholder="FAST RESCUE BOATS (STCW  A-VI/2)"
+      aria-label="readonly input example" readonly>
   </div>
 
+  <div class="col-md-3">
+    <br>
+    <input type="text" id="datepickerFRC" value="{{this.FRC}}" placeholder="exp. date (mm/dd/yy)" name='FRC'>
+  </div>
+</div>
+
+{{!-- MEDICAL FIRST AID (STCW A-VI/4-1) --}}
 
 <div class="row">
 
-    <div class="col-md-4">
-      <br>
+  <div class="col-md-4">
+    <br>
 
-      <input class="form-control" type="text" placeholder="SHIP SECURITY OFFICER REG A-VI/5 (3)*"
-        aria-label="readonly input example" readonly>
-    </div>
-
-    <div class="col-md-3">
-      <br>
-      <input type="text" id="datepickerADV" value="{{this.ADV}}" placeholder="exp. date (mm/dd/yy)" name='ADV'>
-    </div>
+    <input class="form-control" type="text" placeholder="MEDICAL FIRST AID (STCW  A-VI/4-1)"
+      aria-label="readonly input example" readonly>
   </div>
 
+  <div class="col-md-3">
+    <br>
+    <input type="text" id="datepickermedical_first" value="{{this.medical_first}}" placeholder="exp. date (mm/dd/yy)"
+      name='medical_first'>
+  </div>
+</div>
+
+{{!-- MEDICAL CARE (STCW A-VI/4-2) --}}
 
 <div class="row">
 
-    <div class="col-md-4">
-      <br>
+  <div class="col-md-4">
+    <br>
 
-      <input class="form-control" type="text" placeholder="USE OF LEADERSHIP AND MANAGERIAL SKILLS TRAINING COURSE (6)*"
-        aria-label="readonly input example" readonly>
-    </div>
-
-    <div class="col-md-3">
-      <br>
-      <input type="text" id="datepickerADV" value="{{this.ADV}}" placeholder="exp. date (mm/dd/yy)" name='ADV'>
-    </div>
+    <input class="form-control" type="text" placeholder="MEDICAL CARE (STCW A-VI/4-2)"
+      aria-label="readonly input example" readonly>
   </div>
 
+  <div class="col-md-3">
+    <br>
+    <input type="text" id="datepickermedical_care" value="{{this.medical_care}}" placeholder="exp. date (mm/dd/yy)"
+      name='medical_care'>
+  </div>
+</div>
+
+{{!-- GMDSS GOC (STCW A- IV/2) --}}
 
 <div class="row">
 
-    <div class="col-md-4">
-      <br>
+  <div class="col-md-4">
+    <br>
 
-      <input class="form-control" type="text" placeholder="MARINE HIGH VOLTAGE SAFETY COURSE (ex:ABB -H851)
-(Op. level for III/1, Mng. level for III/2)"
-        aria-label="readonly input example" readonly>
-    </div>
-
-    <div class="col-md-3">
-      <br>
-      <input type="text" id="datepickerADV" value="{{this.ADV}}" placeholder="exp. date (mm/dd/yy)" name='ADV'>
-    </div>
+    <input class="form-control" type="text" placeholder="GMDSS GOC (STCW A- IV/2)" aria-label="readonly input example"
+      readonly>
   </div>
+
+  <div class="col-md-3">
+    <br>
+    <input type="text" id="datepickerGMDSS" value="{{this.GMDSS}}" placeholder="exp. date (mm/dd/yy)" name='GMDSS'>
+  </div>
+</div>
+
+{{!-- "RADAR (STCW REG A-II/1)" --}}
 
 <div class="row">
 
-    <div class="col-md-4">
-      <br>
+  <div class="col-md-4">
+    <br>
 
-      <input class="form-control" type="text" placeholder="LEADERSHIP & TEAMWORK
-(Tables A-III/1, A-III/2)"
-        aria-label="readonly input example" readonly>
-    </div>
-
-    <div class="col-md-3">
-      <br>
-      <input type="text" id="datepickerADV" value="{{this.ADV}}" placeholder="exp. date (mm/dd/yy)" name='ADV'>
-    </div>
+    <input class="form-control" type="text" placeholder="RADAR (STCW REG A-II/1)" aria-label="readonly input example"
+      readonly>
   </div>
+
+  <div class="col-md-3">
+    <br>
+    <input type="text" id="datepickerRADAR" value="{{this.RADAR}}" placeholder="issuing date (mm/dd/yy)" name='RADAR'>
+  </div>
+</div>
+
+{{!-- ARPA (STCW A-II/1 - A-II/2) --}}
 
 <div class="row">
 
-    <div class="col-md-4">
-      <br>
+  <div class="col-md-4">
+    <br>
 
-      <input class="form-control" type="text" placeholder="LEADERSHIP & TEAM WORK
-(Tables A-II/1, A-II/2)"
-        aria-label="readonly input example" readonly>
-    </div>
-
-    <div class="col-md-3">
-      <br>
-      <input type="text" id="datepickerADV" value="{{this.ADV}}" placeholder="exp. date (mm/dd/yy)" name='ADV'>
-    </div>
+    <input class="form-control" type="text" placeholder="ARPA (STCW A-II/1 - A-II/2)"
+      aria-label="readonly input example" readonly>
   </div>
 
-  <style>
-    #datepicker,
-    #datepickerPSSR,
-    #datepickerADV {
-      padding: 5.5px;
-      border-radius: 5px;
-      border: 1.2px solid rgb(184, 184, 184);
-      outline:
-        outline-color: blue;
-    }
-  </style>
-
-
-  <div class="col-1 d-grid">
-    <button class="btn btn-primary" type="submit" style="margin:90px 0 0 0">Submit</button>
+  <div class="col-md-3">
+    <br>
+    <input type="text" id="datepickerARPA" value="{{this.ARPA}}" placeholder="issuing date (mm/dd/yy)" name='ARPA'>
   </div>
+</div>
+
+
+{{!-- RADAR A.R.P.A.-BRIDGE TEAM WORK S(TCW A-II/2) --}}
+
+<div class="row">
+
+  <div class="col-md-4">
+    <br>
+
+    <input class="form-control" type="text" placeholder="RADAR A.R.P.A.-BRIDGE TEAM WORK S(TCW A-II/2)"
+      aria-label="readonly input example" readonly>
+  </div>
+
+  <div class="col-md-3">
+    <br>
+    <input type="text" id="datepickerarpa_btw" value="{{this.arpa_btw}}" placeholder="exp. date (mm/dd/yy)"
+      name='arpa_btw'>
+  </div>
+</div>
+
+
+{{!-- ECDIS Generic Training (STCW A-II/1, A-II/2) --}}
+
+<div class="row">
+
+  <div class="col-md-4">
+    <br>
+
+    <input class="form-control" type="text" placeholder="ECDIS Generic Training  (STCW A-II/1, A-II/2)"
+      aria-label="readonly input example" readonly>
+  </div>
+
+  <div class="col-md-3">
+    <br>
+    <input type="text" id="datepickerecdis_gen" value="{{this.ecdis_gen}}" placeholder="exp. date (mm/dd/yy)"
+      name='ecdis_gen'>
+  </div>
+</div>
+
+
+{{!-- SHIP SECURITY OFFICER REG A-VI/5 (3)* --}}
+
+<div class="row">
+
+  <div class="col-md-4">
+    <br>
+
+    <input class="form-control" type="text" placeholder="SHIP SECURITY OFFICER REG A-VI/5 (3)*"
+      aria-label="readonly input example" readonly>
+  </div>
+
+  <div class="col-md-3">
+    <br>
+    <input type="text" id="datepickerSSO" value="{{this.SSO}}" placeholder="exp. date (mm/dd/yy)" name='SSO'>
+  </div>
+</div>
+
+
+{{!-- USE OF LEADERSHIP AND MANAGERIAL SKILLS TRAINING COURSE (6)* --}}
+
+<div class="row">
+
+  <div class="col-md-4">
+    <br>
+
+    <input class="form-control" type="text" placeholder="USE OF LEADERSHIP AND MANAGERIAL SKILLS TRAINING COURSE (6)*"
+      aria-label="readonly input example" readonly>
+  </div>
+
+  <div class="col-md-3">
+    <br>
+    <input type="text" id="datepickerleadership_managerial" value="{{this.leadership_managerial}}"
+      placeholder="exp. date (mm/dd/yy)" name='leadership_managerial'>
+  </div>
+</div>
+
+{{!-- MARINE HIGH VOLTAGE SAFETY COURSE --}}
+
+<div class="row">
+
+  <div class="col-md-4">
+    <br>
+
+    <input class="form-control" type="text" placeholder="MARINE HIGH VOLTAGE SAFETY COURSE (ex:ABB -H851)
+(Op. level for III/1, Mng. level for III/2)" aria-label="readonly input example" readonly>
+  </div>
+
+  <div class="col-md-3">
+    <br>
+    <input type="text" id="datepickerhigh_voltage" value="{{this.high_voltage}}" placeholder="exp. date (mm/dd/yy)"
+      name='high_voltage'>
+  </div>
+</div>
+
+{{!-- leader_teamwork_engine --}}
+
+<div class="row">
+
+  <div class="col-md-4">
+    <br>
+
+    <input class="form-control" type="text" placeholder="LEADERSHIP & TEAMWORK
+(Tables A-III/1, A-III/2)" aria-label="readonly input example" readonly>
+  </div>
+
+  <div class="col-md-3">
+    <br>
+    <input type="text" id="datepickerleader_teamwork_engine" value="{{this.leader_teamwork_engine}}"
+      placeholder="exp. date (mm/dd/yy)" name='leader_teamwork_engine'>
+  </div>
+</div>
+
+
+{{!-- leader_teamwork_deck --}}
+
+<div class="row">
+
+  <div class="col-md-4">
+    <br>
+
+    <input class="form-control" type="text" placeholder="LEADERSHIP & TEAM WORK
+(Tables A-II/1, A-II/2)" aria-label="readonly input example" readonly>
+  </div>
+
+  <div class="col-md-3">
+    <br>
+    <input type="text" id="datepickerleader_teamwork_deck" value="{{this.leader_teamwork_deck}}"
+      placeholder="exp. date (mm/dd/yy)" name='leader_teamwork_deck'>
+  </div>
+</div>
+
+{{!-- SECURITY AWARNESS REG A-VI/6-1 (3)* --}}
+
+<div class="row">
+
+  <div class="col-md-4">
+    <br>
+
+    <input class="form-control" type="text" placeholder="SECURITY AWARNESS REG A-VI/6-1 (3)*"
+      aria-label="readonly input example" readonly>
+  </div>
+
+  <div class="col-md-3">
+    <br>
+    <input type="text" id="datepickersecurity_awa" value="{{this.security_awa}}" placeholder="exp. date (mm/dd/yy)"
+      name='security_awa'>
+  </div>
+</div>
+
+{{!-- SEAFARERS WITH DESIGNATED SECURITY DUTIES A-VI/6-2 (3)* --}}
+
+<div class="row">
+
+  <div class="col-md-4">
+    <br>
+
+    <input class="form-control" type="text" placeholder="SEAFARERS WITH DESIGNATED SECURITY DUTIES A-VI/6-2 (3)*"
+      aria-label="readonly input example" readonly>
+  </div>
+
+  <div class="col-md-3">
+    <br>
+    <input type="text" id="datepickersecurity_duties" value="{{this.security_duties}}"
+      placeholder="exp. date (mm/dd/yy)" name='security_duties'>
+  </div>
+</div>
+
+
+
+<a tabindex="0" class="btn btn-lg btn btn-primary mt-4 col-md-6" role="button" data-bs-toggle="popover"
+  data-bs-trigger="focus" title="Dismissible popover"
+  data-bs-content="And here's some amazing content. It's very engaging. Right?">Ship's based courses</a>
+
+
+{{!-- BASIC SAFETY FAMILIARISATION A-VI/1 --}}
+
+<div class="row">
+
+  <div class="col-md-4">
+    <br>
+
+    <input class="form-control" type="text" placeholder="BASIC SAFETY FAMILIARISATION A-VI/1"
+      aria-label="readonly input example" readonly>
+  </div>
+
+  <div class="col-md-3">
+    <br>
+    <input type="text" id="datepickerbasic_saf_fam" value="{{this.basic_saf_fam}}" placeholder="exp. date (mm/dd/yy)"
+      name='basic_saf_fam'>
+  </div>
+</div>
+
+{{!-- SECURITY RELATED FAMILIARISATION REG A-VI/6 --}}
+
+<div class="row">
+
+  <div class="col-md-4">
+    <br>
+
+    <input class="form-control" type="text" placeholder="SECURITY RELATED FAMILIARISATION REG A-VI/6"
+      aria-label="readonly input example" readonly>
+  </div>
+
+  <div class="col-md-3">
+    <br>
+    <input type="text" id="datepickersecurity_related_fam" value="{{this.security_related_fam}}"
+      placeholder="exp. date (mm/dd/yy)" name='security_related_fam'>
+  </div>
+</div>
+
+{{!-- ECDIS Ship Specific Equipment Familiarisation Training --}}
+
+<div class="row">
+
+  <div class="col-md-4">
+    <br>
+
+    <input class="form-control" type="text" placeholder="ECDIS Ship Specific Equipment Familiarisation Training"
+      aria-label="readonly input example" readonly>
+  </div>
+
+  <div class="col-md-3">
+    <br>
+    <input type="text" id="datepickerecdis_specific" value="{{this.ecdis_specific}}" placeholder="exp. date (mm/dd/yy)"
+      name='ecdis_specific'>
+  </div>
+</div>
+
+
+
+
+
+{{!--
+<style>
+  #datepicker,
+  #datepickerPSSR,
+  #datepickerADV {
+    padding: 5.5px;
+    border-radius: 5px;
+    border: 1.2px solid rgb(184, 184, 184);
+    outline:
+      outline-color: blue;
+  }
+</style> --}}
+
+
+
+
+<div class="col-1 d-grid">
+  <button class="btn btn-primary" type="submit" style="margin:90px 0 0 0">Submit</button>
+</div>

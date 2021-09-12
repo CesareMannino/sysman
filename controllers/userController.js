@@ -56,11 +56,11 @@ exports.form = (req, res) => {
 
 //Add crew member
 exports.create = (req, res) => {
-    const { first_name, last_name, email, phone, coc, expiration, PSSR, FFB, ADV } = req.body;
+    const { first_name, last_name, email, phone, coc, expiration, PSSR, FFB, ADV, elementary,FRC,medical_first,medical_care,GMDSS,RADAR,ARPA,arpa_btw,ecdis_gen,SSO,leadership_managerial,high_voltage,leader_teamwork_engine,leader_teamwork_deck,security_awa,security_duties,basic_saf_fam,security_related_fam,ecdis_specific } = req.body;
     // let searchTerm = req.body.search;
 
     //User the connection
-    connection.query('INSERT INTO user SET first_name = ?,last_name = ?,email = ?,phone = ?,coc=?,expiration=?,PSSR=?,FFB=?,ADV=?', [first_name, last_name, email, phone, coc, expiration, PSSR, FFB, ADV], (err, rows) => {
+    connection.query('INSERT INTO user SET first_name = ?,last_name = ?,email = ?,phone = ?,coc=?,expiration=?,PSSR=?,FFB=?,ADV=?,elementary=?,FRC=?,medical_first=?,medical_care=?,GMDSS=?,RADAR=?,ARPA=?,arpa_btw=?,ecdis_gen=?,SSO=?,leadership_managerial=?,high_voltage=?,leader_teamwork_engine=?,leader_teamwork_deck=?,security_awa=?,security_duties=?,basic_saf_fam=?,security_related_fam=?,ecdis_specific=?', [first_name, last_name, email, phone, coc, expiration, PSSR, FFB, ADV,elementary,FRC,medical_first,medical_care,GMDSS,RADAR,ARPA,arpa_btw,ecdis_gen,SSO,leadership_managerial,high_voltage,leader_teamwork_engine,leader_teamwork_deck,security_awa,security_duties,basic_saf_fam,security_related_fam,ecdis_specific], (err, rows) => {
         if (!err) {
             res.render('add-crew', { alert: 'Crew member added succesfully!' });
         } else {
@@ -85,9 +85,9 @@ exports.edit = (req, res) => {
 }
 // Update crew
 exports.update = (req, res) => {
-    const { first_name, last_name, email, phone, coc, expiration, PSSR, FFB, ADV } = req.body;
+    const { first_name, last_name, email, phone, coc, expiration, PSSR, FFB, ADV,elementary,FRC,medical_first,medical_care,GMDSS,RADAR,ARPA,arpa_btw,ecdis_gen,SSO ,leadership_managerial,high_voltage,leader_teamwork_engine,leader_teamwork_deck,security_awa,security_duties,basic_saf_fam,security_related_fam,ecdis_specific} = req.body;
 
-    connection.query('UPDATE user SET first_name=? ,last_name=?, email=?, phone=?, coc=?, expiration=?, PSSR=?, FFB=?, ADV=? WHERE id = ?', [first_name, last_name, email, phone, coc, expiration, PSSR, FFB, ADV, req.params.id], (err, rows) => {
+    connection.query('UPDATE user SET first_name=? ,last_name=?, email=?, phone=?, coc=?, expiration=?, PSSR=?, FFB=?, ADV=?, elementary=?,FRC=?,medical_first=?,medical_care=?,GMDSS=?,RADAR=?,ARPA=?,arpa_btw=?,ecdis_gen=?,SSO=?,leadership_managerial=?,high_voltage=?,leader_teamwork_engine=?,leader_teamwork_deck=?,security_awa=?,security_duties=?,basic_saf_fam=?,security_related_fam=?,ecdis_specific=? WHERE id = ?', [first_name, last_name, email, phone, coc, expiration, PSSR, FFB, ADV,elementary,FRC,medical_first,medical_care,GMDSS,RADAR,ARPA,arpa_btw,ecdis_gen,SSO,leadership_managerial,high_voltage,leader_teamwork_engine,leader_teamwork_deck,security_awa,security_duties,basic_saf_fam,security_related_fam,ecdis_specific, req.params.id], (err, rows) => {
         if (!err) {
             connection.query('SELECT * FROM user WHERE id = ?', [req.params.id], (err, rows) => {
                 //when done with the connection release it

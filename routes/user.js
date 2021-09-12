@@ -30,7 +30,7 @@ res.redirect('/login');
 } 
 });
 
-router.get('/ui', authController.isLoggedIn,(req,res)=>{
+router.get('/ui', authController.isLoggedIn,userController.view,(req,res)=>{
   if(req.user){
     res.render('ui');
   } else{
@@ -38,7 +38,7 @@ router.get('/ui', authController.isLoggedIn,(req,res)=>{
   } 
   });
 
-router.get('/ui', userController.view);
+// router.get('/ui', userController.view);
 router.post('/ui', userController.find);
 router.get('/addcrew', userController.form);
 router.post('/addcrew', userController.create);
