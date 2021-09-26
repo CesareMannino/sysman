@@ -5,7 +5,7 @@ const exphbs = require("express-handlebars");
 
 // to be removed when depoyed in heroku
 
-// require("dotenv").config();
+require("dotenv").config();
 const cookieParser = require('cookie-parser');
 
 // Parsing middleware
