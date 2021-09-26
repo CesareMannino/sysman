@@ -3,7 +3,9 @@ const path = require('path');
 const mysql = require('mysql');
 const exphbs = require("express-handlebars");
 
-require("dotenv").config();
+// to be removed when depoyed in heroku
+
+// require("dotenv").config();
 const cookieParser = require('cookie-parser');
 
 // Parsing middleware
