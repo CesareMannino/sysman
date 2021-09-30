@@ -1,8 +1,5 @@
 const mysql = require('mysql');
 
-
-// connection setting for local server
-
 // let connection = mysql.createConnection({
 //     host: process.env.DB_HOST,
 //     user: process.env.DB_USER,
@@ -23,6 +20,8 @@ const mysql = require('mysql');
 // });
 
 
+// DATABASE_URL: mysql://bbaaff48f634c6:dacbf7fa@us-cdbr-east-04.cleardb.com/heroku_c7ad469172e97f3?reconnect=true
+
 var db_config = {
     host: "us-cdbr-east-04.cleardb.com",
     user: "bbaaff48f634c6",
@@ -30,6 +29,7 @@ var db_config = {
     database: "heroku_c7ad469172e97f3"
 };
 
+var connection;
 
 function handleDisconnect() {
     connection = mysql.createConnection(db_config); // Recreate the connection, since
