@@ -1,4 +1,4 @@
-CREATE TABLE `user` (
+ALTER TABLE `user` (
   `id` int(11) NOT NULL,
   `first_name` varchar(45) NOT NULL,
   `last_name` varchar(45) NOT NULL,
@@ -11,7 +11,8 @@ CREATE TABLE `user` (
   `FFB` varchar(11) NOT NULL,
   `ADV` varchar(11) NOT NULL,
   `elementary` varchar(11) NOT NULL,
-  `FRC` varchar(11) NOT NULL,
+  `MAMS` varchar(45) NOT NULL,
+  `FRC` varchar(45) NOT NULL,
   `medical_first` varchar(11) NOT NULL,
   `medical_care` varchar(11) NOT NULL,
   `GMDSS` varchar(11) NOT NULL,
