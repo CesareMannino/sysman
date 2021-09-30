@@ -1,4 +1,4 @@
-ALTER TABLE `user` (
+CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `first_name` varchar(45) NOT NULL,
   `last_name` varchar(45) NOT NULL,
