@@ -3,14 +3,15 @@ const mysql = require('mysql');
 const bcrypt = require('bcryptjs');
 const { promisify } = require('util');
 
-const connection = mysql.createConnection({
+var db_config = {
     host: "us-cdbr-east-04.cleardb.com",
     user: "bbaaff48f634c6",
     password: "dacbf7fa",
     database: "heroku_c7ad469172e97f3"
-});
+};
 
 
+var connection;
 
 function handleDisconnect() {
     connection = mysql.createConnection(db_config); // Recreate the connection, since
