@@ -3,12 +3,12 @@ const mysql = require('mysql');
 const bcrypt = require('bcryptjs');
 const { promisify } = require('util');
 
-// const connection = mysql.createConnection({
-//     host: process.env.DB_HOST,
-//     user: process.env.DB_USER,
-//     password: process.env.DB_PASS,
-//     database: 'nodejs-login'
-// });
+const connection = mysql.createConnection({
+    host: "us-cdbr-east-04.cleardb.com",
+    user: "bbaaff48f634c6",
+    password: "dacbf7fa",
+    database: "heroku_c7ad469172e97f3"
+});
 
 
 
@@ -56,13 +56,13 @@ exports.login = async (req, res) => {
 }
 
 
-// connection.connect((error) => {
-//     if (error) {
-//         console.log(error);
-//     } else {
-//         console.log('MySQL nodejs-login connected...')
-//     }
-// });
+connection.connect((error) => {
+    if (error) {
+        console.log(error);
+    } else {
+        console.log('MySQL nodejs-login connected...')
+    }
+});
 
 
 // // home page
