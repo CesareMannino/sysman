@@ -1,24 +1,12 @@
 const mysql = require('mysql');
 
-let connection = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_NAME
-  });
+// let connection = mysql.createConnection({
+//     host: process.env.DB_HOST,
+//     user: process.env.DB_USER,
+//     password: process.env.DB_PASS,
+//     database: process.env.DB_NAME
+//   });
   
-
-
-
-  
-connection.connect( (error) => {
-    if(error){
-        console.log(error);
-    }else{
-        console.log('MySQL user Connected...')
-    }
-});
-
 
 var db_config = {
     host: "us-cdbr-east-04.cleardb.com",
@@ -67,6 +55,18 @@ exports.view = (req, res) => {
         console.log('The data from user table:\n', rows);
     });
 };
+
+  
+connection.connect( (error) => {
+    if(error){
+        console.log(error);
+    }else{
+        console.log('MySQL user Connected...')
+    }
+});
+
+
+
 
 
 //find user by Search
