@@ -7,13 +7,14 @@ const connection = mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASS,
-    database: 'nodejs-login'
+    database: process.env.DB_NAME
 });
 
 
 
 
 
+// code in case the user leave the login space empty
 
 exports.login = async (req, res) => {
     try {
@@ -55,6 +56,7 @@ exports.login = async (req, res) => {
     }
 
 }
+
 
 
 connection.connect((error) => {

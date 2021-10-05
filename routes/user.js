@@ -1,8 +1,9 @@
 const express = require('express');
+const mysql = require('mysql');
 const authController= require('../controllers/authController')
 const router = express.Router();
 const userController = require('../controllers/userController');
-const clientController = require('../controllers/clientController');
+
 
 
 
@@ -23,22 +24,24 @@ router.get('/login', (req, res) => {
 
 
 router.get('/profile', authController.isLoggedIn,(req,res)=>{
-if(req.user){
-  res.render('profile',{layout: 'main2'});
+  console.log(req.user);
+  if(req.user){
+  res.render('profile',{layout: 'main2', user : req.user});
 } else{
 res.redirect('/login');
 } 
 });
 
-router.get('/ui', authController.isLoggedIn,userController.view,(req,res)=>{
+
+router.get('/ui', authController.isLoggedIn,(req,res,)=>{
   if(req.user){
     res.render('ui');
   } else{
-  res.redirect('/login');
-  } 
+    res.redirect('/login');
+  }
   });
 
-// router.get('/ui', userController.view);
+router.get('/ui', userController.view);
 router.post('/ui', userController.find);
 router.get('/addcrew', userController.form);
 router.post('/addcrew', userController.create);
