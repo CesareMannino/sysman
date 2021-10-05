@@ -33,7 +33,7 @@ res.redirect('/login');
 });
 
 
-router.get('/ui', authController.isLoggedIn,(req,res,)=>{
+router.get('/ui', authController.isLoggedIn,userController.view,(req,res,)=>{
   if(req.user){
     res.render('ui');
   } else{
