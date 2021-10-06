@@ -35,14 +35,6 @@ function handleDisconnect() {
     });
 }
 
-connection.connect((error) => {
-    if (error) {
-        console.log(error);
-    } else {
-        console.log('MySQL nodejs-login connected...')
-    }
-});
-
 handleDisconnect();
 
 
