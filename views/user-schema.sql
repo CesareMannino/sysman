@@ -4,7 +4,7 @@ CREATE TABLE `user` (
   `last_name` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
   `phone` varchar(45) NOT NULL,
-  `coc` varchar(45) NOT NULL,
+  `coc` varchar(45) NOT NULL
   `expiration` varchar(19) NOT NULL,
   `PSSR` varchar(11) NOT NULL,
   `SURV` varchar(45) NOT NULL,
@@ -30,5 +30,4 @@ CREATE TABLE `user` (
   `basic_saf_fam` varchar(11) NOT NULL,
   `security_related_fam` varchar(11) NOT NULL,
   `ecdis_specific` varchar(11) NOT NULL,
-  `status` varchar(11) NOT NULL DEFAULT 'active'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `status` varchar(11) NOT NULL DEFAULT 'active',PRIMARY KEY(`id`)) ENGINE=InnoDB DEFAULT CHARSET=latin1;
