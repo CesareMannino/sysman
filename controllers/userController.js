@@ -12,7 +12,7 @@ var db_config = {
     host: "us-cdbr-east-04.cleardb.com",
     user: "bbaaff48f634c6",
     password: "dacbf7fa",
-    database: "heroku_c7ad469172e97f"
+    database: "heroku_c7ad469172e97f3"
 };
 
 var connection;
