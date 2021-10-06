@@ -12,13 +12,6 @@ var db_config = {
 
 var connection;
 
-connection.connect((error) => {
-    if (error) {
-        console.log(error);
-    } else {
-        console.log('MySQL nodejs-login connected...')
-    }
-});
 
 
 function handleDisconnect() {
@@ -43,6 +36,15 @@ function handleDisconnect() {
 }
 
 handleDisconnect();
+
+connection.connect((error) => {
+    if (error) {
+        console.log(error);
+    } else {
+        console.log('MySQL nodejs-login connected...')
+    }
+});
+
 
 
 // code in case the user leave the login space empty

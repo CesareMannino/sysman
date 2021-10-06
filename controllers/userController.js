@@ -17,13 +17,7 @@ var db_config = {
 
 var connection;
 
-connection.connect( (error) => {
-    if(error){
-        console.log(error);
-    }else{
-        console.log('MySQL user Connected...')
-    }
-});
+
 
 
 function handleDisconnect() {
@@ -49,7 +43,13 @@ function handleDisconnect() {
 
 handleDisconnect();
 
-
+connection.connect( (error) => {
+    if(error){
+        console.log(error);
+    }else{
+        console.log('MySQL user Connected...')
+    }
+});
 
 
 // View Users
