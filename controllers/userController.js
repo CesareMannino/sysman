@@ -40,6 +40,15 @@ function handleDisconnect() {
 
 handleDisconnect();
 
+connection.connect( (error) => {
+    if(error){
+        console.log(error);
+    }else{
+        console.log('MySQL user Connected...')
+    }
+});
+
+
 
 // View Users
 exports.view = (req, res) => {
@@ -57,14 +66,6 @@ exports.view = (req, res) => {
 };
 
   
-connection.connect( (error) => {
-    if(error){
-        console.log(error);
-    }else{
-        console.log('MySQL user Connected...')
-    }
-});
-
 
 
 

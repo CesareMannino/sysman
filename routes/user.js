@@ -1,5 +1,4 @@
 const express = require('express');
-const mysql = require('mysql');
 const authController= require('../controllers/authController')
 const userController = require('../controllers/userController');
 const router = express.Router();
