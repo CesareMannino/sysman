@@ -41,8 +41,6 @@ function handleDisconnect() {
     });
 }
 
-handleDisconnect();
-
 connection.connect( (error) => {
     if(error){
         console.log(error);
@@ -50,6 +48,9 @@ connection.connect( (error) => {
         console.log('MySQL user Connected...')
     }
 });
+
+
+handleDisconnect();
 
 
 // View Users
