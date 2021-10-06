@@ -17,6 +17,15 @@ var db_config = {
 
 var connection;
 
+connection.connect( (error) => {
+    if(error){
+        console.log(error);
+    }else{
+        console.log('MySQL user Connected...')
+    }
+});
+
+
 function handleDisconnect() {
     connection = mysql.createConnection(db_config); // Recreate the connection, since
     // the old one cannot be reused.
@@ -40,13 +49,6 @@ function handleDisconnect() {
 
 handleDisconnect();
 
-connection.connect( (error) => {
-    if(error){
-        console.log(error);
-    }else{
-        console.log('MySQL user Connected...')
-    }
-});
 
 
 
