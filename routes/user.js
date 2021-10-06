@@ -5,15 +5,6 @@ const router = express.Router();
 
 
 
-router.get('/ui', userController.view);
-router.post('/ui', userController.find);
-router.get('/addcrew', userController.form);
-router.post('/addcrew', userController.create);
-router.get('/editcrew/:id', userController.edit);
-router.post('/editcrew/:id', userController.update);
-router.get('/viewcrew/:id', userController.viewall);
-router.get('/:id', userController.delete);
-
 //routing for the home page
 
 router.get('/', (req, res) => {
@@ -40,13 +31,21 @@ res.redirect('/login');
 });
 
 
-// router.get('/ui', authController.isLoggedIn,userController.view,(req,res,)=>{
-//   if(req.user){
-//     res.render('ui');
-//   } else{
-//     res.redirect('/login');
-//   }
-//   });
+router.get('/ui', authController.isLoggedIn,userController.view,(req,res,)=>{
+  if(req.user){
+    res.render('ui');
+  } else{
+    res.redirect('/login');
+  }
+  });
 
+router.get('/ui', userController.view);
+router.post('/ui', userController.find);
+router.get('/addcrew', userController.form);
+router.post('/addcrew', userController.create);
+router.get('/editcrew/:id', userController.edit);
+router.post('/editcrew/:id', userController.update);
+router.get('/viewcrew/:id', userController.viewall);
+router.get('/:id', userController.delete);
 
 module.exports = router;
