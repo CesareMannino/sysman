@@ -86,7 +86,6 @@ exports.form = (req, res) => {
 exports.create = (req, res) => {
     const { first_name, last_name, email, phone, coc, expiration, PSSR, SURV, FFB, ADV, elementary,MAMS,FRC,medical_first,medical_care,GMDSS,RADAR,ARPA,arpa_btw,ecdis_gen,SSO,leadership_managerial,high_voltage,leader_teamwork_engine,leader_teamwork_deck,security_awa,security_duties,basic_saf_fam,security_related_fam,ecdis_specific } = req.body;
     // let searchTerm = req.body.search;
-
     //User the connection
     connection.query('INSERT INTO user SET first_name = ?,last_name = ?,email = ?,phone = ?,coc=?,expiration=?,PSSR=?,SURV=?,FFB=?,ADV=?,elementary=?,MAMS=?,FRC=?,medical_first=?,medical_care=?,GMDSS=?,RADAR=?,ARPA=?,arpa_btw=?,ecdis_gen=?,SSO=?,leadership_managerial=?,high_voltage=?,leader_teamwork_engine=?,leader_teamwork_deck=?,security_awa=?,security_duties=?,basic_saf_fam=?,security_related_fam=?,ecdis_specific=?', [first_name, last_name, email, phone, coc, expiration, PSSR,SURV,FFB, ADV,elementary,MAMS,FRC,medical_first,medical_care,GMDSS,RADAR,ARPA,arpa_btw,ecdis_gen,SSO,leadership_managerial,high_voltage,leader_teamwork_engine,leader_teamwork_deck,security_awa,security_duties,basic_saf_fam,security_related_fam,ecdis_specific], (err, rows) => {
         if (!err) {
