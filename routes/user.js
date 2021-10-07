@@ -1,7 +1,8 @@
 const express = require('express');
-const authController = require('../controllers/authController')
-const userController = require('../controllers/userController');
 const router = express.Router();
+const userController = require('../controllers/userController');
+const authController = require('../controllers/authController')
+
 
 
 
@@ -38,14 +39,14 @@ router.get('/ui', authController.isLoggedIn, userController.view, (req, res,) =>
     res.redirect('/login');
   }
 });
-router.post('/addcrew', userController.create);
+
 router.get('/ui', userController.view);
 router.post('/ui', userController.find);
 router.get('/addcrew', userController.form);
-
-router.get('/editcrew/:id', userController.edit);
-router.post('/editcrew/:id', userController.update);
-router.get('/viewcrew/:id', userController.viewall);
+router.post('/addcrew', userController.create);
+router.get('/editcrew/:id',userController.edit);
+router.post('/editcrew/:id',userController.update);
+router.get('/viewcrew/:id',userController.viewall);
 router.get('/:id', userController.delete);
 
 module.exports = router;
