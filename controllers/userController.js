@@ -1,23 +1,14 @@
 const mysql = require('mysql');
 
-// let connection = mysql.createConnection({
-//     host: process.env.DB_HOST,
-//     user: process.env.DB_USER,
-//     password: process.env.DB_PASS,
-//     database: process.env.DB_NAME
-//   });
-  
-
 var db_config = {
-    host: "us-cdbr-east-04.cleardb.com",
-    user: "bbaaff48f634c6",
-    password: "dacbf7fa",
-    database: "heroku_c7ad469172e97f3"
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME
 };
 
+
 var connection;
-
-
 
 
 function handleDisconnect() {
@@ -43,6 +34,17 @@ function handleDisconnect() {
 
 handleDisconnect();
 
+// connection.connect( (error) => {
+//     if(error){
+//         console.log(error);
+//     }else{
+//         console.log('MySQL user Connected...')
+//     }
+// });
+
+
+
+
 
 // View Users
 exports.view = (req, res) => {
@@ -58,10 +60,6 @@ exports.view = (req, res) => {
         console.log('The data from user table:\n', rows);
     });
 };
-
-  
-
-
 
 
 //find user by Search
@@ -84,10 +82,11 @@ exports.form = (req, res) => {
 
 //Add crew member
 exports.create = (req, res) => {
-    const { first_name, last_name, email, phone, coc, expiration, PSSR, SURV, FFB, ADV, elementary,MAMS,FRC,medical_first,medical_care,GMDSS,RADAR,ARPA,arpa_btw,ecdis_gen,SSO,leadership_managerial,high_voltage,leader_teamwork_engine,leader_teamwork_deck,security_awa,security_duties,basic_saf_fam,security_related_fam,ecdis_specific } = req.body;
+    const { first_name, last_name, email, phone, coc, expiration, PSSR, SURV, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific } = req.body;
     // let searchTerm = req.body.search;
+
     //User the connection
-    connection.query('INSERT INTO user SET first_name = ?,last_name = ?,email = ?,phone = ?,coc=?,expiration=?,PSSR=?,SURV=?,FFB=?,ADV=?,elementary=?,MAMS=?,FRC=?,medical_first=?,medical_care=?,GMDSS=?,RADAR=?,ARPA=?,arpa_btw=?,ecdis_gen=?,SSO=?,leadership_managerial=?,high_voltage=?,leader_teamwork_engine=?,leader_teamwork_deck=?,security_awa=?,security_duties=?,basic_saf_fam=?,security_related_fam=?,ecdis_specific=?', [first_name, last_name, email, phone, coc, expiration, PSSR,SURV,FFB, ADV,elementary,MAMS,FRC,medical_first,medical_care,GMDSS,RADAR,ARPA,arpa_btw,ecdis_gen,SSO,leadership_managerial,high_voltage,leader_teamwork_engine,leader_teamwork_deck,security_awa,security_duties,basic_saf_fam,security_related_fam,ecdis_specific], (err, rows) => {
+    connection.query('INSERT INTO user SET first_name = ?,last_name = ?,email = ?,phone = ?,coc=?,expiration=?,PSSR=?,SURV=?,FFB=?,ADV=?,elementary=?,MAMS=?,FRC=?,medical_first=?,medical_care=?,GMDSS=?,RADAR=?,ARPA=?,arpa_btw=?,ecdis_gen=?,SSO=?,leadership_managerial=?,high_voltage=?,leader_teamwork_engine=?,leader_teamwork_deck=?,security_awa=?,security_duties=?,basic_saf_fam=?,security_related_fam=?,ecdis_specific=?', [first_name, last_name, email, phone, coc, expiration, PSSR, SURV, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific], (err, rows) => {
         if (!err) {
             res.render('add-crew', { alert: 'Crew member added succesfully!' });
         } else {
@@ -112,9 +111,9 @@ exports.edit = (req, res) => {
 }
 // Update crew
 exports.update = (req, res) => {
-    const { first_name, last_name, email, phone, coc, expiration, PSSR, SURV, FFB, ADV,elementary,MAMS,FRC,medical_first,medical_care,GMDSS,RADAR,ARPA,arpa_btw,ecdis_gen,SSO ,leadership_managerial,high_voltage,leader_teamwork_engine,leader_teamwork_deck,security_awa,security_duties,basic_saf_fam,security_related_fam,ecdis_specific} = req.body;
+    const { first_name, last_name, email, phone, coc, expiration, PSSR, SURV, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific } = req.body;
 
-    connection.query('UPDATE user SET first_name=? ,last_name=?, email=?, phone=?, coc=?, expiration=?, PSSR=?,SURV=?, FFB=?, ADV=?, elementary=?,MAMS=?,FRC=?,medical_first=?,medical_care=?,GMDSS=?,RADAR=?,ARPA=?,arpa_btw=?,ecdis_gen=?,SSO=?,leadership_managerial=?,high_voltage=?,leader_teamwork_engine=?,leader_teamwork_deck=?,security_awa=?,security_duties=?,basic_saf_fam=?,security_related_fam=?,ecdis_specific=? WHERE id = ?', [first_name, last_name, email, phone, coc, expiration, PSSR, SURV, FFB, ADV,elementary,MAMS,FRC,medical_first,medical_care,GMDSS,RADAR,ARPA,arpa_btw,ecdis_gen,SSO,leadership_managerial,high_voltage,leader_teamwork_engine,leader_teamwork_deck,security_awa,security_duties,basic_saf_fam,security_related_fam,ecdis_specific, req.params.id], (err, rows) => {
+    connection.query('UPDATE user SET first_name=? ,last_name=?, email=?, phone=?, coc=?, expiration=?, PSSR=?,SURV=?, FFB=?, ADV=?, elementary=?,MAMS=?,FRC=?,medical_first=?,medical_care=?,GMDSS=?,RADAR=?,ARPA=?,arpa_btw=?,ecdis_gen=?,SSO=?,leadership_managerial=?,high_voltage=?,leader_teamwork_engine=?,leader_teamwork_deck=?,security_awa=?,security_duties=?,basic_saf_fam=?,security_related_fam=?,ecdis_specific=? WHERE id = ?', [first_name, last_name, email, phone, coc, expiration, PSSR, SURV, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific, req.params.id], (err, rows) => {
         if (!err) {
             connection.query('SELECT * FROM user WHERE id = ?', [req.params.id], (err, rows) => {
                 //when done with the connection release it
@@ -136,17 +135,17 @@ exports.update = (req, res) => {
 
 //delete crew
 exports.delete = (req, res) => {
- // User the connection
- connection.query('DELETE FROM user WHERE id = ?', [req.params.id], (err, rows) => {
+    // User the connection
+    connection.query('DELETE FROM user WHERE id = ?', [req.params.id], (err, rows) => {
 
-    if(!err) {
-      res.redirect('/ui');
-    } else {
-      console.log(err);
-    }
-    console.log('The data from user table: \n', rows);
+        if (!err) {
+            res.redirect('/ui');
+        } else {
+            console.log(err);
+        }
+        console.log('The data from user table: \n', rows);
 
-  });
+    });
 }
 
 // hide user
