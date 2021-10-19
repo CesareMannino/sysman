@@ -4,11 +4,12 @@ const bcrypt = require('bcryptjs');
 const { promisify } = require('util');
 
 var db_config = {
-    host: "us-cdbr-east-04.cleardb.com",
-    user: "bbaaff48f634c6",
-    password: "dacbf7fa",
-    database: "heroku_c7ad469172e97f3"
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: "nodejs-login"
 };
+
 
 var connection;
 
@@ -54,7 +55,7 @@ exports.login = async (req, res) => {
         }
 
         connection.query('SELECT * FROM login WHERE email=?', [email], async (error, results) => {
-            console.log(results);
+            // console.log(results);
             if (!results || !(await bcrypt.compare(password, results[0].password))) {
                 res.status(401).render('login', {
                     message: 'Email or Password is incorrect'
@@ -65,7 +66,7 @@ exports.login = async (req, res) => {
                     expiresIn: process.env.JWT_EXPIRES_IN
                 });
 
-                console.log('the token is:' + token);
+                // console.log('the token is:' + token);
                 const cookieOptions = {
                     expires: new Date(
                         Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
@@ -95,7 +96,7 @@ exports.login = async (req, res) => {
 
 
 exports.register = (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
 
     // is replaced by Destructor
     // const name = req.body.name;
@@ -121,13 +122,13 @@ exports.register = (req, res) => {
         }
 
         let hashedPassword = await bcrypt.hash(password, 8);
-        console.log(hashedPassword);
+        // console.log(hashedPassword);
 
         connection.query('INSERT INTO login SET ?', { name: name, email: email, password: hashedPassword }, (error, results) => {
             if (error) {
                 console.log(error);
             } else {
-                console.log(results);
+                // console.log(results);
                 return res.render('register', {
                     message: 'User registered'
                 });
@@ -145,15 +146,16 @@ exports.isLoggedIn = async (req, res, next) => {
     if (req.cookies.jwt) {
         try {
             //1)verify the token
-            const decoded = await promisify(jwt.verify)(req.cookies.jwt,
+             decoded = await promisify(jwt.verify)(req.cookies.jwt,
                 process.env.JWT_SECRET
             );
 
-            console.log(decoded);
+           
+      
             //2) Check if the user still exists
             connection.query('SELECT * FROM login WHERE id = ?', [decoded.id], (error, result) => {
-                console.log(result);
-
+                // console.log(result);
+               
                 if (!result) {
                     return next();
                 }
@@ -163,11 +165,11 @@ exports.isLoggedIn = async (req, res, next) => {
         } catch (error) {
             console.log(error);
             return next();
-        }
+        } 
     } else {
         next();
     }
 
-
+    
 
 }

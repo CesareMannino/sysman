@@ -1,4 +1,10 @@
 const mysql = require('mysql');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const { promisify } = require('util');
+const authController = require('../controllers/authController');
+
+
 
 var db_config = {
     host: process.env.DB_HOST,
@@ -46,22 +52,6 @@ handleDisconnect();
 
 
 
-// View Users
-exports.view = (req, res) => {
-    //User the connection
-    connection.query('SELECT * FROM user WHERE status="active"', (err, rows) => {
-        //when done with the connection, release it
-        if (!err) {
-            let removedUser = req.query.removed;
-            res.render('ui', { rows, removedUser });
-        } else {
-            console.log(err);
-        }
-        console.log('The data from user table:\n', rows);
-    });
-};
-
-
 //find user by Search
 exports.find = (req, res) => {
     let searchTerm = req.body.search;
@@ -72,7 +62,7 @@ exports.find = (req, res) => {
         } else {
             console.log(err);
         }
-        console.log('The data from user table:\n', rows);
+        // console.log('The data from user table:\n', rows);
     });
 };
 
@@ -81,22 +71,75 @@ exports.form = (req, res) => {
 }
 
 //Add crew member
-exports.create = (req, res) => {
+exports.create = async (req, res, next) => {
+
+    if (req.cookies.jwt) {
+        try {
+            //1)verify the token
+            var decoded = await promisify(jwt.verify)(req.cookies.jwt,
+                process.env.JWT_SECRET
+            );
+
+
+
+            //2) Check if the user still exists
+            connection.query('SELECT * FROM login WHERE id = ?', [decoded.id], (error, result) => {
+                // console.log(result);
+
+                if (!result) {
+                    return next();
+                }
+
+            });
+        } catch (error) {
+            console.log(error);
+            return next();
+        }
+    }
+
+
+
+
     const { first_name, last_name, email, phone, coc, expiration, PSSR, SURV, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific } = req.body;
     // let searchTerm = req.body.search;
 
+
+
     //User the connection
-    connection.query('INSERT INTO user SET first_name = ?,last_name = ?,email = ?,phone = ?,coc=?,expiration=?,PSSR=?,SURV=?,FFB=?,ADV=?,elementary=?,MAMS=?,FRC=?,medical_first=?,medical_care=?,GMDSS=?,RADAR=?,ARPA=?,arpa_btw=?,ecdis_gen=?,SSO=?,leadership_managerial=?,high_voltage=?,leader_teamwork_engine=?,leader_teamwork_deck=?,security_awa=?,security_duties=?,basic_saf_fam=?,security_related_fam=?,ecdis_specific=?', [first_name, last_name, email, phone, coc, expiration, PSSR, SURV, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific], (err, rows) => {
+    connection.query('INSERT INTO user SET ?', { user_id: decoded.id, first_name: first_name, last_name: last_name, email: email, phone:phone, coc:coc, expiration:expiration, PSSR:PSSR, SURV:SURV, FFB:FFB, ADV:ADV, elementary:elementary, MAMS:MAMS, FRC:FRC, medical_first:medical_first, medical_care:medical_care, GMDSS:GMDSS, RADAR:RADAR, ARPA:ARPA, arpa_btw:arpa_btw, ecdis_gen:ecdis_gen, SSO:SSO, leadership_managerial:leadership_managerial, high_voltage:high_voltage, leader_teamwork_engine:leader_teamwork_engine, leader_teamwork_deck:leader_teamwork_deck, security_awa:security_awa, security_duties:security_duties, basic_saf_fam:basic_saf_fam, security_related_fam:security_related_fam, ecdis_specific:ecdis_specific  }, (err, rows) => {
         if (!err) {
             res.render('add-crew', { alert: 'Crew member added succesfully!' });
         } else {
             console.log(err);
         }
-        console.log('The data from user table:\n', rows);
+        // console.log('The data from user table:\n', rows);
 
     });
 
+
+
 };
+
+
+// View Users
+exports.view = (req, res) => {
+
+    //Fetch the view data from database where the user_id is passed
+    // as variable [decoded.id] so it will fetch only data for that particualr user_id on user table 
+    connection.query('SELECT * FROM user WHERE user_id=?', [decoded.id], (err, rows) => {
+        //when done with the connection, release it
+        if (!err) {
+            let removedUser = req.query.removed;
+            res.render('ui', { rows, removedUser });
+        } else {
+            console.log(err);
+        }
+        // console.log('The data from user table:\n', rows);
+    });
+};
+
+
+
 // edit crew function
 exports.edit = (req, res) => {
     //User the connection
@@ -106,7 +149,7 @@ exports.edit = (req, res) => {
         } else {
             console.log(err);
         }
-        console.log('The data from uer table:\n', rows);
+        // console.log('The data from uer table:\n', rows);
     });
 }
 // Update crew
@@ -123,12 +166,12 @@ exports.update = (req, res) => {
                 } else {
                     console.log(err);
                 }
-                console.log('The data from user table:\n', rows);
+                // console.log('The data from user table:\n', rows);
             });
         } else {
             console.log(err);
         }
-        console.log('The data from user table:\n', rows);
+        // console.log('The data from user table:\n', rows);
     });
 }
 
@@ -143,7 +186,7 @@ exports.delete = (req, res) => {
         } else {
             console.log(err);
         }
-        console.log('The data from user table: \n', rows);
+        // console.log('The data from user table: \n', rows);
 
     });
 }
@@ -172,7 +215,7 @@ exports.viewall = (req, res) => {
         } else {
             console.log(err);
         }
-        console.log('The data from user table:\n', rows);
+        // console.log('The data from user table:\n', rows);
     });
 }
 

@@ -23,7 +23,7 @@ router.get('/login', (req, res) => {
 
 
 router.get('/profile', authController.isLoggedIn, (req, res) => {
-  console.log(req.user);
+  // console.log(req.user);
   if (req.user) {
     res.render('profile', { layout: 'main2', user: req.user });
   } else {
@@ -31,13 +31,17 @@ router.get('/profile', authController.isLoggedIn, (req, res) => {
   }
 });
 
-
-router.get('/ui', authController.isLoggedIn,userController.view, (req, res,) => {
-  if (req.user) {
-    res.render('ui');
-  } else {
+function checkAuth(req, res, next) {
+  if (!req.cookies.jwt) {
     res.redirect('/login');
+  } else {
+    next();
   }
+}
+router.get('/ui',checkAuth,authController.isLoggedIn,userController.view, (req, res) => {
+  
+    res.render('ui',{user:req.user});
+  
 });
 
 router.get('/ui', userController.view);
