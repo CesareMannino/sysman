@@ -92,7 +92,7 @@ exports.create = async (req, res, next) => {
             });
         } catch (error) {
             console.log(error);
-            
+            return next();
         }
     }
 
@@ -111,7 +111,7 @@ exports.create = async (req, res, next) => {
         } else {
             console.log(err);
         }
-        // console.log('The data from user table:\n', rows);
+        console.log('The data from user table:\n', rows);
 
     });
 
