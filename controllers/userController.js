@@ -92,7 +92,7 @@ exports.create = async (req, res, next) => {
             });
         } catch (error) {
             console.log(error);
-            return next();
+            
         }
     }
 
