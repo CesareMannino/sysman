@@ -1,5 +1,5 @@
 DB_HOST = localhost
-DB_NAME = vesselmanagement_tut
+DB_NAME = nodejs-login
 DB_USER = root
 DB_PASS = password
 JWT_SECRET = mysupersecretpassword
