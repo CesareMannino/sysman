@@ -3,7 +3,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-  
 
   {{!-- Datepicker --}}
   <title>jQuery UI Datepicker - Default functionality</title>
@@ -118,6 +117,8 @@
 
     });
   </script>
+
+
 </head>
 
 
@@ -266,12 +267,13 @@
     <br>
 
     <input class="form-control" type="text" placeholder="BASIC SAFETY FAMILIARISATION (STCW A-VI/1)"
-      aria-label="readonly input example" readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover" title="No expiration date. To be held by the safety representative on board.">
+      aria-label="readonly input example" readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover"
+      title="No expiration date. To be held by the safety representative on board.">
   </div>
 
   <div class="col-md-3">
     <br>
-    <input type="text" id="datepickerbasic_saf_fam"  value="{{this.basic_saf_fam}}" placeholder="exp. date (mm/dd/yyyy)" 
+    <input type="text" id="datepickerbasic_saf_fam" value="{{this.basic_saf_fam}}" placeholder="exp. date (mm/dd/yyyy)"
       name='basic_saf_fam'>
   </div>
 </div>
@@ -284,7 +286,8 @@
     <br>
 
     <input class="form-control" type="text" placeholder="SECURITY RELATED FAMILIARISATION (STCW A-VI/6)"
-      aria-label="readonly input example" readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover" title="No expiration date. To be held by the SSO or deputy SSO representative on board.">
+      aria-label="readonly input example" readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover"
+      title="No expiration date. To be held by the SSO or deputy SSO representative on board.">
   </div>
 
   <div class="col-md-3">
@@ -307,422 +310,437 @@
 {{!-- PSSR --}}
 <div class="row">
 
-  <div class="col-md-7 mt-5">
+
+
+  <div class="col-md-3 mt-5">
     <br>
-    <input class="form-control" type="text" placeholder="PSSR A-VI/1-4" aria-label="readonly input example" readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover" title="Part of basic training, usually under the same certificate are: PSSR-PERSONAL SURVIVAL TECHNIQUE-FIRE PREVENTION AND FIRE FIGHTING-ELEMENTARY FIRST AID.">
+    <input class="form-control" type="text" placeholder="PSSR A-VI/1-4" aria-label="readonly input example" readonly
+      data-bs-trigger="focus" role="button" data-bs-toggle="popover"
+      title="Part of basic training, usually under the same certificate are: PSSR-PERSONAL SURVIVAL TECHNIQUE-FIRE PREVENTION AND FIRE FIGHTING-ELEMENTARY FIRST AID.">
 
   </div>
 
-  <div class="col-md-3 mt-5">
+  <div class="col-md-4 mt-5">
+
     <br>
     <input type="text" id="datepickerPSSR" value="{{this.PSSR}}" placeholder="exp. date (mm/dd/yyyy)" name="PSSR">
 
   </div>
-</div>
 
-{{!-- PERSONAL SURVIVAL TECHNIQUES --}}
-<div class="row">
 
-  <div class="col-md-7">
-    <br>
-    <input class="form-control" type="text" placeholder="PERSONAL SURVIVAL TECHNIQUES STCW A-VI/1-1"
-      aria-label="readonly input example" readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover" title="Part of basic training, usually under the same certificate are: PSSR-PERSONAL SURVIVAL TECHNIQUE-FIRE PREVENTION AND FIRE FIGHTING-ELEMENTARY FIRST AID.">
+  
 
+
+
+  
+
+
+
+  {{!-- PERSONAL SURVIVAL TECHNIQUES --}}
+  <div class="row">
+
+    <div class="col-md-7">
+      <br>
+      <input class="form-control" type="text" placeholder="PERSONAL SURVIVAL TECHNIQUES STCW A-VI/1-1"
+        aria-label="readonly input example" readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover"
+        title="Part of basic training, usually under the same certificate are: PSSR-PERSONAL SURVIVAL TECHNIQUE-FIRE PREVENTION AND FIRE FIGHTING-ELEMENTARY FIRST AID.">
+
+    </div>
+
+    <div class="col-md-3">
+      <br>
+      <input type="text" id="datepickerSURV" value="{{this.SURV}}" placeholder="exp. date (mm/dd/yyyy)" name="SURV">
+
+    </div>
   </div>
 
-  <div class="col-md-3">
-    <br>
-    <input type="text" id="datepickerSURV" value="{{this.SURV}}" placeholder="exp. date (mm/dd/yyyy)" name="SURV">
-
-  </div>
-</div>
 
 
 
+  {{!-- FIRE PREVENTION AND FIREFIGHTING (STCW A-VI/1-2) --}}
 
-{{!-- FIRE PREVENTION AND FIREFIGHTING (STCW A-VI/1-2) --}}
+  <div class="row">
 
-<div class="row">
+    <div class="col-md-7">
+      <br>
+      <input class="form-control" type="text" placeholder="FIRE PREVENTION AND FIREFIGHTING (STCW A-VI/1-2)"
+        aria-label="readonly input example" readonly>
 
-  <div class="col-md-7">
-    <br>
-    <input class="form-control" type="text" placeholder="FIRE PREVENTION AND FIREFIGHTING (STCW A-VI/1-2)"
-      aria-label="readonly input example" readonly>
+    </div>
 
-  </div>
-
-  <div class="col-md-3">
-    <br>
-    <input type="text" id="datepickerFFB" value="{{this.FFB}}" placeholder="exp. date (mm/dd/yyyy)" name='FFB'>
-  </div>
-</div>
-
-
-
-{{!-- ELEMENTARY FIRST AID (STCW A-VI/1 - 3) --}}
-
-<div class="row">
-
-  <div class="col-md-7">
-    <br>
-
-    <input class="form-control" type="text" placeholder="ELEMENTARY FIRST AID (STCW A-VI/1 - 3)"
-      aria-label="readonly input example" readonly>
+    <div class="col-md-3">
+      <br>
+      <input type="text" id="datepickerFFB" value="{{this.FFB}}" placeholder="exp. date (mm/dd/yyyy)" name='FFB'>
+    </div>
   </div>
 
-  <div class="col-md-3">
-    <br>
-    <input type="text" id="datepickerELEM" value="{{this.elementary}}" placeholder="exp. date (mm/dd/yyyy)"
-      name='elementary'>
-  </div>
-</div>
 
-{{!-- ADVANCED FIRE FIGHTING (STCW A-VI/3) --}}
-<div class="row">
 
-  <div class="col-md-7">
-    <br>
+  {{!-- ELEMENTARY FIRST AID (STCW A-VI/1 - 3) --}}
 
-    <input class="form-control" type="text" placeholder="ADVANCED FIRE FIGHTING (STCW A-VI/3)"
-      aria-label="readonly input example" readonly>
-  </div>
+  <div class="row">
 
-  <div class="col-md-3">
-    <br>
-    <input type="text" id="datepickerADV" value="{{this.ADV}}" placeholder="exp. date (mm/dd/yyyy)" name='ADV'>
-  </div>
-</div>
+    <div class="col-md-7">
+      <br>
 
-{{!-- MAMS --}}
+      <input class="form-control" type="text" placeholder="ELEMENTARY FIRST AID (STCW A-VI/1 - 3)"
+        aria-label="readonly input example" readonly>
+    </div>
 
-<div class="row">
-
-  <div class="col-md-7">
-    <br>
-
-    <input class="form-control" type="text"
-      placeholder="PROFICENCY IN SURVIVAL CRAFTS AND RESCUE BOATS (other than fast rescue boat) STCW A-VI/2"
-      aria-label="readonly input example" readonly>
+    <div class="col-md-3">
+      <br>
+      <input type="text" id="datepickerELEM" value="{{this.elementary}}" placeholder="exp. date (mm/dd/yyyy)"
+        name='elementary'>
+    </div>
   </div>
 
-  <div class="col-md-3">
-    <br>
-    <input type="text" id="datepickerMAMS" value="{{this.MAMS}}" placeholder="exp. date (mm/dd/yyyy)" name='MAMS'>
-  </div>
-</div>
+  {{!-- ADVANCED FIRE FIGHTING (STCW A-VI/3) --}}
+  <div class="row">
 
+    <div class="col-md-7">
+      <br>
 
+      <input class="form-control" type="text" placeholder="ADVANCED FIRE FIGHTING (STCW A-VI/3)"
+        aria-label="readonly input example" readonly>
+    </div>
 
-{{!-- FAST RESCUE BOATS (STCW A-VI/2) --}}
-
-<div class="row">
-
-  <div class="col-md-7">
-    <br>
-
-    <input class="form-control" type="text" placeholder="FAST RESCUE BOATS (STCW  A-VI/2)"
-      aria-label="readonly input example" readonly>
+    <div class="col-md-3">
+      <br>
+      <input type="text" id="datepickerADV" value="{{this.ADV}}" placeholder="exp. date (mm/dd/yyyy)" name='ADV'>
+    </div>
   </div>
 
-  <div class="col-md-3">
-    <br>
-    <input type="text" id="datepickerFRC" value="{{this.FRC}}" placeholder="exp. date (mm/dd/yyyy)" name='FRC'>
-  </div>
-</div>
+  {{!-- MAMS --}}
 
-{{!-- MEDICAL FIRST AID (STCW A-VI/4-1) --}}
+  <div class="row">
 
-<div class="row">
+    <div class="col-md-7">
+      <br>
 
-  <div class="col-md-7">
-    <br>
+      <input class="form-control" type="text"
+        placeholder="PROFICENCY IN SURVIVAL CRAFTS AND RESCUE BOATS (other than fast rescue boat) STCW A-VI/2"
+        aria-label="readonly input example" readonly>
+    </div>
 
-    <input class="form-control" type="text" placeholder="MEDICAL FIRST AID (STCW  A-VI/4-1)"
-      aria-label="readonly input example" readonly>
-  </div>
-
-  <div class="col-md-3">
-    <br>
-    <input type="text" id="datepickermedical_first" value="{{this.medical_first}}" placeholder="exp. date (mm/dd/yyyy)"
-      name='medical_first'>
-  </div>
-</div>
-
-{{!-- MEDICAL CARE (STCW A-VI/4-2) --}}
-
-<div class="row">
-
-  <div class="col-md-7">
-    <br>
-
-    <input class="form-control" type="text" placeholder="MEDICAL CARE (STCW A-VI/4-2)"
-      aria-label="readonly input example" readonly>
+    <div class="col-md-3">
+      <br>
+      <input type="text" id="datepickerMAMS" value="{{this.MAMS}}" placeholder="exp. date (mm/dd/yyyy)" name='MAMS'>
+    </div>
   </div>
 
-  <div class="col-md-3">
-    <br>
-    <input type="text" id="datepickermedical_care" value="{{this.medical_care}}" placeholder="exp. date (mm/dd/yyyy)"
-      name='medical_care'>
-  </div>
-</div>
 
-{{!-- GMDSS GOC (STCW A- IV/2) --}}
 
-<div class="row">
+  {{!-- FAST RESCUE BOATS (STCW A-VI/2) --}}
 
-  <div class="col-md-7">
-    <br>
+  <div class="row">
 
-    <input class="form-control" type="text" placeholder="GMDSS GOC (STCW A- IV/2)" aria-label="readonly input example"
-      readonly>
-  </div>
+    <div class="col-md-7">
+      <br>
 
-  <div class="col-md-3">
-    <br>
-    <input type="text" id="datepickerGMDSS" value="{{this.GMDSS}}" placeholder="exp. date (mm/dd/yyyy)" name='GMDSS'>
-  </div>
-</div>
+      <input class="form-control" type="text" placeholder="FAST RESCUE BOATS (STCW  A-VI/2)"
+        aria-label="readonly input example" readonly>
+    </div>
 
-{{!-- "RADAR (STCW REG A-II/1)" --}}
-
-<div class="row">
-
-  <div class="col-md-7">
-    <br>
-
-    <input class="form-control" type="text" placeholder="RADAR (STCW REG A-II/1)" aria-label="readonly input example"
-      readonly>
+    <div class="col-md-3">
+      <br>
+      <input type="text" id="datepickerFRC" value="{{this.FRC}}" placeholder="exp. date (mm/dd/yyyy)" name='FRC'>
+    </div>
   </div>
 
-  <div class="col-md-3">
-    <br>
-    <input type="text" id="datepickerRADAR" value="{{this.RADAR}}" placeholder="issuing date (mm/dd/yyyy)" name='RADAR'>
-  </div>
-</div>
+  {{!-- MEDICAL FIRST AID (STCW A-VI/4-1) --}}
 
-{{!-- ARPA (STCW A-II/1 - A-II/2) --}}
+  <div class="row">
 
-<div class="row">
+    <div class="col-md-7">
+      <br>
 
-  <div class="col-md-7">
-    <br>
+      <input class="form-control" type="text" placeholder="MEDICAL FIRST AID (STCW  A-VI/4-1)"
+        aria-label="readonly input example" readonly>
+    </div>
 
-    <input class="form-control" type="text" placeholder="ARPA (STCW A-II/1 - A-II/2)"
-      aria-label="readonly input example" readonly>
-  </div>
-
-  <div class="col-md-3">
-    <br>
-    <input type="text" id="datepickerARPA" value="{{this.ARPA}}" placeholder="issuing date (mm/dd/yyyy)" name='ARPA'>
-  </div>
-</div>
-
-
-{{!-- RADAR A.R.P.A.-BRIDGE TEAM WORK (STCW A-II/2)[ARPA SAR] --}}
-
-<div class="row">
-
-  <div class="col-md-7">
-    <br>
-
-    <input class="form-control" type="text" placeholder="RADAR A.R.P.A.-BRIDGE TEAM WORK S(TCW A-II/2)"
-      aria-label="readonly input example" readonly>
+    <div class="col-md-3">
+      <br>
+      <input type="text" id="datepickermedical_first" value="{{this.medical_first}}"
+        placeholder="exp. date (mm/dd/yyyy)" name='medical_first'>
+    </div>
   </div>
 
-  <div class="col-md-3">
-    <br>
-    <input type="text" id="datepickerarpa_btw" value="{{this.arpa_btw}}" placeholder="issuing date (mm/dd/yyyy)"
-      name='arpa_btw'>
-  </div>
-</div>
+  {{!-- MEDICAL CARE (STCW A-VI/4-2) --}}
 
+  <div class="row">
 
-{{!-- ECDIS Generic Training (STCW A-II/1, A-II/2) --}}
+    <div class="col-md-7">
+      <br>
 
-<div class="row">
+      <input class="form-control" type="text" placeholder="MEDICAL CARE (STCW A-VI/4-2)"
+        aria-label="readonly input example" readonly>
+    </div>
 
-  <div class="col-md-7">
-    <br>
-
-    <input class="form-control" type="text" placeholder="ECDIS Generic Training  (STCW A-II/1, A-II/2)"
-      aria-label="readonly input example" readonly>
-  </div>
-
-  <div class="col-md-3">
-    <br>
-    <input type="text" id="datepickerecdis_gen" value="{{this.ecdis_gen}}" placeholder="exp. date (mm/dd/yyyy)"
-      name='ecdis_gen'>
-  </div>
-</div>
-
-{{!-- ECDIS Ship Specific Equipment Familiarisation Training --}}
-
-<div class="row">
-
-  <div class="col-md-7">
-    <br>
-
-    <input class="form-control" type="text" placeholder="ECDIS Ship Specific Equipment Familiarisation Training"
-      aria-label="readonly input example" readonly>
+    <div class="col-md-3">
+      <br>
+      <input type="text" id="datepickermedical_care" value="{{this.medical_care}}" placeholder="exp. date (mm/dd/yyyy)"
+        name='medical_care'>
+    </div>
   </div>
 
-  <div class="col-md-3">
-    <br>
-    <input type="text" id="datepickerecdis_specific" value="{{this.ecdis_specific}}"
-      placeholder="exp. date (mm/dd/yyyy)" name='ecdis_specific'>
-  </div>
-</div>
+  {{!-- GMDSS GOC (STCW A- IV/2) --}}
 
+  <div class="row">
 
-{{!-- SHIP SECURITY OFFICER REG A-VI/5 --}}
+    <div class="col-md-7">
+      <br>
 
-<div class="row">
+      <input class="form-control" type="text" placeholder="GMDSS GOC (STCW A- IV/2)" aria-label="readonly input example"
+        readonly>
+    </div>
 
-  <div class="col-md-7">
-    <br>
-
-    <input class="form-control" type="text" placeholder="SHIP SECURITY OFFICER REG A-VI/5"
-      aria-label="readonly input example" readonly>
+    <div class="col-md-3">
+      <br>
+      <input type="text" id="datepickerGMDSS" value="{{this.GMDSS}}" placeholder="exp. date (mm/dd/yyyy)" name='GMDSS'>
+    </div>
   </div>
 
-  <div class="col-md-3">
-    <br>
-    <input type="text" id="datepickerSSO" value="{{this.SSO}}" placeholder="exp. date (mm/dd/yyyy)" name='SSO'>
+  {{!-- "RADAR (STCW REG A-II/1)" --}}
+
+  <div class="row">
+
+    <div class="col-md-7">
+      <br>
+
+      <input class="form-control" type="text" placeholder="RADAR (STCW REG A-II/1)" aria-label="readonly input example"
+        readonly>
+    </div>
+
+    <div class="col-md-3">
+      <br>
+      <input type="text" id="datepickerRADAR" value="{{this.RADAR}}" placeholder="issuing date (mm/dd/yyyy)"
+        name='RADAR'>
+    </div>
   </div>
-</div>
 
+  {{!-- ARPA (STCW A-II/1 - A-II/2) --}}
 
-{{!-- USE OF LEADERSHIP AND MANAGERIAL SKILLS TRAINING COURSE--}}
+  <div class="row">
 
-<div class="row">
+    <div class="col-md-7">
+      <br>
 
-  <div class="col-md-7">
-    <br>
+      <input class="form-control" type="text" placeholder="ARPA (STCW A-II/1 - A-II/2)"
+        aria-label="readonly input example" readonly>
+    </div>
 
-    <input class="form-control" type="text" placeholder="USE OF LEADERSHIP AND MANAGERIAL SKILLS TRAINING COURSE"
-      aria-label="readonly input example" readonly>
+    <div class="col-md-3">
+      <br>
+      <input type="text" id="datepickerARPA" value="{{this.ARPA}}" placeholder="issuing date (mm/dd/yyyy)" name='ARPA'>
+    </div>
   </div>
 
-  <div class="col-md-3">
-    <br>
-    <input type="text" id="datepickerleadership_managerial" value="{{this.leadership_managerial}}"
-      placeholder="exp. date (mm/dd/yyyy)" name='leadership_managerial'>
+
+  {{!-- RADAR A.R.P.A.-BRIDGE TEAM WORK (STCW A-II/2)[ARPA SAR] --}}
+
+  <div class="row">
+
+    <div class="col-md-7">
+      <br>
+
+      <input class="form-control" type="text" placeholder="RADAR A.R.P.A.-BRIDGE TEAM WORK S(TCW A-II/2)"
+        aria-label="readonly input example" readonly>
+    </div>
+
+    <div class="col-md-3">
+      <br>
+      <input type="text" id="datepickerarpa_btw" value="{{this.arpa_btw}}" placeholder="issuing date (mm/dd/yyyy)"
+        name='arpa_btw'>
+    </div>
   </div>
-</div>
 
-{{!-- MARINE HIGH VOLTAGE SAFETY COURSE --}}
 
-<div class="row">
+  {{!-- ECDIS Generic Training (STCW A-II/1, A-II/2) --}}
 
-  <div class="col-md-7">
-    <br>
+  <div class="row">
 
-    <input class="form-control" type="text" placeholder="MARINE HIGH VOLTAGE SAFETY COURSE (ex:ABB -H851)
+    <div class="col-md-7">
+      <br>
+
+      <input class="form-control" type="text" placeholder="ECDIS Generic Training  (STCW A-II/1, A-II/2)"
+        aria-label="readonly input example" readonly>
+    </div>
+
+    <div class="col-md-3">
+      <br>
+      <input type="text" id="datepickerecdis_gen" value="{{this.ecdis_gen}}" placeholder="exp. date (mm/dd/yyyy)"
+        name='ecdis_gen'>
+    </div>
+  </div>
+
+  {{!-- ECDIS Ship Specific Equipment Familiarisation Training --}}
+
+  <div class="row">
+
+    <div class="col-md-7">
+      <br>
+
+      <input class="form-control" type="text" placeholder="ECDIS Ship Specific Equipment Familiarisation Training"
+        aria-label="readonly input example" readonly>
+    </div>
+
+    <div class="col-md-3">
+      <br>
+      <input type="text" id="datepickerecdis_specific" value="{{this.ecdis_specific}}"
+        placeholder="exp. date (mm/dd/yyyy)" name='ecdis_specific'>
+    </div>
+  </div>
+
+
+  {{!-- SHIP SECURITY OFFICER REG A-VI/5 --}}
+
+  <div class="row">
+
+    <div class="col-md-7">
+      <br>
+
+      <input class="form-control" type="text" placeholder="SHIP SECURITY OFFICER REG A-VI/5"
+        aria-label="readonly input example" readonly>
+    </div>
+
+    <div class="col-md-3">
+      <br>
+      <input type="text" id="datepickerSSO" value="{{this.SSO}}" placeholder="exp. date (mm/dd/yyyy)" name='SSO'>
+    </div>
+  </div>
+
+
+  {{!-- USE OF LEADERSHIP AND MANAGERIAL SKILLS TRAINING COURSE--}}
+
+  <div class="row">
+
+    <div class="col-md-7">
+      <br>
+
+      <input class="form-control" type="text" placeholder="USE OF LEADERSHIP AND MANAGERIAL SKILLS TRAINING COURSE"
+        aria-label="readonly input example" readonly>
+    </div>
+
+    <div class="col-md-3">
+      <br>
+      <input type="text" id="datepickerleadership_managerial" value="{{this.leadership_managerial}}"
+        placeholder="exp. date (mm/dd/yyyy)" name='leadership_managerial'>
+    </div>
+  </div>
+
+  {{!-- MARINE HIGH VOLTAGE SAFETY COURSE --}}
+
+  <div class="row">
+
+    <div class="col-md-7">
+      <br>
+
+      <input class="form-control" type="text" placeholder="MARINE HIGH VOLTAGE SAFETY COURSE (ex:ABB -H851)
 (Op. level for III/1, Mng. level for III/2)" aria-label="readonly input example" readonly>
+    </div>
+
+    <div class="col-md-3">
+      <br>
+      <input type="text" id="datepickerhigh_voltage" value="{{this.high_voltage}}" placeholder="exp. date (mm/dd/yyyy)"
+        name='high_voltage'>
+    </div>
   </div>
 
-  <div class="col-md-3">
-    <br>
-    <input type="text" id="datepickerhigh_voltage" value="{{this.high_voltage}}" placeholder="exp. date (mm/dd/yyyy)"
-      name='high_voltage'>
-  </div>
-</div>
 
+  {{!-- leader_teamwork_deck --}}
 
-{{!-- leader_teamwork_deck --}}
+  <div class="row">
 
-<div class="row">
+    <div class="col-md-7">
+      <br>
 
-  <div class="col-md-7">
-    <br>
-
-    <input class="form-control" type="text" placeholder="LEADERSHIP & TEAM WORK
+      <input class="form-control" type="text" placeholder="LEADERSHIP & TEAM WORK
 (Tables A-II/1, A-II/2)" aria-label="readonly input example" readonly>
+    </div>
+
+    <div class="col-md-3">
+      <br>
+      <input type="text" id="datepickerleader_teamwork_deck" value="{{this.leader_teamwork_deck}}"
+        placeholder="exp. date (mm/dd/yyyy)" name='leader_teamwork_deck'>
+    </div>
   </div>
 
-  <div class="col-md-3">
-    <br>
-    <input type="text" id="datepickerleader_teamwork_deck" value="{{this.leader_teamwork_deck}}"
-      placeholder="exp. date (mm/dd/yyyy)" name='leader_teamwork_deck'>
-  </div>
-</div>
+  {{!-- leader_teamwork_engine --}}
 
-{{!-- leader_teamwork_engine --}}
+  <div class="row">
 
-<div class="row">
+    <div class="col-md-7">
+      <br>
 
-  <div class="col-md-7">
-    <br>
-
-    <input class="form-control" type="text" placeholder="LEADERSHIP & TEAMWORK
+      <input class="form-control" type="text" placeholder="LEADERSHIP & TEAMWORK
 (Tables A-III/1, A-III/2)" aria-label="readonly input example" readonly>
+    </div>
+
+    <div class="col-md-3">
+      <br>
+      <input type="text" id="datepickerleader_teamwork_engine" value="{{this.leader_teamwork_engine}}"
+        placeholder="exp. date (mm/dd/yyyy)" name='leader_teamwork_engine'>
+    </div>
   </div>
 
-  <div class="col-md-3">
-    <br>
-    <input type="text" id="datepickerleader_teamwork_engine" value="{{this.leader_teamwork_engine}}"
-      placeholder="exp. date (mm/dd/yyyy)" name='leader_teamwork_engine'>
-  </div>
-</div>
 
 
 
+  {{!-- SECURITY AWARNESS REG A-VI/6-1 --}}
 
-{{!-- SECURITY AWARNESS REG A-VI/6-1 --}}
+  <div class="row">
 
-<div class="row">
+    <div class="col-md-7">
+      <br>
 
-  <div class="col-md-7">
-    <br>
+      <input class="form-control" type="text" placeholder="SECURITY AWARNESS REG A-VI/6-1"
+        aria-label="readonly input example" readonly>
+    </div>
 
-    <input class="form-control" type="text" placeholder="SECURITY AWARNESS REG A-VI/6-1"
-      aria-label="readonly input example" readonly>
-  </div>
-
-  <div class="col-md-3">
-    <br>
-    <input type="text" id="datepickersecurity_awa" value="{{this.security_awa}}" placeholder="exp. date (mm/dd/yyyy)"
-      name='security_awa'>
-  </div>
-</div>
-
-{{!-- SEAFARERS WITH DESIGNATED SECURITY DUTIES A-VI/6-2 --}}
-
-<div class="row">
-
-  <div class="col-md-7">
-    <br>
-
-    <input class="form-control" type="text" placeholder="SEAFARERS WITH DESIGNATED SECURITY DUTIES A-VI/6-2"
-      aria-label="readonly input example" readonly>
+    <div class="col-md-3">
+      <br>
+      <input type="text" id="datepickersecurity_awa" value="{{this.security_awa}}" placeholder="exp. date (mm/dd/yyyy)"
+        name='security_awa'>
+    </div>
   </div>
 
-  <div class="col-md-3">
-    <br>
-    <input type="text" id="datepickersecurity_duties" value="{{this.security_duties}}"
-      placeholder="exp. date (mm/dd/yyyy)" name='security_duties'>
+  {{!-- SEAFARERS WITH DESIGNATED SECURITY DUTIES A-VI/6-2 --}}
+
+  <div class="row">
+
+    <div class="col-md-7">
+      <br>
+
+      <input class="form-control" type="text" placeholder="SEAFARERS WITH DESIGNATED SECURITY DUTIES A-VI/6-2"
+        aria-label="readonly input example" readonly>
+    </div>
+
+    <div class="col-md-3">
+      <br>
+      <input type="text" id="datepickersecurity_duties" value="{{this.security_duties}}"
+        placeholder="exp. date (mm/dd/yyyy)" name='security_duties'>
+    </div>
   </div>
-</div>
 
 
 
 
-{{!--
-<style>
-  #datepicker,
-  #datepickerPSSR,
-  #datepickerADV {
-    padding: 5.5px;
-    border-radius: 5px;
-    border: 1.2px solid rgb(184, 184, 184);
-    outline:
-      outline-color: blue;
-  }
-</style> --}}
+  {{!--
+  <style>
+    #datepicker,
+    #datepickerPSSR,
+    #datepickerADV {
+      padding: 5.5px;
+      border-radius: 5px;
+      border: 1.2px solid rgb(184, 184, 184);
+      outline:
+        outline-color: blue;
+    }
+  </style> --}}
 
 
 
 
-<div class="col-1 d-grid">
-  <button class="btn btn-primary" type="submit" style="margin:90px 0 0 0">Submit</button>
-</div>
+  <div class="col-1 d-grid">
+    <button class="btn btn-primary" type="submit" style="margin:90px 0 0 0">Submit</button>
+  </div>

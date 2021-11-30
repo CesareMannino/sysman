@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const { promisify } = require('util');
 const authController = require('../controllers/authController');
+const app = ('app.js');
 
 
 
@@ -61,7 +62,7 @@ exports.find = (req, res) => {
         } else {
             console.log(err);
         }
-        // console.log('The data from user table:\n', rows);
+        console.log('The data from user table:\n', rows);
     });
 };
 
@@ -83,7 +84,7 @@ exports.create = async (req, res, next) => {
 
             //2) Check if the user still exists
             connection.query('SELECT * FROM login WHERE id = ?', [decoded.id], (error, result) => {
-                // console.log(result);
+                console.log(result);
 
                 if (!result) {
                     return next();
@@ -105,7 +106,7 @@ exports.create = async (req, res, next) => {
 
 
     //User the connection
-    connection.query('INSERT INTO user SET ?', { user_id: decoded.id, first_name: first_name, last_name: last_name, email: email, phone:phone, coc:coc, expiration:expiration, PSSR:PSSR, SURV:SURV, FFB:FFB, ADV:ADV, elementary:elementary, MAMS:MAMS, FRC:FRC, medical_first:medical_first, medical_care:medical_care, GMDSS:GMDSS, RADAR:RADAR, ARPA:ARPA, arpa_btw:arpa_btw, ecdis_gen:ecdis_gen, SSO:SSO, leadership_managerial:leadership_managerial, high_voltage:high_voltage, leader_teamwork_engine:leader_teamwork_engine, leader_teamwork_deck:leader_teamwork_deck, security_awa:security_awa, security_duties:security_duties, basic_saf_fam:basic_saf_fam, security_related_fam:security_related_fam, ecdis_specific:ecdis_specific  }, (err, rows) => {
+    connection.query('INSERT INTO user SET ?', { user_id: decoded.id, first_name: first_name, last_name: last_name, email: email, phone: phone, coc: coc, expiration: expiration, PSSR: PSSR, SURV: SURV, FFB: FFB, ADV: ADV, elementary: elementary, MAMS: MAMS, FRC: FRC, medical_first: medical_first, medical_care: medical_care, GMDSS: GMDSS, RADAR: RADAR, ARPA: ARPA, arpa_btw: arpa_btw, ecdis_gen: ecdis_gen, SSO: SSO, leadership_managerial: leadership_managerial, high_voltage: high_voltage, leader_teamwork_engine: leader_teamwork_engine, leader_teamwork_deck: leader_teamwork_deck, security_awa: security_awa, security_duties: security_duties, basic_saf_fam: basic_saf_fam, security_related_fam: security_related_fam, ecdis_specific: ecdis_specific }, (err, rows) => {
         if (!err) {
             res.render('add-crew', { alert: 'Crew member added succesfully!' });
         } else {
@@ -120,7 +121,7 @@ exports.create = async (req, res, next) => {
 };
 
 
-// View Users
+// View all crew member for ui page
 exports.view = (req, res) => {
 
     //Fetch the view data from database where the user_id is passed
@@ -204,19 +205,67 @@ exports.delete = (req, res) => {
 // }
 
 
-//view crew
+
+
+//to view the single crew member based on his id
 exports.viewall = (req, res) => {
+   
+    
+    var name = String('upload/'+req.params.id)
+
     //User the connection
     connection.query('SELECT * FROM user WHERE id=?', [req.params.id], (err, rows) => {
         //when done with the connection, release it
         if (!err) {
             res.render('view-crew', { rows });
+            
+            
+            // res.download(name);
+            
+            
         } else {
             console.log(err);
+
         }
         // console.log('The data from user table:\n', rows);
     });
 }
+
+
+// router.get('/:id/download', function (req, res, next) {
+//     var filePath = "upload/1614973942410.jpg"; // Or format the path using the `id` rest param
+// var fileName = "report.pdf"; // The default name the browser will use
+
+//     res.download(filePath, fileName);    
+//   });
+
+
+// fetch the file from user table and 
+exports.readfile = (req, res, next) => {
+
+
+
+
+    connection.query('SELECT * FROM user WHERE id=?', [req.params.id], (err, rows) => {
+        if (!err) {
+            res.render('index', { rows, layout: 'main3' });
+            if (!err) {
+
+            };
+        } else {
+            // console.log(err);
+        }
+        // console.log('The data from user table:\n', rows);
+    });
+}
+
+
+
+
+
+
+
+
 
 // home page
 // exports.view = (req, res) => {
