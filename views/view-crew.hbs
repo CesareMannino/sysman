@@ -58,21 +58,16 @@
   </div>
   <div class='row'>
     <div class='col mb-3'>
+      <div class='col'>
       ISSUING DATE: {{this.basic_saf_fam}}
-
-      <div class="card">
-
-        {{#if this.profile_image}}
-
-        <a href="../upload/{{this.profile_image}}">DOWNLOAD</a>
-
-        {{!-- <img class="card__image" src="{{this.profile_image}}" loading="lazy" alt="User Profile">
-        {{else}}
-        <img class="card__image" src="/img/cert.png" loading="lazy" alt="User Profile"> --}}
-
-
       </div>
-
+       <div class='col mb-3'>
+      {{#if this.profile_image}}
+      <a href="../upload/{{this.profile_image}}">
+        <button type="button" class="btn btn-outline-warning">DOWNLOAD</button>
+        
+      </a>
+</div>
 
       {{/if}}
 
