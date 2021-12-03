@@ -50,7 +50,10 @@ router.get('/ui',checkAuth,authController.isLoggedIn,userController.view, (req, 
   
 });
 
-
+router.get('/upload/:pic', function (req, res) {
+  var file = __dirname + '/../upload/' + req.params.pic;
+  res.download(file);
+});
 
 router.get('/index', userController.readfile);
 
@@ -64,8 +67,16 @@ router.get('/editcrew/:id',userController.edit);
 router.post('/editcrew/:id',userController.update);
 // router.get('/viewcrew/:id',userController.viewall);
 
+
+
+
+
 router.get('/viewcrew/:id',userController.viewall);
 
+
+// router.get('/viewcrew/:profile_image', function (req, res,next) {
+//   res.download(`${__dirname}/upload/${req.params.profile_image}.pdf`);
+// });
 
 router.get('/:id', userController.delete);
 

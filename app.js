@@ -106,7 +106,7 @@ var connection = mysql.createConnection({
   sampleFile.mv(uploadPath, function (err) {
     if (err) return res.status(500).send(err);
   
-      connection.query('UPDATE user SET profile_image = ? WHERE id="179"', [sampleFile.name], (err, rows) => {
+      connection.query('UPDATE user SET profile_image = ? WHERE id=?', [sampleFile.name], (err, rows) => {
         if (!err) {
           res.redirect('/index');
         } else {

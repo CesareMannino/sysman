@@ -209,20 +209,12 @@ exports.delete = (req, res) => {
 
 //to view the single crew member based on his id
 exports.viewall = (req, res) => {
-   
-    
-    var name = String('upload/'+req.params.id)
 
-    //User the connection
     connection.query('SELECT * FROM user WHERE id=?', [req.params.id], (err, rows) => {
         //when done with the connection, release it
         if (!err) {
             res.render('view-crew', { rows });
-            
-            
-            // res.download(name);
-            
-            
+
         } else {
             console.log(err);
 
@@ -232,20 +224,11 @@ exports.viewall = (req, res) => {
 }
 
 
-// router.get('/:id/download', function (req, res, next) {
-//     var filePath = "upload/1614973942410.jpg"; // Or format the path using the `id` rest param
-// var fileName = "report.pdf"; // The default name the browser will use
 
-//     res.download(filePath, fileName);    
-//   });
 
 
 // fetch the file from user table and 
 exports.readfile = (req, res, next) => {
-
-
-
-
     connection.query('SELECT * FROM user WHERE id=?', [req.params.id], (err, rows) => {
         if (!err) {
             res.render('index', { rows, layout: 'main3' });
@@ -253,7 +236,7 @@ exports.readfile = (req, res, next) => {
 
             };
         } else {
-            // console.log(err);
+            console.log(err);
         }
         // console.log('The data from user table:\n', rows);
     });
@@ -266,8 +249,3 @@ exports.readfile = (req, res, next) => {
 
 
 
-
-// home page
-// exports.view = (req, res) => {
-// res.render('home');
-// }
