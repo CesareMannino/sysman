@@ -2,8 +2,8 @@ const mysql = require('mysql');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const { promisify } = require('util');
-const authController = require('../controllers/authController');
-const app = ('app.js');
+
+
 
 
 
@@ -152,28 +152,43 @@ exports.edit = (req, res) => {
         // console.log('The data from uer table:\n', rows);
     });
 }
+
+
+
+
+
 // Update crew
 exports.update = (req, res) => {
-    const { first_name, last_name, email, phone, coc, expiration, PSSR, SURV, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific } = req.body;
+  
 
-    connection.query('UPDATE user SET first_name=? ,last_name=?, email=?, phone=?, coc=?, expiration=?, PSSR=?,SURV=?, FFB=?, ADV=?, elementary=?,MAMS=?,FRC=?,medical_first=?,medical_care=?,GMDSS=?,RADAR=?,ARPA=?,arpa_btw=?,ecdis_gen=?,SSO=?,leadership_managerial=?,high_voltage=?,leader_teamwork_engine=?,leader_teamwork_deck=?,security_awa=?,security_duties=?,basic_saf_fam=?,security_related_fam=?,ecdis_specific=? WHERE id = ?', [first_name, last_name, email, phone, coc, expiration, PSSR, SURV, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific, req.params.id], (err, rows) => {
+    const { first_name, last_name, email, phone, coc, expiration, PSSR, profile_image, SURV, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific } = req.body;
+
+
+
+    connection.query('UPDATE user SET first_name=? ,last_name=?, email=?, phone=?, coc=?, expiration=?, PSSR=?, profile_image=?, SURV=?, FFB=?, ADV=?, elementary=?,MAMS=?,FRC=?,medical_first=?,medical_care=?,GMDSS=?,RADAR=?,ARPA=?,arpa_btw=?,ecdis_gen=?,SSO=?,leadership_managerial=?,high_voltage=?,leader_teamwork_engine=?,leader_teamwork_deck=?,security_awa=?,security_duties=?,basic_saf_fam=?,security_related_fam=?,ecdis_specific=? WHERE id = ?', [first_name, last_name, email, phone, coc, expiration, PSSR, profile_image, SURV, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific, req.params.id], (err, rows) => {
         if (!err) {
+            
             connection.query('SELECT * FROM user WHERE id = ?', [req.params.id], (err, rows) => {
                 //when done with the connection release it
                 // connection.release();
+                
                 if (!err) {
                     res.render('edit-crew', { rows, alert: `${first_name} has been updated.` });
-                } else {
-                    console.log(err);
-                }
-                // console.log('The data from user table:\n', rows);
-            });
+
+
+                   
+                    } else {
+                        console.log(err);
+                    }
+                console.log('The data from user table:\n', rows);
+                });
         } else {
             console.log(err);
         }
-        // console.log('The data from user table:\n', rows);
+        console.log('The data from user table:\n', rows);
     });
-}
+};
+
 
 
 //delete crew

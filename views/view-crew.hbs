@@ -59,15 +59,17 @@
   <div class='row'>
     <div class='col mb-3'>
       <div class='col'>
-      ISSUING DATE: {{this.basic_saf_fam}}
+        ISSUING DATE: {{this.basic_saf_fam}}
       </div>
-       <div class='col mb-3'>
-      {{#if this.profile_image}}
-      <a href="../upload/{{this.profile_image}}">
-        <button type="button" class="btn btn-outline-warning">DOWNLOAD</button>
-        
-      </a>
-</div>
+
+      {{!-- DOWNLOAD BUTTON --}}
+      <div class='col mb-3'>
+        {{#if this.profile_image}}
+        <a href="../upload/{{this.profile_image}}">
+          <button type="button" class="btn btn-outline-warning">DOWNLOAD</button>
+
+        </a>
+      </div>
 
       {{/if}}
 

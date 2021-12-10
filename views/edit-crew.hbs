@@ -18,7 +18,18 @@
 
 
 {{#each rows}}
-<form class="row g-1 needs-validation" method="POST" action="/editcrew/{{this.id}}" novalidate>
+<form class="row g-1 needs-validation" method="POST" action="/editcrew/{{this.id}}" encType="multipart/form-data" novalidate>
   {{> crew-form}}
 </form>
- {{/each}}
+
+
+{{!-- file upload form --}}
+
+<div class="col-md-3">
+  <form action="/editcrew" method="POST" encType="multipart/form-data" novalidate>
+    <input type="file" name="profile_image">
+    <input type="submit" class="btn btn-primary">
+  </form>
+</div>
+{{!-- file upload form --}}
+{{/each}}

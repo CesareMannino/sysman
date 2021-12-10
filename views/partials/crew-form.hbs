@@ -271,11 +271,15 @@
       title="No expiration date. To be held by the safety representative on board.">
   </div>
 
-  <div class="col-md-3">
+  <div class="col-md-2">
     <br>
     <input type="text" id="datepickerbasic_saf_fam" value="{{this.basic_saf_fam}}" placeholder="exp. date (mm/dd/yyyy)"
       name='basic_saf_fam'>
   </div>
+
+
+
+
 </div>
 
 {{!-- SECURITY RELATED FAMILIARISATION REG A-VI/6 --}}
@@ -326,13 +330,26 @@
     <input type="text" id="datepickerPSSR" value="{{this.PSSR}}" placeholder="exp. date (mm/dd/yyyy)" name="PSSR">
 
   </div>
+<div class="col-md-3">
+  <form action="/editcrew" method="POST" encType="multipart/form-data" novalidate>
+    <input type="file" name="profile_image">
+    <input type="submit" class="btn btn-primary">
+  </form>
+</div>
+  {{!-- <div class="col-md-4 mt-5">
+<form action="/editcrew" method="POST" encType="multipart/form-data" novalidate>
+<input type="file" name="profile_image" />
+</form>
+<button class="btn btn-primary" type="submit" style="margin:90px 0 0 0">Submit</button> --}}
+
+  </div>
 
 
-  
 
 
 
-  
+
+
 
 
 
