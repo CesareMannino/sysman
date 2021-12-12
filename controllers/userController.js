@@ -154,41 +154,138 @@ exports.edit = (req, res) => {
 }
 
 
+// exports.update = (req, res) => {
 
+
+//     const { first_name, last_name, email, phone, coc, expiration, PSSR, profile_image, SURV, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific } = req.body;
+
+
+
+//     connection.query('UPDATE user SET first_name=? ,last_name=?, email=?, phone=?, coc=?, expiration=?, PSSR=?, profile_image=?, SURV=?, FFB=?, ADV=?, elementary=?,MAMS=?,FRC=?,medical_first=?,medical_care=?,GMDSS=?,RADAR=?,ARPA=?,arpa_btw=?,ecdis_gen=?,SSO=?,leadership_managerial=?,high_voltage=?,leader_teamwork_engine=?,leader_teamwork_deck=?,security_awa=?,security_duties=?,basic_saf_fam=?,security_related_fam=?,ecdis_specific=? WHERE id = ?', [first_name, last_name, email, phone, coc, expiration, PSSR, profile_image, SURV, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific, req.params.id], (err, rows) => {
+//         if (!err) {
+
+//             connection.query('SELECT * FROM user WHERE id = ?', [req.params.id], (err, rows) => {
+//                 //when done with the connection release it
+//                 // connection.release();
+
+//                 if (!err) {
+//                     res.render('edit-crew', { rows, alert: `${first_name} has been updated.` });
+
+
+
+//                     } else {
+//                         console.log(err);
+//                     }
+//                 console.log('The data from user table:\n', rows);
+//                 });
+//         } else {
+//             console.log(err);
+//         }
+//         console.log('The data from user table:\n', rows);
+//     });
+// };
 
 
 // Update crew
 exports.update = (req, res) => {
-  
+    message = '';
+    if (req.method == 'POST') {
+        var post = req.body;
+        var first_name = post.first_name;
+        var last_name = post.last_name;
+        var email = post.email;
+        var phone = post.phone;
+        var coc = post.coc;
+        var expiration = post.expiration;
+        var PSSR = post.PSSR;
+        // var profile_image = post.profile_image;
+        var SURV = post.SURV;
+        var FFB = post.FFB;
+        var ADV = post.ADV;
+        var elementary = post.elementary;
+        var MAMS = post.MAMS;
+        var FRC = post.FRC;
+        var medical_first = post.medical_first;
+        var medical_care = post.medical_care;
+        var GMDSS = post.GMDSS;
+        var RADAR = post.RADAR;
+        var ARPA = post.ARPA;
+        var arpa_btw = post.arpa_btw;
+        var ecdis_gen = post.ecdis_gen;
+        var SSO = post.SSO;
+        var leadership_managerial = post.leadership_managerial;
+        var high_voltage = post.high_voltage;
+        var leader_teamwork_engine = post.leader_teamwork_engine;
+        var leader_teamwork_deck = post.leader_teamwork_deck;
+        var security_awa = post.security_awa;
+        var security_duties = post.security_duties;
+        var basic_saf_fam = post.basic_saf_fam;
+        var security_related_fam = post.security_related_fam;
+        var ecdis_specific = post.ecdis_specific;
 
-    const { first_name, last_name, email, phone, coc, expiration, PSSR, profile_image, SURV, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific } = req.body;
+        if (req.files) {
+
+            // res.render('edit-crew', { alert: ` ${first_name} profile has been updated but no new file have been inserted.` });
+
+            var file = req.files.profile_image;
 
 
+            var profile_image = file.name;
+            console.log(profile_image)
+            if (file.mimetype == "image/jpeg" || file.mimetype == "image/png" || file.mimetype == "image/gif" || file.mimetype == "application/pdf") {
 
-    connection.query('UPDATE user SET first_name=? ,last_name=?, email=?, phone=?, coc=?, expiration=?, PSSR=?, profile_image=?, SURV=?, FFB=?, ADV=?, elementary=?,MAMS=?,FRC=?,medical_first=?,medical_care=?,GMDSS=?,RADAR=?,ARPA=?,arpa_btw=?,ecdis_gen=?,SSO=?,leadership_managerial=?,high_voltage=?,leader_teamwork_engine=?,leader_teamwork_deck=?,security_awa=?,security_duties=?,basic_saf_fam=?,security_related_fam=?,ecdis_specific=? WHERE id = ?', [first_name, last_name, email, phone, coc, expiration, PSSR, profile_image, SURV, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific, req.params.id], (err, rows) => {
-        if (!err) {
-            
-            connection.query('SELECT * FROM user WHERE id = ?', [req.params.id], (err, rows) => {
-                //when done with the connection release it
-                // connection.release();
-                
-                if (!err) {
-                    res.render('edit-crew', { rows, alert: `${first_name} has been updated.` });
+                file.mv('./upload/' + file.name, function (err) {
 
+                    if (err)
 
-                   
-                    } else {
-                        console.log(err);
-                    }
-                console.log('The data from user table:\n', rows);
+                        return res.status(500).send(err);
+
+                    connection.query('UPDATE user SET first_name=? ,last_name=?, email=?, phone=?, coc=?, expiration=?, PSSR=?, profile_image=?, SURV=?, FFB=?, ADV=?, elementary=?, MAMS=?, FRC=?, medical_first=?, medical_care=?, GMDSS=?,RADAR=?, ARPA=?, arpa_btw=?, ecdis_gen=?, SSO=?, leadership_managerial=?, high_voltage=?,leader_teamwork_engine=?, leader_teamwork_deck=?, security_awa=?, security_duties=?, basic_saf_fam=?,security_related_fam=?, ecdis_specific=? WHERE id = ?', [first_name, last_name, email, phone, coc, expiration, PSSR, profile_image, SURV, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific, req.params.id], (err, rows) => {
+
+                        if (!err) {
+                            connection.query('SELECT * FROM user WHERE id = ?', [req.params.id], (err, rows) => {
+                                if (!err) {
+                                    res.render('edit-crew', { rows, alert: `${first_name} has been updated.` });
+
+                                } else {
+                                    console.log(err);
+                                }
+                                console.log('The data from user table:\n', rows);
+                            });
+                        } else {
+                            console.log(err);
+                        }
+                        console.log('The data from user table:\n', rows);
+                    });
                 });
+            }
         } else {
-            console.log(err);
-        }
-        console.log('The data from user table:\n', rows);
-    });
-};
+            connection.query('UPDATE user SET first_name=? ,last_name=?, email=?, phone=?, coc=?, expiration=?, PSSR=?, profile_image=?, SURV=?, FFB=?, ADV=?, elementary=?, MAMS=?, FRC=?, medical_first=?, medical_care=?, GMDSS=?,RADAR=?, ARPA=?, arpa_btw=?, ecdis_gen=?, SSO=?, leadership_managerial=?, high_voltage=?,leader_teamwork_engine=?, leader_teamwork_deck=?, security_awa=?, security_duties=?, basic_saf_fam=?,security_related_fam=?, ecdis_specific=? WHERE id = ?', [first_name, last_name, email, phone, coc, expiration, PSSR, profile_image, SURV, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific, req.params.id], (err, rows) => {
 
+                if (!err) {
+                    connection.query('SELECT * FROM user WHERE id = ?', [req.params.id], (err, rows) => {
+                        if (!err) {
+                            res.render('edit-crew', { rows, alert: `${first_name} has been updated.` });
+
+                        } else {
+                            console.log(err);
+                        }
+                        console.log('The data from user table:\n', rows);
+                    });
+                } else {
+                    console.log(err);
+                }
+                console.log('The data from user table:\n', rows);
+            });
+
+
+
+
+
+        }
+    }
+
+}
 
 
 //delete crew

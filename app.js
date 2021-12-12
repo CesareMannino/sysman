@@ -1,7 +1,12 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
 const fileUpload = require('express-fileupload');
-
+// const routes = require('./routes');
+const http = require('http');
+const path = require('path');
+const busboy = require('then-busboy');
+const mysql = require('mysql');
+bodyParser=require("body-parser");
 // const userContoller = require('./controllers/userController')
 // to be removed when deployed in heroku
 
@@ -29,88 +34,32 @@ app.engine("hbs", exphbs({ extname: ".hbs" }));//Templating engine to change the
 app.set("view engine", "hbs");
 
 
+
+
+// var connection = mysql.createConnection({
+// 	host: process.env.DB_HOST,
+//   user: process.env.DB_USER,
+//   password: process.env.DB_PASS,
+//   database: process.env.DB_NAME
+// });
+ 
+// connection.connect();
+ 
+// global.db = connection;
+
+
+
+
 //link which tell to the server express.js to get the routeing from user.js
 // const routes = require('./server/routes/user');
 app.use("/", require('./routes/user'));
 app.use('/auth', require('./routes/auth'));
 
 
-
-
-
-// app.get('/', (req, res)=>{
-
-// res.send('<a href="/download">Download</a>');
-
-// });
-
-// app.get('/download', (req, res)=>{
-
-// res.download(path.join(__dirname, 'upload/Virgin.jpg'), (err)=>{
-
-//     console.log(err);
-
-// });
-// console.log('Your file has been downloaded!')
-// });
-
-
-
-
-// app.get('', (req, res) => {
-//   connection.query('SELECT * FROM user WHERE id = "179"', (err, rows) => {
-//     if (!err) {
-//       res.render('index', { rows });
-//     }
-//   });
-// });
-
-// app.post('/:id', (req, res) =>{
-//   const id = req.params.id.toString;
-//   const queryString = `UPDATE user SET profile_image = ? WHERE id=${id}`
-
-//   connection.query( queryString, 
-//   [sampleFile.name], (err, rows) => {
-//       if (!err) {
-//         res.redirect('/index');
-//       } else {
-//         console.log(err);
-//       }
-//     });
-//   });
-
-
-
-
-
-app.post('/editcrew', (req, res) => {
-  let profile_image;
-  let uploadPath;
-
-  if (!req.files || Object.keys(req.files).length === 0) {
-    return res.status(400).send('No files were uploaded.');
-  }
-
-  // name of the input is sampleFile
-  profile_image = req.files.profile_image;
-  uploadPath = __dirname + '/upload/' + profile_image.name;
-
-  // Use mv() to place file on the server
-  profile_image.mv(uploadPath, function (err) {
-    if (err) return res.status(500).send(err);
-
-    else {
-      if (!err) {
-        res.json(`${profile_image.name} has been uploaded.`);
-
-      } else {
-        console.log(err);
-      }
-    }
-  });
-});
-
-
+app.set('views', __dirname + '/views');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 const port = process.env.PORT || 5000;

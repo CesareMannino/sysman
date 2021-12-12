@@ -215,6 +215,14 @@
       outline:
         outline-color: blue;
     }
+
+    #file_box{
+      padding: 5.5px;
+      border-radius: 5px;
+      border: 1.2px solid rgb(184, 184, 184);
+      outline:
+        outline-color: blue; 
+    }
   </style>
 
 
@@ -330,22 +338,15 @@
     <input type="text" id="datepickerPSSR" value="{{this.PSSR}}" placeholder="exp. date (mm/dd/yyyy)" name="PSSR">
 
   </div>
-<div class="col-md-3">
-  <form action="/editcrew" method="POST" encType="multipart/form-data" novalidate>
-    <input type="file" name="profile_image">
-    <input type="submit" class="btn btn-primary">
-  </form>
-</div>
-  {{!-- <div class="col-md-4 mt-5">
-<form action="/editcrew" method="POST" encType="multipart/form-data" novalidate>
-<input type="file" name="profile_image" />
-</form>
-<button class="btn btn-primary" type="submit" style="margin:90px 0 0 0">Submit</button> --}}
 
+{{!-- image PSSR --}}
+
+  <div class="col-md-4 mt-5">
+
+    <br>
+      <input type="file" name="profile_image" id="file_box"/>
+    
   </div>
-
-
-
 
 
 
@@ -756,8 +757,12 @@
   </style> --}}
 
 
-
-
-  <div class="col-1 d-grid">
-    <button class="btn btn-primary" type="submit" style="margin:90px 0 0 0">Submit</button>
+  <div class="col-md-1 mt-5 d-grid">
+    <button class="btn btn-primary" type="submit">Submit</button>
   </div>
+
+
+
+  {{!-- <div class="col-1 d-grid">
+    <button class="btn btn-primary" type="submit" style="margin:90px 0 0 0">Submit</button>
+  </div> --}}
