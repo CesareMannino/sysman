@@ -100,13 +100,13 @@ exports.create = async (req, res, next) => {
 
 
 
-    const { first_name, last_name, email, phone, coc, expiration, PSSR, SURV, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific } = req.body;
+    const { first_name, last_name, email, phone, coc, expiration, covid_19, fitness, yellowF, PSSR, SURV, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific } = req.body;
     // let searchTerm = req.body.search;
 
 
 
     //User the connection
-    connection.query('INSERT INTO user SET ?', { user_id: decoded.id, first_name: first_name, last_name: last_name, email: email, phone: phone, coc: coc, expiration: expiration, PSSR: PSSR, SURV: SURV, FFB: FFB, ADV: ADV, elementary: elementary, MAMS: MAMS, FRC: FRC, medical_first: medical_first, medical_care: medical_care, GMDSS: GMDSS, RADAR: RADAR, ARPA: ARPA, arpa_btw: arpa_btw, ecdis_gen: ecdis_gen, SSO: SSO, leadership_managerial: leadership_managerial, high_voltage: high_voltage, leader_teamwork_engine: leader_teamwork_engine, leader_teamwork_deck: leader_teamwork_deck, security_awa: security_awa, security_duties: security_duties, basic_saf_fam: basic_saf_fam, security_related_fam: security_related_fam, ecdis_specific: ecdis_specific }, (err, rows) => {
+    connection.query('INSERT INTO user SET ?', { user_id: decoded.id, first_name: first_name, last_name: last_name, email: email, phone: phone, coc: coc, expiration: expiration, covid_19: covid_19, fitness: fitness, yellowF: yellowF, PSSR: PSSR, SURV: SURV, FFB: FFB, ADV: ADV, elementary: elementary, MAMS: MAMS, FRC: FRC, medical_first: medical_first, medical_care: medical_care, GMDSS: GMDSS, RADAR: RADAR, ARPA: ARPA, arpa_btw: arpa_btw, ecdis_gen: ecdis_gen, SSO: SSO, leadership_managerial: leadership_managerial, high_voltage: high_voltage, leader_teamwork_engine: leader_teamwork_engine, leader_teamwork_deck: leader_teamwork_deck, security_awa: security_awa, security_duties: security_duties, basic_saf_fam: basic_saf_fam, security_related_fam: security_related_fam, ecdis_specific: ecdis_specific }, (err, rows) => {
         if (!err) {
             res.render('add-crew', { alert: 'Crew member added succesfully!' });
         } else {
@@ -154,37 +154,6 @@ exports.edit = (req, res) => {
 }
 
 
-// exports.update = (req, res) => {
-
-
-//     const { first_name, last_name, email, phone, coc, expiration, PSSR, profile_image, SURV, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific } = req.body;
-
-
-
-//     connection.query('UPDATE user SET first_name=? ,last_name=?, email=?, phone=?, coc=?, expiration=?, PSSR=?, profile_image=?, SURV=?, FFB=?, ADV=?, elementary=?,MAMS=?,FRC=?,medical_first=?,medical_care=?,GMDSS=?,RADAR=?,ARPA=?,arpa_btw=?,ecdis_gen=?,SSO=?,leadership_managerial=?,high_voltage=?,leader_teamwork_engine=?,leader_teamwork_deck=?,security_awa=?,security_duties=?,basic_saf_fam=?,security_related_fam=?,ecdis_specific=? WHERE id = ?', [first_name, last_name, email, phone, coc, expiration, PSSR, profile_image, SURV, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific, req.params.id], (err, rows) => {
-//         if (!err) {
-
-//             connection.query('SELECT * FROM user WHERE id = ?', [req.params.id], (err, rows) => {
-//                 //when done with the connection release it
-//                 // connection.release();
-
-//                 if (!err) {
-//                     res.render('edit-crew', { rows, alert: `${first_name} has been updated.` });
-
-
-
-//                     } else {
-//                         console.log(err);
-//                     }
-//                 console.log('The data from user table:\n', rows);
-//                 });
-//         } else {
-//             console.log(err);
-//         }
-//         console.log('The data from user table:\n', rows);
-//     });
-// };
-
 
 // Update crew
 exports.update = (req, res) => {
@@ -197,8 +166,10 @@ exports.update = (req, res) => {
         var phone = post.phone;
         var coc = post.coc;
         var expiration = post.expiration;
+        var covid_19 = post.covid_19;
+        var fitness = post.fitness;
+        var yellowF = post.yellowF;
         var PSSR = post.PSSR;
-        // var profile_image = post.profile_image;
         var SURV = post.SURV;
         var FFB = post.FFB;
         var ADV = post.ADV;
@@ -224,43 +195,67 @@ exports.update = (req, res) => {
         var ecdis_specific = post.ecdis_specific;
 
         if (req.files) {
+            // console.log("this is the print:",req.files)
+
+            // NAMETAG
+
+            for (const [key, value] of Object.entries(req.files)) {
+                // console.log(`${key}`);
+                var extract = `${key}`
+
+
+            }
+
+            //   console.log(xe);
 
             // res.render('edit-crew', { alert: ` ${first_name} profile has been updated but no new file have been inserted.` });
+            var nametag = extract;
+            var trova = req.files[nametag];
+            // console.log("the printout is:",trova)
 
-            var file = req.files.profile_image;
 
 
-            var profile_image = file.name;
-            console.log(profile_image)
-            if (file.mimetype == "image/jpeg" || file.mimetype == "image/png" || file.mimetype == "image/gif" || file.mimetype == "application/pdf") {
 
-                file.mv('./upload/' + file.name, function (err) {
+            var covid_19D = trova.name;
+            console.log(covid_19D)
 
-                    if (err)
+            // var fitnessD = object.name;
+
+            if (
+                trova.mimetype == "image/jpeg" ||
+                trova.files.mimetype == "image/png" ||
+                trova.files.mimetype == "image/gif" ||
+                trova.files.mimetype == "application/pdf") {
+
+                trova.mv('./upload/' + trova.name, function (err) {
+                    // console.log(req.files.mv);
+                    if (err) 
 
                         return res.status(500).send(err);
+                    
+                        connection.query('UPDATE user SET first_name=? ,last_name=?, email=?, phone=?, coc=?, expiration=?,covid_19=?,covid_19D=?,fitness=?,yellowF=?, PSSR=?, SURV=?, FFB=?, ADV=?, elementary=?, MAMS=?, FRC=?, medical_first=?, medical_care=?, GMDSS=?,RADAR=?, ARPA=?, arpa_btw=?, ecdis_gen=?, SSO=?, leadership_managerial=?, high_voltage=?,leader_teamwork_engine=?, leader_teamwork_deck=?, security_awa=?, security_duties=?, basic_saf_fam=?,security_related_fam=?, ecdis_specific=? WHERE id = ?', [first_name, last_name, email, phone, coc, expiration, covid_19, covid_19D, fitness, yellowF, PSSR, , SURV, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific, req.params.id], (err, rows) => {
 
-                    connection.query('UPDATE user SET first_name=? ,last_name=?, email=?, phone=?, coc=?, expiration=?, PSSR=?, profile_image=?, SURV=?, FFB=?, ADV=?, elementary=?, MAMS=?, FRC=?, medical_first=?, medical_care=?, GMDSS=?,RADAR=?, ARPA=?, arpa_btw=?, ecdis_gen=?, SSO=?, leadership_managerial=?, high_voltage=?,leader_teamwork_engine=?, leader_teamwork_deck=?, security_awa=?, security_duties=?, basic_saf_fam=?,security_related_fam=?, ecdis_specific=? WHERE id = ?', [first_name, last_name, email, phone, coc, expiration, PSSR, profile_image, SURV, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific, req.params.id], (err, rows) => {
+                            if (!err) {
+                                connection.query('SELECT * FROM user WHERE id = ?', [req.params.id], (err, rows) => {
+                                    if (!err) {
+                                        res.render('edit-crew', { rows, alert: `${first_name} has been updated.` });
 
-                        if (!err) {
-                            connection.query('SELECT * FROM user WHERE id = ?', [req.params.id], (err, rows) => {
-                                if (!err) {
-                                    res.render('edit-crew', { rows, alert: `${first_name} has been updated.` });
-
-                                } else {
-                                    console.log(err);
-                                }
-                                console.log('The data from user table:\n', rows);
-                            });
-                        } else {
-                            console.log(err);
-                        }
-                        console.log('The data from user table:\n', rows);
-                    });
-                });
+                                    } else {
+                                        console.log(err);
+                                    }
+                                    // console.log('The data from user table:\n', rows);
+                                });
+                            } else {
+                                console.log(err);
+                            }
+                            // console.log('The data from user table:\n', rows);
+                        });
+                    }
+                );
             }
+            // conditional statement for only text input
         } else {
-            connection.query('UPDATE user SET first_name=? ,last_name=?, email=?, phone=?, coc=?, expiration=?, PSSR=?, profile_image=?, SURV=?, FFB=?, ADV=?, elementary=?, MAMS=?, FRC=?, medical_first=?, medical_care=?, GMDSS=?,RADAR=?, ARPA=?, arpa_btw=?, ecdis_gen=?, SSO=?, leadership_managerial=?, high_voltage=?,leader_teamwork_engine=?, leader_teamwork_deck=?, security_awa=?, security_duties=?, basic_saf_fam=?,security_related_fam=?, ecdis_specific=? WHERE id = ?', [first_name, last_name, email, phone, coc, expiration, PSSR, profile_image, SURV, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific, req.params.id], (err, rows) => {
+            connection.query('UPDATE user SET first_name=? ,last_name=?, email=?, phone=?, coc=?, expiration=?, PSSR=?, covid_19=?,fitness=?,yellowF=?, SURV=?, FFB=?, ADV=?, elementary=?, MAMS=?, FRC=?, medical_first=?, medical_care=?, GMDSS=?,RADAR=?, ARPA=?, arpa_btw=?, ecdis_gen=?, SSO=?, leadership_managerial=?, high_voltage=?,leader_teamwork_engine=?, leader_teamwork_deck=?, security_awa=?, security_duties=?, basic_saf_fam=?,security_related_fam=?, ecdis_specific=? WHERE id = ?', [first_name, last_name, email, phone, coc, expiration, PSSR, covid_19, fitness, yellowF, SURV, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific, req.params.id], (err, rows) => {
 
                 if (!err) {
                     connection.query('SELECT * FROM user WHERE id = ?', [req.params.id], (err, rows) => {
@@ -270,12 +265,12 @@ exports.update = (req, res) => {
                         } else {
                             console.log(err);
                         }
-                        console.log('The data from user table:\n', rows);
+                        // console.log('The data from user table:\n', rows);
                     });
                 } else {
                     console.log(err);
                 }
-                console.log('The data from user table:\n', rows);
+                // console.log('The data from user table:\n', rows);
             });
 
 

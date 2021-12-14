@@ -6,7 +6,10 @@
 </nav>
 <br>
 
+
+
 <div class='view-user p-5'>
+
 
   {{#each rows}}
   <div class="row mb-5">
@@ -40,12 +43,96 @@
   </div>
 
 
+  <a tabindex="0" class="btn btn-lg btn btn-warning mt-5 col-md-12 mb-5" role="button" data-bs-toggle="popover"
+    data-bs-trigger="focus" title="Medical fitness cetificates."
+    data-bs-content="And here's some amazing content. It's very engaging. Right?">MEDICAL'S CERTIFICATES</a>
+
+  {{!-- covid-19 vaccination certificate --}}
+
+  <div class='row'>
+    <div class='col'>
+      <b>COVID-19 VACCINATION CERTIFICATES</b>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class='col mb-3'>
+      ISSUING DATE: {{this.covid_19}}
+    </div>
+  </div>
+  {{!-- DOWNLOAD BUTTON --}}
+  <div class='col mb-4'>
+    {{#if this.covid_19D}}
+    <a href="../upload/{{this.covid_19D}}">
+      <button type="button" class="btn btn-outline-warning">DOWNLOAD</button>
+
+    </a>
+
+  </div>
+  {{/if}}
+
+
+  {{!-- medical fitness certificate --}}
+  <div class='row'>
+    <div class='col'>
+      <b>MEDICAL FITNESS CERTIFICATE</b>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class='col mb-3'>
+      EXPIRY DATE: {{this.fitness}}
+    </div>
+  </div>
+  {{!-- DOWNLOAD BUTTON --}}
+  <div class='col mb-4'>
+    {{#if this.fitnessD}}
+    <a href="../upload/{{this.fitnessD}}">
+      <button type="button" class="btn btn-outline-warning">DOWNLOAD</button>
+
+    </a>
+  </div>
+
+
+
+  {{/if}}
+
+  {{!-- YELLOW FEVER VACCINATION --}}
+
+  <div class='row'>
+    <div class='col'>
+      <b>YELLOW FEVER VACCINATION</b>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col mb-3'>
+      ISSUING DATE: {{this.yellowF}}
+    </div>
+  </div>
+
+  {{!-- DOWNLOAD BUTTON --}}
+  <div class='col mb-3'>
+    {{#if this.yellowFD}}
+    <a href="../upload/{{this.yellowFD}}">
+      <button type="button" class="btn btn-outline-warning">DOWNLOAD</button>
+
+    </a>
+
+  </div>
+
+  {{/if}}
+
+
+
+
+
   {{!-- Button with popover ship based courses --}}
 
-  <a tabindex="0" class="btn btn-lg btn btn-primary mt-5 col-md-6 mb-5" role="button" data-bs-toggle="popover"
+  <a tabindex="0" class="btn btn-lg btn btn-success col-md-12 mb-5" role="button" data-bs-toggle="popover"
     data-bs-trigger="focus"
     title="As per STCW convention, the familiarizations below mentioned must be held on board when the crew member arrives and before to start his duty. Captain is the responsible for the implementation."
-    data-bs-content="And here's some amazing content. It's very engaging. Right?">Ship's based familiarizations</a>
+    data-bs-content="And here's some amazing content. It's very engaging. Right?">Ship's based
+    famliarizations</a>
 
 
 
@@ -58,385 +145,387 @@
   </div>
   <div class='row'>
     <div class='col mb-3'>
-      <div class='col'>
-        ISSUING DATE: {{this.basic_saf_fam}}
-      </div>
 
-      {{!-- DOWNLOAD BUTTON --}}
-      <div class='col mb-3'>
-        {{#if this.profile_image}}
-        <a href="../upload/{{this.profile_image}}">
-          <button type="button" class="btn btn-outline-warning">DOWNLOAD</button>
-
-        </a>
-      </div>
+      ISSUING DATE: {{this.basic_saf_fam}}
+    </div>
+  </div>
 
-      {{/if}}
-
-
-      {{!-- SECURITY RELATED FAMILIARISATION REG A-VI/6 --}}
-
-      <div class='row'>
-        <div class='col'>
-          <b>SECURITY RELATED FAMILIARISATION (STCW A-VI/6) [ON CREW MEMBER ARRIVAL]</b>
-        </div>
-      </div>
-      <div class='row'>
-        <div class='col mb-3'>
-          ISSUING DATE: {{this.security_related_fam}}
-
-        </div>
-
-      </div>
-
-
-      {{!-- Button with popover shore based courses --}}
-
-      <a tabindex="0" class="btn btn-lg btn btn-primary mt-4 col-md-6" role="button" data-bs-toggle="popover"
-        data-bs-trigger="focus"
-        title="As per STCW convention, the certification below mentioned must be in possession of the crew memeber before joining the vessel"
-        data-bs-content="And here's some amazing content. It's very engaging. Right?">Shore based courses</a>
-
-      {{!-- PSSR --}}
-
-      <div class='row mt-5'>
-        <div class='col'>
-          <b>PSSR (STCW A-VI/1-4)</b>
-        </div>
-      </div>
-      <div class='row'>
-        <div class='col mb-3'>
-          EXPIRY DATE: {{this.PSSR}}
-
-        </div>
-      </div>
-
-
-      {{!-- PERSONAL SURVIVAL TECHNIQUE --}}
-
-      <div class='row'>
-        <div class='col'>
-          <b>PERSONAL SURVIVAL TECHNIQUES (STCW A-VI/1-1)</b>
-        </div>
-      </div>
-      <div class='row'>
-        <div class='col mb-3'>
-          EXPIRY DATE: {{this.SURV}}
-
-        </div>
-      </div>
-      {{!-- FIRE PREVENTION AND FIREFIGHTING (STCW A-VI/1-2) --}}
-
-      <div class='row'>
-        <div class='col'>
-          <b>FIRE PREVENTION AND FIREFIGHTING (STCW A-VI/1-2)</b>
-        </div>
-      </div>
-      <div class='row'>
-        <div class='col mb-3'>
-          EXPIRY DATE: {{this.FFB}}
-
-        </div>
-      </div>
-
-
-      {{!-- Elementary First Aid --}}
-      <div class='row'>
-        <div class='col'>
-          <b>ELEMENTARY FIRST AID</b>
-        </div>
-      </div>
-      <div class='row'>
-        <div class='col mb-3'>
-          EXPIRY DATE: {{this.elementary}}
-
-        </div>
-      </div>
-
-
-      {{!-- ADVANCED FIRE FIGHTING (STCW A-VI/3) --}}
-
-      <div class='row'>
-        <div class='col'>
-          <b>ADVANCED FIRE FIGHTING (STCW A-VI/3)</b>
-        </div>
-      </div>
-      <div class='row'>
-        <div class='col mb-3'>
-          EXPIRY DATE: {{this.ADV}}
-        </div>
-      </div>
-      {{!-- MAMS --}}
-
-
-      <div class='row'>
-        <div class='col'>
-          <b>PROFICENCY IN SURVIVAL CRAFTS AND RESCUE BOATS (other than fast rescue boat) (STCW A-VI/2)</b>
-        </div>
-      </div>
-      <div class='row'>
-        <div class='col mb-3'>
-          EXPIRY DATE: {{this.ADV}}
-        </div>
-      </div>
-
-      {{!-- FAST RESCUE BOATS (STCW A-VI/2) --}}
-
-      <div class='row'>
-        <div class='col'>
-          <b>FAST RESCUE BOATS (STCW A-VI/2) [not required if not part of the fast rescue boat team]</b>
-        </div>
-      </div>
-      <div class='row'>
-        <div class='col mb-3'>
-          EXPIRY DATE: {{this.FRC}}
-
-        </div>
-      </div>
-
-
-      {{!-- MEDICAL FIRST AID (STCW A-VI/4-1) --}}
-
-
-      <div class='row'>
-        <div class='col'>
-          <b>MEDICAL FIRST AID (STCW A-VI/4-1)</b>
-        </div>
-      </div>
-      <div class='row'>
-        <div class='col mb-3'>
-          EXPIRY DATE: {{this.medical_first}}
-        </div>
-      </div>
-
-      {{!-- MEDICAL CARE (STCW A-VI/4-2) --}}
-
-      <div class='row'>
-        <div class='col'>
-          <b>MEDICAL CARE (STCW A-VI/4-2) [not required for second Officers and below]</b>
-        </div>
-      </div>
-      <div class='row'>
-        <div class='col mb-3'>
-          EXPIRY DATE: {{this.medical_care}}
-
-        </div>
-
-      </div>
-
-
-      {{!-- GMDSS GOC (STCW A- IV/2) --}}
-
-      <div class='row'>
-        <div class='col'>
-          <b>GMDSS GOC (STCW A- IV/2)</b>
-        </div>
-      </div>
-      <div class='row'>
-        <div class='col mb-3'>
-          EXPIRY DATE: {{this.GMDSS}}
-
-        </div>
-
-      </div>
-
-      {{!-- RADAR (STCW REG A-II/1) --}}
-
-      <div class='row'>
-        <div class='col'>
-          <b>RADAR (STCW REG A-II/1)</b>
-        </div>
-      </div>
-      <div class='row'>
-        <div class='col mb-3'>
-          ISSUING DATE: {{this.RADAR}}
-
-        </div>
-
-      </div>
-
-
-      {{!-- ARPA (STCW A-II/1 - A-II/2)[AUTOMATIC RADAR PLOTTING AID] --}}
-
-      <div class='row'>
-        <div class='col'>
-          <b>ARPA (STCW A-II/1 - A-II/2)</b>
-        </div>
-      </div>
-      <div class='row'>
-        <div class='col mb-3'>
-          ISSUING DATE: {{this.ARPA}}
-
-        </div>
-
-      </div>
-
-
-
-      {{!-- RADAR A.R.P.A.-BRIDGE TEAM WORK (STCW A-II/2)[ARPA SAR] --}}
-
-      <div class='row'>
-        <div class='col'>
-          <b>RADAR A.R.P.A.-BRIDGE TEAM WORK (STCW A-II/2)</b>
-        </div>
-      </div>
-      <div class='row'>
-        <div class='col mb-3'>
-          ISSUING DATE: {{this.arpa_btw}}
-
-        </div>
-
-      </div>
-
-      {{!-- ECDIS Generic Training (STCW A-II/1, A-II/2) --}}
-
-      <div class='row'>
-        <div class='col'>
-          <b>ECDIS Generic Training (STCW A-II/1, A-II/2)</b>
-        </div>
-      </div>
-      <div class='row'>
-        <div class='col mb-3'>
-          EXPIRY DATE: {{this.ecdis_gen}}
-
-        </div>
-
-      </div>
-
-
-      {{!-- ECDIS Ship Specific Equipment Familiarisation Training --}}
-
-      <div class='row'>
-        <div class='col'>
-          <b>ECDIS Ship Specific Equipment Familiarisation Training</b>
-        </div>
-      </div>
-      <div class='row'>
-        <div class='col mb-3'>
-          ISSUING DATE: {{this.ecdis_specific}}
-
-        </div>
-
-      </div>
-
-
-      {{!-- SHIP SECURITY OFFICER REG A-VI/5 --}}
-
-      <div class='row'>
-        <div class='col'>
-          <b>SHIP SECURITY OFFICER REG A-VI/5</b>
-        </div>
-      </div>
-      <div class='row'>
-        <div class='col mb-3'>
-          EXPIRY DATE: {{this.SSO}}
-
-        </div>
-
-      </div>
-
-
-      {{!--USE OF LEADERSHIP AND MANAGERIAL SKILLS TRAINING COURSE --}}
-
-      <div class='row'>
-        <div class='col'>
-          <b>USE OF LEADERSHIP AND MANAGERIAL SKILLS TRAINING COURSE</b>
-        </div>
-      </div>
-      <div class='row'>
-        <div class='col mb-3'>
-          ISSUING DATE: {{this.leadership_managerial}}
-
-        </div>
-
-      </div>
-
-
-      {{!-- MARINE HIGH VOLTAGE SAFETY COURSE --}}
-
-      <div class='row'>
-        <div class='col'>
-          <b>MARINE HIGH VOLTAGE SAFETY COURSE (Op. level for III/1, Mng. level for III/2)</b>
-        </div>
-      </div>
-      <div class='row'>
-        <div class='col mb-3'>
-          ISSUING DATE: {{this.high_voltage}}
-
-        </div>
-
-      </div>
-
-
-      {{!-- leader_teamwork_deck --}}
-
-      <div class='row'>
-        <div class='col'>
-          <b>LEADERSHIP & TEAM WORK
-            (Tables A-II/1, A-II/2)[DECK]</b>
-        </div>
-      </div>
-      <div class='row'>
-        <div class='col mb-3'>
-          ISSUING DATE: {{this.leader_teamwork_deck}}
-
-        </div>
-
-      </div>
-
-
-      {{!-- leader_teamwork_engine --}}
-
-      <div class='row'>
-        <div class='col'>
-          <b>LEADERSHIP & TEAMWORK
-            (Tables A-III/1, A-III/2)[ENGINE]</b>
-        </div>
-      </div>
-      <div class='row'>
-        <div class='col mb-3'>
-          ISSUING DATE: {{this.leader_teamwork_engine}}
-
-        </div>
-
-      </div>
-
-
-      {{!-- SECURITY AWARNESS REG A-VI/6-1 [FOR ALL CREW MEMBER WITHOUTH SECURITY DUTIES] --}}
-
-      <div class='row'>
-        <div class='col'>
-          <b>SECURITY AWARNESS REG A-VI/6-1[For all crew member WITHOUTH security duties]</b>
-        </div>
-      </div>
-      <div class='row'>
-        <div class='col mb-3'>
-          EXPIRY DATE: {{this.security_awa}}
-
-        </div>
-
-      </div>
-
-
-      {{!-- SEAFARERS WITH DESIGNATED SECURITY DUTIES A-VI/6-2 --}}
-
-      <div class='row'>
-        <div class='col'>
-          <b>SEAFARERS WITH DESIGNATED SECURITY DUTIES A-VI/6-2[For all crew member WITH security duties]</b>
-        </div>
-      </div>
-      <div class='row'>
-        <div class='col mb-3'>
-          EXPIRY DATE: {{this.security_duties}}
-
-        </div>
-
-      </div>
-
+  {{!-- DOWNLOAD BUTTON --}}
+  <div class='col mb-3'>
+    {{#if this.profile_image}}
+    <a href="../upload/{{this.profile_image}}">
+      <button type="button" class="btn btn-outline-warning">DOWNLOAD</button>
+
+    </a>
+  </div>
+
+  {{/if}}
+
+
+  {{!-- SECURITY RELATED FAMILIARISATION REG A-VI/6 --}}
+
+  <div class='row'>
+    <div class='col'>
+      <b>SECURITY RELATED FAMILIARISATION (STCW A-VI/6) [ON CREW MEMBER ARRIVAL]</b>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col mb-3'>
+      ISSUING DATE: {{this.security_related_fam}}
+    </div>
+  </div>
+
+
+  {{!-- Button with popover shore based courses --}}
+
+  <a tabindex="0" class="btn btn-lg btn btn-primary mt-4 col-md-12" role="button" data-bs-toggle="popover"
+    data-bs-trigger="focus"
+    title="As per STCW convention, the certification below mentioned must be in possession of the crew memeber before joining the vessel"
+    data-bs-content="And here's some amazing content. It's very engaging. Right?">Shore based
+    courses</a>
+
+  {{!-- PSSR --}}
+
+  <div class='row mt-5'>
+    <div class='col'>
+      <b>PSSR (STCW A-VI/1-4)</b>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col mb-3'>
+      EXPIRY DATE: {{this.PSSR}}
+
+    </div>
+  </div>
+
+
+
+  {{!-- PERSONAL SURVIVAL TECHNIQUE --}}
+
+  <div class='row'>
+    <div class='col'>
+      <b>PERSONAL SURVIVAL TECHNIQUES (STCW A-VI/1-1)</b>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col mb-3'>
+      EXPIRY DATE: {{this.SURV}}
+
+    </div>
+  </div>
+  {{!-- FIRE PREVENTION AND FIREFIGHTING (STCW A-VI/1-2) --}}
+
+  <div class='row'>
+    <div class='col'>
+      <b>FIRE PREVENTION AND FIREFIGHTING (STCW A-VI/1-2)</b>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col mb-3'>
+      EXPIRY DATE: {{this.FFB}}
+
+    </div>
+  </div>
+
+
+  {{!-- Elementary First Aid --}}
+  <div class='row'>
+    <div class='col'>
+      <b>ELEMENTARY FIRST AID</b>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col mb-3'>
+      EXPIRY DATE: {{this.elementary}}
+
+    </div>
+  </div>
+
+
+  {{!-- ADVANCED FIRE FIGHTING (STCW A-VI/3) --}}
+
+  <div class='row'>
+    <div class='col'>
+      <b>ADVANCED FIRE FIGHTING (STCW A-VI/3)</b>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col mb-3'>
+      EXPIRY DATE: {{this.ADV}}
+    </div>
+  </div>
+  {{!-- MAMS --}}
+
+
+  <div class='row'>
+    <div class='col'>
+      <b>PROFICENCY IN SURVIVAL CRAFTS AND RESCUE BOATS (other than fast rescue boat) (STCW A-VI/2)</b>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col mb-3'>
+      EXPIRY DATE: {{this.ADV}}
+    </div>
+  </div>
+
+  {{!-- FAST RESCUE BOATS (STCW A-VI/2) --}}
+
+  <div class='row'>
+    <div class='col'>
+      <b>FAST RESCUE BOATS (STCW A-VI/2) [not required if not part of the fast rescue boat team]</b>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col mb-3'>
+      EXPIRY DATE: {{this.FRC}}
+
+    </div>
+  </div>
+
+
+  {{!-- MEDICAL FIRST AID (STCW A-VI/4-1) --}}
+
+
+  <div class='row'>
+    <div class='col'>
+      <b>MEDICAL FIRST AID (STCW A-VI/4-1)</b>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col mb-3'>
+      EXPIRY DATE: {{this.medical_first}}
+    </div>
+  </div>
+
+  {{!-- MEDICAL CARE (STCW A-VI/4-2) --}}
+
+  <div class='row'>
+    <div class='col'>
+      <b>MEDICAL CARE (STCW A-VI/4-2) [not required for second Officers and below]</b>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col mb-3'>
+      EXPIRY DATE: {{this.medical_care}}
 
     </div>
 
+  </div>
 
-    {{/each}}
+
+  {{!-- GMDSS GOC (STCW A- IV/2) --}}
+
+  <div class='row'>
+    <div class='col'>
+      <b>GMDSS GOC (STCW A- IV/2)</b>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col mb-3'>
+      EXPIRY DATE: {{this.GMDSS}}
+
+    </div>
 
   </div>
+
+  {{!-- RADAR (STCW REG A-II/1) --}}
+
+  <div class='row'>
+    <div class='col'>
+      <b>RADAR (STCW REG A-II/1)</b>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col mb-3'>
+      ISSUING DATE: {{this.RADAR}}
+
+    </div>
+
+  </div>
+
+
+  {{!-- ARPA (STCW A-II/1 - A-II/2)[AUTOMATIC RADAR PLOTTING AID] --}}
+
+  <div class='row'>
+    <div class='col'>
+      <b>ARPA (STCW A-II/1 - A-II/2)</b>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col mb-3'>
+      ISSUING DATE: {{this.ARPA}}
+
+    </div>
+
+  </div>
+
+
+
+  {{!-- RADAR A.R.P.A.-BRIDGE TEAM WORK (STCW A-II/2)[ARPA SAR] --}}
+
+  <div class='row'>
+    <div class='col'>
+      <b>RADAR A.R.P.A.-BRIDGE TEAM WORK (STCW A-II/2)</b>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col mb-3'>
+      ISSUING DATE: {{this.arpa_btw}}
+
+    </div>
+
+  </div>
+
+  {{!-- ECDIS Generic Training (STCW A-II/1, A-II/2) --}}
+
+  <div class='row'>
+    <div class='col'>
+      <b>ECDIS Generic Training (STCW A-II/1, A-II/2)</b>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col mb-3'>
+      EXPIRY DATE: {{this.ecdis_gen}}
+
+    </div>
+
+  </div>
+
+
+  {{!-- ECDIS Ship Specific Equipment Familiarisation Training --}}
+
+  <div class='row'>
+    <div class='col'>
+      <b>ECDIS Ship Specific Equipment Familiarisation Training</b>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col mb-3'>
+      ISSUING DATE: {{this.ecdis_specific}}
+
+    </div>
+
+  </div>
+
+
+  {{!-- SHIP SECURITY OFFICER REG A-VI/5 --}}
+
+  <div class='row'>
+    <div class='col'>
+      <b>SHIP SECURITY OFFICER REG A-VI/5</b>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col mb-3'>
+      EXPIRY DATE: {{this.SSO}}
+
+    </div>
+
+  </div>
+
+
+  {{!--USE OF LEADERSHIP AND MANAGERIAL SKILLS TRAINING COURSE --}}
+
+  <div class='row'>
+    <div class='col'>
+      <b>USE OF LEADERSHIP AND MANAGERIAL SKILLS TRAINING COURSE</b>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col mb-3'>
+      ISSUING DATE: {{this.leadership_managerial}}
+
+    </div>
+
+  </div>
+
+
+  {{!-- MARINE HIGH VOLTAGE SAFETY COURSE --}}
+
+  <div class='row'>
+    <div class='col'>
+      <b>MARINE HIGH VOLTAGE SAFETY COURSE (Op. level for III/1, Mng. level for III/2)</b>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col mb-3'>
+      ISSUING DATE: {{this.high_voltage}}
+
+    </div>
+
+  </div>
+
+
+  {{!-- leader_teamwork_deck --}}
+
+  <div class='row'>
+    <div class='col'>
+      <b>LEADERSHIP & TEAM WORK
+        (Tables A-II/1, A-II/2)[DECK]</b>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col mb-3'>
+      ISSUING DATE: {{this.leader_teamwork_deck}}
+
+    </div>
+
+  </div>
+
+
+  {{!-- leader_teamwork_engine --}}
+
+  <div class='row'>
+    <div class='col'>
+      <b>LEADERSHIP & TEAMWORK
+        (Tables A-III/1, A-III/2)[ENGINE]</b>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col mb-3'>
+      ISSUING DATE: {{this.leader_teamwork_engine}}
+
+    </div>
+
+  </div>
+
+
+  {{!-- SECURITY AWARNESS REG A-VI/6-1 [FOR ALL CREW MEMBER WITHOUTH SECURITY DUTIES] --}}
+
+  <div class='row'>
+    <div class='col'>
+      <b>SECURITY AWARNESS REG A-VI/6-1[For all crew member WITHOUTH security duties]</b>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col mb-3'>
+      EXPIRY DATE: {{this.security_awa}}
+
+    </div>
+
+  </div>
+
+
+  {{!-- SEAFARERS WITH DESIGNATED SECURITY DUTIES A-VI/6-2 --}}
+
+  <div class='row'>
+    <div class='col'>
+      <b>SEAFARERS WITH DESIGNATED SECURITY DUTIES A-VI/6-2[For all crew member WITH security
+        duties]</b>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col mb-3'>
+      EXPIRY DATE: {{this.security_duties}}
+
+    </div>
+
+  </div>
+
+
+</div>
+
+
+{{/each}}
+
+</div>
