@@ -16,13 +16,13 @@ var storage = multer.diskStorage({
       return callback(message, null);
     }
 
-    var filename = `${Date.now()}-bezkoder-${file.originalname}`;
+    var filename = `${Date.now()}${file.originalname}`;
     callback(null, filename);
     
   }
 });
 
-var uploadFiles = multer({ storage: storage }).array("covid_19D", 10);
+var uploadFiles = multer({ storage: storage }).fields([{name:"covid_19D", maxCount:1},{name:"fitnessD",maxCount:1}])
 var uploadFilesMiddleware = util.promisify(uploadFiles);
 module.exports = uploadFilesMiddleware;
 
