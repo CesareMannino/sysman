@@ -15,12 +15,12 @@ const cookieParser = require('cookie-parser');
 
 // Parsing middleware
 const app = express();
-
+app.use(fileUpload());
 
 
 //to load static file
 app.use(express.static("public"));
-app.use(express.static("upload"));
+// app.use(express.static("upload"));
 //Listen on port 5000
 app.use(express.urlencoded({ extended: true })); //To parse URL-encoded bodies (as sent by HTML forms) set from false to true as per bezkoder tutorial
 
