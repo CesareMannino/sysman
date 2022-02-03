@@ -193,16 +193,16 @@
 
   </div>
   <style>
-
-#inputGroupSelect01{
-  color:blue;
-}
+    #inputGroupSelect01 {
+      color: blue;
+    }
 
 
     #label_coc {
       margin-top: auto;
     }
-input.form-control,
+
+    input.form-control,
     #datepicker,
     #datepickercovid_19,
     #datepickeryellowF,
@@ -236,7 +236,7 @@ input.form-control,
       border: 1.2px solid rgb(184, 184, 184);
       outline:
         outline-color: blue;
-         color: blue;
+      color: blue;
     }
 
 
@@ -253,13 +253,12 @@ input.form-control,
 
 
     #datepicker {
-  display: block;
-  width: 100%;
-  
-  color: blue;
-  
-}
+      display: block;
+      width: 100%;
 
+      color: blue;
+
+    }
   </style>
 
 
@@ -306,7 +305,7 @@ input.form-control,
 
 <div class="row">
 
-{{!-- covid-19 vaccination --}}
+  {{!-- covid-19 vaccination --}}
 
   <div class="col-md-6 mt-5">
     <br>
@@ -317,20 +316,25 @@ input.form-control,
   </div>
 
   <div class="col-md-6 mt-5">
-    <br>
-    <input type="text" id="datepickercovid_19" value="{{this.covid_19}}"
-      placeholder="iss. date (mm/dd/yyyy)" name='covid_19'>
+<br>
+    <input type="text" id="datepickercovid_19" value="{{this.covid_19}}" placeholder="iss. date (mm/dd/yyyy)"
+      name='covid_19'>
   </div>
 
-{{!-- input covid_19 --}}
+  {{!-- input file covid_19 --}}
   <div class="col-md-6">
 
     <br>
-    <input type="file" name="covid_19D" id="file_box" />
+
+    <input type="file" name="covid_19D" multiple id="file_box" />
 
   </div>
 
+
+
 </div>
+
+
 
 {{!-- Medical fitness certificate --}}
 
@@ -346,15 +350,16 @@ input.form-control,
 
   <div class="col-md-2">
     <br>
-    <input type="text" id="datepickerfitness" value="{{this.fitness}}"
-      placeholder="exp. date (mm/dd/yyyy)" name='fitness'>
+    <input type="text" id="datepickerfitness" value="{{this.fitness}}" placeholder="exp. date (mm/dd/yyyy)"
+      name='fitness'>
   </div>
 
+{{!-- input file medical fitness certificate --}}
 
   <div class="col-md-6 mb-2">
 
     <br>
-    <input type="file" name="fitnessD" id="file_box" />
+    <input type="file" name="fitnessD" multiple id="file_box"  />
 
   </div>
 
@@ -369,15 +374,15 @@ input.form-control,
   <div class="col-md-6">
     <br>
 
-    <input class="form-control" type="text" placeholder="YELLOW FEWER VACCINATION"
-      aria-label="readonly input example" readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover"
+    <input class="form-control" type="text" placeholder="YELLOW FEWER VACCINATION" aria-label="readonly input example"
+      readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover"
       title="National medical fitness certicate.">
   </div>
 
   <div class="col-md-2">
     <br>
-    <input type="text" id="datepickeryellowF" value="{{this.yellowF}}"
-      placeholder="exp. date (mm/dd/yyyy)" name='yellowF'>
+    <input type="text" id="datepickeryellowF" value="{{this.yellowF}}" placeholder="exp. date (mm/dd/yyyy)"
+      name='yellowF'>
   </div>
 
 
@@ -1080,12 +1085,12 @@ input.form-control,
 </style> --}}
 
 
-<div class="col-md-1 mt-5 d-grid">
+{{!-- <div class="col-md-1 mt-5 d-grid">
   <button class="btn btn-primary" type="submit">Submit</button>
 </div>
+--}}
 
 
-
-{{!-- <div class="col-1 d-grid">
+<div class="col-1 d-grid">
   <button class="btn btn-primary" type="submit" style="margin:90px 0 0 0">Submit</button>
-</div> --}}
+</div>

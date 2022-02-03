@@ -1,13 +1,11 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
 const fileUpload = require('express-fileupload');
-// const routes = require('./routes');
 const http = require('http');
 const path = require('path');
 const busboy = require('then-busboy');
 const mysql = require('mysql');
-bodyParser=require("body-parser");
-// const userContoller = require('./controllers/userController')
+bodyParser = require("body-parser");
 // to be removed when deployed in heroku
 
 require("dotenv").config();
@@ -18,14 +16,13 @@ const cookieParser = require('cookie-parser');
 // Parsing middleware
 const app = express();
 
-// default option
-app.use(fileUpload());
+
 
 //to load static file
 app.use(express.static("public"));
 app.use(express.static("upload"));
 //Listen on port 5000
-app.use(express.urlencoded({ extended: false })); //To parse URL-encoded bodies (as sent by HTML forms)
+app.use(express.urlencoded({ extended: true })); //To parse URL-encoded bodies (as sent by HTML forms) set from false to true as per bezkoder tutorial
 
 app.use(express.json()); //To parse the incoming requests with JSON bodies
 app.use(cookieParser());
@@ -35,23 +32,6 @@ app.set("view engine", "hbs");
 
 
 
-
-// var connection = mysql.createConnection({
-// 	host: process.env.DB_HOST,
-//   user: process.env.DB_USER,
-//   password: process.env.DB_PASS,
-//   database: process.env.DB_NAME
-// });
- 
-// connection.connect();
- 
-// global.db = connection;
-
-
-
-
-//link which tell to the server express.js to get the routeing from user.js
-// const routes = require('./server/routes/user');
 app.use("/", require('./routes/user'));
 app.use('/auth', require('./routes/auth'));
 
