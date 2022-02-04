@@ -15,7 +15,7 @@ const cookieParser = require('cookie-parser');
 
 // Parsing middleware
 const app = express();
-app.use(fileUpload());
+// app.use(fileUpload());
 
 
 //to load static file
