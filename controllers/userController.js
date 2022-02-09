@@ -160,7 +160,7 @@ exports.update = async (req, res) => {
 
     try {
         await upload(req, res);
-// to extract the name of the field from the crew-forms.hbs
+        // to extract the name of the field from the crew-forms.hbs
         // for (const [key, value] of Object.entries(req.files)) {
         //     // console.log(`${key}`);
         //     var extract = `${key}`
@@ -170,19 +170,62 @@ exports.update = async (req, res) => {
         // var nametag = extract;
         // console.log(nametag)
 
-
-// to extract the json object from the array req.file output
+        
         var trova = JSON.parse(JSON.stringify(req.files));
-        // console.log(trova.covid_19D[0].filename)
+
+        if (trova.hasOwnProperty('covid_19D') == false){
+var covid_19D = 'no file uploaded'
+
+        }else{
+            var covid_19D = trova.covid_19D[0].filename
+        }
+
+        if (trova.hasOwnProperty('fitnessD') == false){
+            var fitnessD = 'no file uploaded'
         
-        var covid_19D = trova.covid_19D[0].filename
+        }else{
+            var fitnessD = trova.fitnessD[0].filename
+        }
+
+
+    //  function append(array, toAppend) {
+    //     const arrayCopy = array.slice();
+    //     if ('first' in toAppend) {
+    //       arrayCopy.unshift(toAppend.first);
+    //     }
+    //     if ('last' in toAppend) {
+    //       arrayCopy.push(toAppend.last);
+    //     }
+    //     return arrayCopy;
+    //   }
+
+//   console.log(trova)
+    //   var access = append([trova.covid_19D[0].filename],{first:"test",last:"scan"})
+
+     
+ 
+        // var covid_19D = trova.covid_19D[0].filename
+        // var fitnessD = trova.fitnessD[0].filename
         
+        console.log(covid_19D)
+        console.log(fitnessD)
+        // console.log(trova.covid_19D[0].hasOwnProperty('filename'))
+// const covid_19D = {}
+//         const prop = 'prop' in covid_19D ? covid_19D.prop : 'default';
         
+      
+
+
+
         var post = req.body;
         var covid_19 = post.covid_19;
-        
+        var fitness = post.fitness;
+       
 
-        connection.query('UPDATE user SET covid_19D=?,covid_19=?  WHERE id = ?', [covid_19D,covid_19, req.params.id])
+  
+
+
+        connection.query('UPDATE user SET covid_19=?,fitness=?, covid_19D=?,fitnessD=?  WHERE id = ?', [covid_19, fitness, covid_19D, fitnessD, req.params.id])
 
         // var trova = req.files[nametag];
         // console.log("the printout is:",trova)
@@ -206,72 +249,73 @@ exports.update = async (req, res) => {
         console.log(error);
 
         if (error.code === "LIMIT_UNEXPECTED_FILE" || "Cannot read property '0' of undefined") {
-            
+
             return res.send("Too many files to upload.");
         }
         // return res.send(`Error when trying upload many files: ${error}`);
-
-        console.log(covid_19D)
-
-        if (req.method == 'POST') {
-            var post = req.body;
-            var first_name = post.first_name;
-            var last_name = post.last_name;
-            var email = post.email;
-            var phone = post.phone;
-            var coc = post.coc;
-            var expiration = post.expiration;
-            var covid_19 = post.covid_19;
-            var fitness = post.fitness;
-            var yellowF = post.yellowF;
-            var PSSR = post.PSSR;
-            var SURV = post.SURV;
-            var FFB = post.FFB;
-            var ADV = post.ADV;
-            var elementary = post.elementary;
-            var MAMS = post.MAMS;
-            var FRC = post.FRC;
-            var medical_first = post.medical_first;
-            var medical_care = post.medical_care;
-            var GMDSS = post.GMDSS;
-            var RADAR = post.RADAR;
-            var ARPA = post.ARPA;
-            var arpa_btw = post.arpa_btw;
-            var ecdis_gen = post.ecdis_gen;
-            var SSO = post.SSO;
-            var leadership_managerial = post.leadership_managerial;
-            var high_voltage = post.high_voltage;
-            var leader_teamwork_engine = post.leader_teamwork_engine;
-            var leader_teamwork_deck = post.leader_teamwork_deck;
-            var security_awa = post.security_awa;
-            var security_duties = post.security_duties;
-            var basic_saf_fam = post.basic_saf_fam;
-            var security_related_fam = post.security_related_fam;
-            var ecdis_specific = post.ecdis_specific;
-
-
-
-
-            connection.query('UPDATE user SET first_name=? ,last_name=?, email=?, phone=?, coc=?, expiration=?,covid_19=?,covid_19D=?,fitness=?,yellowF=?, PSSR=?, SURV=?, FFB=?, ADV=?, elementary=?, MAMS=?, FRC=?, medical_first=?, medical_care=?, GMDSS=?,RADAR=?, ARPA=?, arpa_btw=?, ecdis_gen=?, SSO=?, leadership_managerial=?, high_voltage=?,leader_teamwork_engine=?, leader_teamwork_deck=?, security_awa=?, security_duties=?, basic_saf_fam=?,security_related_fam=?, ecdis_specific=? WHERE id = ?', [first_name, last_name, email, phone, coc, expiration, covid_19, covid_19D, fitness, yellowF, PSSR, , SURV, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific, req.params.id], (err, rows) => {
-
-                if (!err) {
-                    connection.query('SELECT * FROM user WHERE id = ?', [req.params.id], (err, rows) => {
-                        if (!err) {
-                            res.render('edit-crew', { rows, alert: `${first_name} has been updated.` });
-
-                        } else {
-                            console.log(err);
-                        }
-                        // console.log('The data from user table:\n', rows);
-                    });
-                } else {
-                    console.log(err);
-                }
-                // console.log('The data from user table:\n', rows);
-            });
-        }
     }
 }
+
+
+//         if (req.method == 'POST') {
+//             var post = req.body;
+//             var first_name = post.first_name;
+//             var last_name = post.last_name;
+//             var email = post.email;
+//             var phone = post.phone;
+//             var coc = post.coc;
+//             var expiration = post.expiration;
+//             var covid_19 = post.covid_19;
+//             var fitness = post.fitness;
+//             var yellowF = post.yellowF;
+//             var PSSR = post.PSSR;
+//             var SURV = post.SURV;
+//             var FFB = post.FFB;
+//             var ADV = post.ADV;
+//             var elementary = post.elementary;
+//             var MAMS = post.MAMS;
+//             var FRC = post.FRC;
+//             var medical_first = post.medical_first;
+//             var medical_care = post.medical_care;
+//             var GMDSS = post.GMDSS;
+//             var RADAR = post.RADAR;
+//             var ARPA = post.ARPA;
+//             var arpa_btw = post.arpa_btw;
+//             var ecdis_gen = post.ecdis_gen;
+//             var SSO = post.SSO;
+//             var leadership_managerial = post.leadership_managerial;
+//             var high_voltage = post.high_voltage;
+//             var leader_teamwork_engine = post.leader_teamwork_engine;
+//             var leader_teamwork_deck = post.leader_teamwork_deck;
+//             var security_awa = post.security_awa;
+//             var security_duties = post.security_duties;
+//             var basic_saf_fam = post.basic_saf_fam;
+//             var security_related_fam = post.security_related_fam;
+//             var ecdis_specific = post.ecdis_specific;
+
+
+
+
+//             connection.query('UPDATE user SET first_name=? ,last_name=?, email=?, phone=?, coc=?, expiration=?,covid_19=?,covid_19D=?,fitness=?,yellowF=?, PSSR=?, SURV=?, FFB=?, ADV=?, elementary=?, MAMS=?, FRC=?, medical_first=?, medical_care=?, GMDSS=?,RADAR=?, ARPA=?, arpa_btw=?, ecdis_gen=?, SSO=?, leadership_managerial=?, high_voltage=?,leader_teamwork_engine=?, leader_teamwork_deck=?, security_awa=?, security_duties=?, basic_saf_fam=?,security_related_fam=?, ecdis_specific=? WHERE id = ?', [first_name, last_name, email, phone, coc, expiration, covid_19, covid_19D, fitness, yellowF, PSSR, , SURV, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific, req.params.id], (err, rows) => {
+
+//                 if (!err) {
+//                     connection.query('SELECT * FROM user WHERE id = ?', [req.params.id], (err, rows) => {
+//                         if (!err) {
+//                             res.render('edit-crew', { rows, alert: `${first_name} has been updated.` });
+
+//                         } else {
+//                             console.log(err);
+//                         }
+//                         // console.log('The data from user table:\n', rows);
+//                     });
+//                 } else {
+//                     console.log(err);
+//                 }
+//                 // console.log('The data from user table:\n', rows);
+//             });
+//         }
+//     }
+// }
 
 
 

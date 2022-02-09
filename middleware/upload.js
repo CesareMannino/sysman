@@ -8,7 +8,7 @@ var storage = multer.diskStorage({
     callback(null, path.join(`${__dirname}/../upload`));
   },
   filename: (req, file, callback) => {
-
+   
     const match = ["image/png", "image/jpeg", "application/pdf"];
 
     if (match.indexOf(file.mimetype) === -1) {
@@ -16,13 +16,16 @@ var storage = multer.diskStorage({
       return callback(message, null);
     }
 
-    var filename = `${Date.now()}${file.originalname}`;
+    var filename =`${Date.now()}${file.originalname}`;
     callback(null, filename);
+  
+    
     
   }
 });
 
 var uploadFiles = multer({ storage: storage }).fields([{name:"covid_19D", maxCount:1},{name:"fitnessD",maxCount:1}])
+
 var uploadFilesMiddleware = util.promisify(uploadFiles);
 module.exports = uploadFilesMiddleware;
 
