@@ -75,10 +75,10 @@ exports.login = async (req, res) => {
                 // console.log('the token is:' + token);
                 const cookieOptions = {
                     expires: new Date(
-                        Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
+                        Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000 // 24 hours converted in milliseconds to set the expiration cookies to 24 hours
                     ),
                     httpOnly: true
-                }
+                }//setting of cookies on the browser and redirecting to the user interface page
                 res.cookie('jwt', token, cookieOptions);
                 res.status(200).redirect('/ui');
             }

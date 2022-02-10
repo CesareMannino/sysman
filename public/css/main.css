@@ -39,6 +39,8 @@ img {
 }
 
 .card {
+  margin-left: 7rem;
+  margin-bottom: 10px;
   text-align: center;
   width: 360px;
   padding: 20px;
@@ -154,6 +156,7 @@ navreg h4, a {
   color: white;
   text-decoration: none;
   font-weight: bold;
+  margin-top: 5px;
   padding: 5px 8px;
 }
 
@@ -174,7 +177,7 @@ navreg {
 }
 
 navreg ul {
-  margin-top: 4px;
+  margin-top: 13px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
