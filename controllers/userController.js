@@ -120,6 +120,13 @@ exports.create = async (req, res, next) => {
         }
 
 
+        if (trova.hasOwnProperty('yellowFD') == false) {
+            var yellowFD = ""
+        } else {
+            var yellowFD = trova.yellowFD[0].filename
+        }
+
+
         // if (req.files.length <= 0) {
         //     return res.send(`You must select at least 1 file.`);
         // }
@@ -145,7 +152,7 @@ exports.create = async (req, res, next) => {
 
 
     //User the connection
-    connection.query('INSERT INTO user SET ?', { user_id: decoded.id, first_name: first_name, last_name: last_name, email: email, phone: phone, coc: coc, expiration: expiration, covid_19: covid_19, covid_19D: covid_19D, fitness: fitness, fitnessD: fitnessD, yellowF: yellowF, PSSR: PSSR, SURV: SURV, FFB: FFB, ADV: ADV, elementary: elementary, MAMS: MAMS, FRC: FRC, medical_first: medical_first, medical_care: medical_care, GMDSS: GMDSS, RADAR: RADAR, ARPA: ARPA, arpa_btw: arpa_btw, ecdis_gen: ecdis_gen, SSO: SSO, leadership_managerial: leadership_managerial, high_voltage: high_voltage, leader_teamwork_engine: leader_teamwork_engine, leader_teamwork_deck: leader_teamwork_deck, security_awa: security_awa, security_duties: security_duties, basic_saf_fam: basic_saf_fam, security_related_fam: security_related_fam, ecdis_specific: ecdis_specific }, (err, rows) => {
+    connection.query('INSERT INTO user SET ?', { user_id: decoded.id, first_name: first_name, last_name: last_name, email: email, phone: phone, coc: coc, expiration: expiration, covid_19: covid_19, covid_19D: covid_19D, fitness: fitness, fitnessD: fitnessD, yellowF: yellowF,yellowFD: yellowFD, PSSR: PSSR, SURV: SURV, FFB: FFB, ADV: ADV, elementary: elementary, MAMS: MAMS, FRC: FRC, medical_first: medical_first, medical_care: medical_care, GMDSS: GMDSS, RADAR: RADAR, ARPA: ARPA, arpa_btw: arpa_btw, ecdis_gen: ecdis_gen, SSO: SSO, leadership_managerial: leadership_managerial, high_voltage: high_voltage, leader_teamwork_engine: leader_teamwork_engine, leader_teamwork_deck: leader_teamwork_deck, security_awa: security_awa, security_duties: security_duties, basic_saf_fam: basic_saf_fam, security_related_fam: security_related_fam, ecdis_specific: ecdis_specific }, (err, rows) => {
         if (!err) {
             res.render('add-crew', { alert: 'Crew member added succesfully!' });
         } else {
@@ -211,10 +218,18 @@ exports.update = async (req, res) => {
 
 
         if (find.hasOwnProperty('fitnessD') == false) {
-            var fitnessD = ""
+            var fitnessD = req.body.fitnessD
         } else {
             var fitnessD = find.fitnessD[0].filename
         }
+
+
+        if (find.hasOwnProperty('yellowFD') == false) {
+            var yellowFD = req.body.yellowFD
+        } else {
+            var yellowFD = find.yellowFD[0].filename
+        }
+
 
 
 
@@ -247,7 +262,7 @@ exports.update = async (req, res) => {
 
 
 
-    connection.query('UPDATE user SET first_name=? ,last_name=?, email=?, phone=?, coc=?, expiration=?, covid_19=?,covid_19D=? , fitness=? ,fitnessD=?  WHERE id = ?', [first_name, last_name, email, phone, coc, expiration, covid_19, covid_19D, fitness, fitnessD, req.params.id],
+    connection.query('UPDATE user SET first_name=? ,last_name=?, email=?, phone=?, coc=?, expiration=?, covid_19=?,covid_19D=? , fitness=? ,fitnessD=?, yellowF=?, yellowFD=? WHERE id = ?', [first_name, last_name, email, phone, coc, expiration, covid_19, covid_19D, fitness, fitnessD, yellowF,yellowFD, req.params.id],
         (err, rows) => {
 
             if (!err) {

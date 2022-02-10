@@ -24,7 +24,7 @@ var storage = multer.diskStorage({
   }
 });
 
-var uploadFiles = multer({ storage: storage }).fields([{name:"covid_19D", maxCount:1},{name:"fitnessD",maxCount:1}])
+var uploadFiles = multer({ storage: storage }).fields([{name:"covid_19D", maxCount:1},{name:"fitnessD",maxCount:1},{name:"yellowFD",maxCount:1}])
 
 var uploadFilesMiddleware = util.promisify(uploadFiles);
 module.exports = uploadFilesMiddleware;

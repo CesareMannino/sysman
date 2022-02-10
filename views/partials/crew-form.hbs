@@ -326,7 +326,10 @@
 
     <br>
     {{!-- input file box retrived from database --}}
-<input type="text" id="file_box" value="{{this.covid_19D}}" placeholder="NO FILE INSERTED"
+    
+<input class="form-control" type="text" placeholder="NO STORED CERTIFICATE"
+      aria-label="readonly input example" readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover"
+      title="Covid-19 vaccination stored certificate." id="file_box" value="{{this.covid_19D}}" placeholder="NO FILE INSERTED"
       name='covid_19D'>
 
 {{!-- input file for new file name --}}
@@ -366,6 +369,18 @@
   <div class="col-md-6 mb-2">
 
     <br>
+
+
+{{!-- input file box retrived from database --}}
+    
+<input class="form-control" type="text" placeholder="NO STORED CERTIFICATE"
+      aria-label="readonly input example" readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover"
+      title="Medical fitness stored certificate." id="file_box" value="{{this.fitnessD}}" placeholder="NO FILE INSERTED"
+      name='fitnessD'>
+
+
+{{!-- input file for new file name --}}
+
     <input type="file" name="fitnessD" multiple id="file_box"  />
 
   </div>
@@ -381,7 +396,7 @@
   <div class="col-md-6">
     <br>
 
-    <input class="form-control" type="text" placeholder="YELLOW FEWER VACCINATION" aria-label="readonly input example"
+    <input class="form-control" type="text" placeholder="YELLOW FEVER VACCINATION" aria-label="readonly input example"
       readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover"
       title="National medical fitness certicate.">
   </div>
@@ -396,6 +411,16 @@
   <div class="col-md-6 mb-5">
 
     <br>
+
+
+{{!-- input file box retrived from database --}}
+    
+<input class="form-control" type="text" placeholder="NO STORED CERTIFICATE"
+      aria-label="readonly input example" readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover"
+      title="Yellow fever stored certificate." id="file_box" value="{{this.yellowFD}}" placeholder="NO FILE INSERTED"
+      name='yellowFD'>
+
+
     <input type="file" name="yellowFD" id="file_box" />
 
   </div>
