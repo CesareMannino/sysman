@@ -98,6 +98,44 @@ exports.create = async (req, res, next) => {
     }
 
 
+    try {
+        await upload(req, res);
+// --FILE HANDLING BLOCKCODE---
+
+// console.log(req.files)
+
+        var trova = JSON.parse(JSON.stringify(req.files));//  to remove Object:null prototype
+        // conditional statments to hanlde the front end file existence.
+        if (trova.hasOwnProperty('covid_19D') == false) {
+            var covid_19D = ""
+        } else {
+            var covid_19D = trova.covid_19D[0].filename
+        }
+
+        if (trova.hasOwnProperty('fitnessD') == false) {
+            var fitnessD = ""
+        } else {
+            var fitnessD = trova.fitnessD[0].filename
+        }
+
+
+        // if (req.files.length <= 0) {
+        //     return res.send(`You must select at least 1 file.`);
+        // }
+
+        // return res.send(`Files has been uploaded.`);
+    } catch (error) {
+        console.log(error);
+
+        if (error.code === "LIMIT_UNEXPECTED_FILE") {
+
+            return res.send("Too many files to upload.");
+        }
+        // return res.send(`Error when trying upload many files: ${error}`);
+    }
+
+
+
 
 
     const { first_name, last_name, email, phone, coc, expiration, covid_19, fitness, yellowF, PSSR, SURV, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific } = req.body;
@@ -106,7 +144,7 @@ exports.create = async (req, res, next) => {
 
 
     //User the connection
-    connection.query('INSERT INTO user SET ?', { user_id: decoded.id, first_name: first_name, last_name: last_name, email: email, phone: phone, coc: coc, expiration: expiration, covid_19: covid_19, fitness: fitness, yellowF: yellowF, PSSR: PSSR, SURV: SURV, FFB: FFB, ADV: ADV, elementary: elementary, MAMS: MAMS, FRC: FRC, medical_first: medical_first, medical_care: medical_care, GMDSS: GMDSS, RADAR: RADAR, ARPA: ARPA, arpa_btw: arpa_btw, ecdis_gen: ecdis_gen, SSO: SSO, leadership_managerial: leadership_managerial, high_voltage: high_voltage, leader_teamwork_engine: leader_teamwork_engine, leader_teamwork_deck: leader_teamwork_deck, security_awa: security_awa, security_duties: security_duties, basic_saf_fam: basic_saf_fam, security_related_fam: security_related_fam, ecdis_specific: ecdis_specific }, (err, rows) => {
+    connection.query('INSERT INTO user SET ?', { user_id: decoded.id, first_name: first_name, last_name: last_name, email: email, phone: phone, coc: coc, expiration: expiration, covid_19: covid_19,covid_19D:covid_19D, fitness: fitness,fitnessD:fitnessD, yellowF: yellowF, PSSR: PSSR, SURV: SURV, FFB: FFB, ADV: ADV, elementary: elementary, MAMS: MAMS, FRC: FRC, medical_first: medical_first, medical_care: medical_care, GMDSS: GMDSS, RADAR: RADAR, ARPA: ARPA, arpa_btw: arpa_btw, ecdis_gen: ecdis_gen, SSO: SSO, leadership_managerial: leadership_managerial, high_voltage: high_voltage, leader_teamwork_engine: leader_teamwork_engine, leader_teamwork_deck: leader_teamwork_deck, security_awa: security_awa, security_duties: security_duties, basic_saf_fam: basic_saf_fam, security_related_fam: security_related_fam, ecdis_specific: ecdis_specific }, (err, rows) => {
         if (!err) {
             res.render('add-crew', { alert: 'Crew member added succesfully!' });
         } else {
@@ -160,101 +198,83 @@ exports.update = async (req, res) => {
 
     try {
         await upload(req, res);
-        // to extract the name of the field from the crew-forms.hbs
-        // for (const [key, value] of Object.entries(req.files)) {
-        //     // console.log(`${key}`);
-        //     var extract = `${key}`
-
-        // }
-
-        // var nametag = extract;
-        // console.log(nametag)
-
-        
-        var trova = JSON.parse(JSON.stringify(req.files));
-
-        if (trova.hasOwnProperty('covid_19D') == false){
-var covid_19D = 'no file uploaded'
-
-        }else{
+// --FILE HANDLING BLOCKCODE---
+        var trova = JSON.parse(JSON.stringify(req.files));//  to remove Object:null prototype
+        // conditional statments to hanlde the front end file existence.
+        if (trova.hasOwnProperty('covid_19D') == false) {
+            var covid_19D = ""
+        } else {
             var covid_19D = trova.covid_19D[0].filename
         }
 
-        if (trova.hasOwnProperty('fitnessD') == false){
-            var fitnessD = 'no file uploaded'
-        
-        }else{
+
+        if (trova.hasOwnProperty('fitnessD') == false) {
+            var fitnessD = ""
+        } else {
             var fitnessD = trova.fitnessD[0].filename
         }
 
 
-    //  function append(array, toAppend) {
-    //     const arrayCopy = array.slice();
-    //     if ('first' in toAppend) {
-    //       arrayCopy.unshift(toAppend.first);
-    //     }
-    //     if ('last' in toAppend) {
-    //       arrayCopy.push(toAppend.last);
-    //     }
-    //     return arrayCopy;
-    //   }
+        // if (req.files.length <= 0) {
+        //     return res.send(`You must select at least 1 file.`);
+        // }
 
-//   console.log(trova)
-    //   var access = append([trova.covid_19D[0].filename],{first:"test",last:"scan"})
-
-     
- 
-        // var covid_19D = trova.covid_19D[0].filename
-        // var fitnessD = trova.fitnessD[0].filename
-        
-        console.log(covid_19D)
-        console.log(fitnessD)
-        // console.log(trova.covid_19D[0].hasOwnProperty('filename'))
-// const covid_19D = {}
-//         const prop = 'prop' in covid_19D ? covid_19D.prop : 'default';
-        
-      
-
-
-
-        var post = req.body;
-        var covid_19 = post.covid_19;
-        var fitness = post.fitness;
-       
-
-  
-
-
-        connection.query('UPDATE user SET covid_19=?,fitness=?, covid_19D=?,fitnessD=?  WHERE id = ?', [covid_19, fitness, covid_19D, fitnessD, req.params.id])
-
-        // var trova = req.files[nametag];
-        // console.log("the printout is:",trova)
-
-
-
-
-        // var covid_19D = trova.name;
-
-
-        // var fitnessD = object.name;
-
-
-
-        if (req.files.length <= 0) {
-            return res.send(`You must select at least 1 file.`);
-        }
-
-        return res.send(`Files has been uploaded.`);
+        // return res.send(`Files has been uploaded.`);
     } catch (error) {
         console.log(error);
 
-        if (error.code === "LIMIT_UNEXPECTED_FILE" || "Cannot read property '0' of undefined") {
+        if (error.code === "LIMIT_UNEXPECTED_FILE") {
 
             return res.send("Too many files to upload.");
         }
         // return res.send(`Error when trying upload many files: ${error}`);
     }
-}
+
+
+
+// ---DATA ENTERING BLOCK CODE---
+
+        var post = req.body;
+        var first_name = post.first_name;
+        var last_name = post.last_name;
+        var email = post.email;
+        var phone = post.phone;
+        var coc = post.coc;
+        var expiration = post.expiration;
+        var covid_19 = post.covid_19;
+        var fitness = post.fitness;
+        var yellowF = post.yellowF;
+
+ 
+
+
+
+        connection.query('UPDATE user SET first_name=? ,last_name=?, email=?, phone=?, coc=?, expiration=?, covid_19=?,covid_19D=? , fitness=? ,fitnessD=?  WHERE id = ?', [first_name, last_name, email, phone, coc, expiration, covid_19, covid_19D, fitness, fitnessD, req.params.id],
+            (err, rows) => {
+
+                if (!err) {
+                    connection.query('SELECT * FROM user WHERE id = ?', [req.params.id], (err, rows) => {
+                        if (!err) {
+                            res.render('edit-crew', { rows, alert: `${first_name} has been updated.` });
+
+                        } else {
+                            console.log(err);
+                        }
+                        // console.log('The data from user table:\n', rows);
+                    });
+                } else {
+                    console.log(err);
+                }
+                // console.log('The data from user table:\n', rows);
+            });
+
+
+
+        }
+
+
+
+      
 
 
 //         if (req.method == 'POST') {

@@ -55,10 +55,17 @@ exports.login = async (req, res) => {
 
         connection.query('SELECT * FROM login WHERE email=?', [email], async (error, results) => {
             // console.log(results);
-            if (!results || !(await bcrypt.compare(password, results[0].password))) {
+            // conditional statement to handle the wrong username error
+            if (error === null) {
                 res.status(401).render('login', {
                     message: 'Email or Password is incorrect'
                 })
+            }
+            //conditional if statement to compare password in database and password inserted by the client
+            if (!results || !(await bcrypt.compare(password, results[0].password))) {
+                res.status(401).render('login', {
+                    message: 'Email or Password is incorrect'
+                }) //conditional statement to fetch the id of the client and signign in with sign() function
             } else {
                 const id = results[0].id;
                 const token = jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -79,7 +86,7 @@ exports.login = async (req, res) => {
         });
 
     } catch (error) {
-        console.log(error)
+        console.log("this is the error:", error)
     }
 
 }
@@ -145,16 +152,16 @@ exports.isLoggedIn = async (req, res, next) => {
     if (req.cookies.jwt) {
         try {
             //1)verify the token
-             decoded = await promisify(jwt.verify)(req.cookies.jwt,
+            decoded = await promisify(jwt.verify)(req.cookies.jwt,
                 process.env.JWT_SECRET
             );
 
-           
-      
+
+
             //2) Check if the user still exists
             connection.query('SELECT * FROM login WHERE id = ?', [decoded.id], (error, result) => {
                 // console.log(result);
-               
+
                 if (!result) {
                     return next();
                 }
@@ -164,13 +171,13 @@ exports.isLoggedIn = async (req, res, next) => {
         } catch (error) {
             console.log(error);
             return next();
-        } 
+        }
     } else {
         next();
     }
 }
 
 exports.logout = async (req, res) => {
-res.clearCookie('jwt'); 
-res.status(200).redirect('/');
+    res.clearCookie('jwt');
+    res.status(200).redirect('/');
 }

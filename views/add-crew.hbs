@@ -17,6 +17,6 @@
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 {{/if}}
-<form class="row g-1 needs-validation" method="POST" action="/addcrew" novalidate>
+<form class="row g-1 needs-validation" method="POST" action="/addcrew" encType="multipart/form-data" novalidate>
 {{> crew-form}}
 </form>
