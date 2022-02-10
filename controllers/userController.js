@@ -100,9 +100,9 @@ exports.create = async (req, res, next) => {
 
     try {
         await upload(req, res);
-// --FILE HANDLING BLOCKCODE---
+        // --FILE HANDLING BLOCKCODE---
 
-// console.log(req.files)
+        // console.log(req.files)
 
         var trova = JSON.parse(JSON.stringify(req.files));//  to remove Object:null prototype
         // conditional statments to hanlde the front end file existence.
@@ -111,6 +111,7 @@ exports.create = async (req, res, next) => {
         } else {
             var covid_19D = trova.covid_19D[0].filename
         }
+
 
         if (trova.hasOwnProperty('fitnessD') == false) {
             var fitnessD = ""
@@ -144,7 +145,7 @@ exports.create = async (req, res, next) => {
 
 
     //User the connection
-    connection.query('INSERT INTO user SET ?', { user_id: decoded.id, first_name: first_name, last_name: last_name, email: email, phone: phone, coc: coc, expiration: expiration, covid_19: covid_19,covid_19D:covid_19D, fitness: fitness,fitnessD:fitnessD, yellowF: yellowF, PSSR: PSSR, SURV: SURV, FFB: FFB, ADV: ADV, elementary: elementary, MAMS: MAMS, FRC: FRC, medical_first: medical_first, medical_care: medical_care, GMDSS: GMDSS, RADAR: RADAR, ARPA: ARPA, arpa_btw: arpa_btw, ecdis_gen: ecdis_gen, SSO: SSO, leadership_managerial: leadership_managerial, high_voltage: high_voltage, leader_teamwork_engine: leader_teamwork_engine, leader_teamwork_deck: leader_teamwork_deck, security_awa: security_awa, security_duties: security_duties, basic_saf_fam: basic_saf_fam, security_related_fam: security_related_fam, ecdis_specific: ecdis_specific }, (err, rows) => {
+    connection.query('INSERT INTO user SET ?', { user_id: decoded.id, first_name: first_name, last_name: last_name, email: email, phone: phone, coc: coc, expiration: expiration, covid_19: covid_19, covid_19D: covid_19D, fitness: fitness, fitnessD: fitnessD, yellowF: yellowF, PSSR: PSSR, SURV: SURV, FFB: FFB, ADV: ADV, elementary: elementary, MAMS: MAMS, FRC: FRC, medical_first: medical_first, medical_care: medical_care, GMDSS: GMDSS, RADAR: RADAR, ARPA: ARPA, arpa_btw: arpa_btw, ecdis_gen: ecdis_gen, SSO: SSO, leadership_managerial: leadership_managerial, high_voltage: high_voltage, leader_teamwork_engine: leader_teamwork_engine, leader_teamwork_deck: leader_teamwork_deck, security_awa: security_awa, security_duties: security_duties, basic_saf_fam: basic_saf_fam, security_related_fam: security_related_fam, ecdis_specific: ecdis_specific }, (err, rows) => {
         if (!err) {
             res.render('add-crew', { alert: 'Crew member added succesfully!' });
         } else {
@@ -198,28 +199,25 @@ exports.update = async (req, res) => {
 
     try {
         await upload(req, res);
-// --FILE HANDLING BLOCKCODE---
-        var trova = JSON.parse(JSON.stringify(req.files));//  to remove Object:null prototype
+        // --FILE HANDLING BLOCKCODE---
+        var find = JSON.parse(JSON.stringify(req.files));//  to remove Object:null prototype
         // conditional statments to hanlde the front end file existence.
-        if (trova.hasOwnProperty('covid_19D') == false) {
-            var covid_19D = ""
+        if (find.hasOwnProperty('covid_19D') == false) {
+            var covid_19D = req.body.covid_19D
         } else {
-            var covid_19D = trova.covid_19D[0].filename
+            var covid_19D = find.covid_19D[0].filename
+
         }
 
 
-        if (trova.hasOwnProperty('fitnessD') == false) {
+        if (find.hasOwnProperty('fitnessD') == false) {
             var fitnessD = ""
         } else {
-            var fitnessD = trova.fitnessD[0].filename
+            var fitnessD = find.fitnessD[0].filename
         }
 
 
-        // if (req.files.length <= 0) {
-        //     return res.send(`You must select at least 1 file.`);
-        // }
 
-        // return res.send(`Files has been uploaded.`);
     } catch (error) {
         console.log(error);
 
@@ -232,49 +230,53 @@ exports.update = async (req, res) => {
 
 
 
-// ---DATA ENTERING BLOCK CODE---
+    // ---DATA ENTERING BLOCK CODE---
 
-        var post = req.body;
-        var first_name = post.first_name;
-        var last_name = post.last_name;
-        var email = post.email;
-        var phone = post.phone;
-        var coc = post.coc;
-        var expiration = post.expiration;
-        var covid_19 = post.covid_19;
-        var fitness = post.fitness;
-        var yellowF = post.yellowF;
-
- 
+    var post = req.body;
+    var first_name = post.first_name;
+    var last_name = post.last_name;
+    var email = post.email;
+    var phone = post.phone;
+    var coc = post.coc;
+    var expiration = post.expiration;
+    var covid_19 = post.covid_19;
+    var fitness = post.fitness;
+    var yellowF = post.yellowF;
 
 
 
-        connection.query('UPDATE user SET first_name=? ,last_name=?, email=?, phone=?, coc=?, expiration=?, covid_19=?,covid_19D=? , fitness=? ,fitnessD=?  WHERE id = ?', [first_name, last_name, email, phone, coc, expiration, covid_19, covid_19D, fitness, fitnessD, req.params.id],
-            (err, rows) => {
-
-                if (!err) {
-                    connection.query('SELECT * FROM user WHERE id = ?', [req.params.id], (err, rows) => {
-                        if (!err) {
-                            res.render('edit-crew', { rows, alert: `${first_name} has been updated.` });
-
-                        } else {
-                            console.log(err);
-                        }
-                        // console.log('The data from user table:\n', rows);
-                    });
-                } else {
-                    console.log(err);
-                }
-                // console.log('The data from user table:\n', rows);
-            });
 
 
+    connection.query('UPDATE user SET first_name=? ,last_name=?, email=?, phone=?, coc=?, expiration=?, covid_19=?,covid_19D=? , fitness=? ,fitnessD=?  WHERE id = ?', [first_name, last_name, email, phone, coc, expiration, covid_19, covid_19D, fitness, fitnessD, req.params.id],
+        (err, rows) => {
 
-        }
+            if (!err) {
+                connection.query('SELECT * FROM user WHERE id = ?', [req.params.id], (err, rows) => {
+                    if (!err) {
+                        res.render('edit-crew', { rows, alert: `${first_name} has been updated.` });
+
+                        // var storage = ""
+                        // storage = covid_19D
+                        // console.log(storage)
+
+                    } else {
+                        console.log(err);
+                    }
+                    // console.log('The data from user table:\n', rows);
+                });
+            } else {
+                console.log(err);
+            }
+            // console.log('The data from user table:\n', rows);
+        });
 
 
 
-      
+}
+
+
+
+
 
 
 //         if (req.method == 'POST') {

@@ -325,8 +325,15 @@
   <div class="col-md-6">
 
     <br>
+    {{!-- input file box retrived from database --}}
+<input type="text" id="file_box" value="{{this.covid_19D}}" placeholder="NO FILE INSERTED"
+      name='covid_19D'>
 
-    <input type="file" name="covid_19D" multiple id="file_box" />
+{{!-- input file for new file name --}}
+
+    <input type="file" name="covid_19D" multiple id="file_box"/>
+
+    
 
   </div>
 

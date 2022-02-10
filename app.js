@@ -1,10 +1,6 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
-const fileUpload = require('express-fileupload');
-const http = require('http');
 const path = require('path');
-const busboy = require('then-busboy');
-const mysql = require('mysql');
 bodyParser = require("body-parser");
 // to be removed when deployed in heroku
 
@@ -15,7 +11,7 @@ const cookieParser = require('cookie-parser');
 
 // Parsing middleware
 const app = express();
-// app.use(fileUpload());
+
 
 
 //to load static file
