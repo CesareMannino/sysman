@@ -45,7 +45,7 @@ var uploadFiles = multer({ storage: storage }).fields([{name:"covid_19D", maxCou
 {name:"ecdis_genD",maxCount:1},
 {name:"ecdis_specificD",maxCount:1},
 {name:"SSOD",maxCount:1},
-{name:"leadeship_managerialD",maxCount:1},
+{name:"leadership_managerialD",maxCount:1},
 {name:"high_voltageD",maxCount:1},
 {name:"leader_teamwork_deckD",maxCount:1},
 {name:"leader_teamwork_engineD",maxCount:1},

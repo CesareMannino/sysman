@@ -175,6 +175,17 @@
     </div>
   </div>
 
+{{!-- DOWNLOAD BUTTON --}}
+  <div class='col mb-3'>
+    {{#if this.security_related_fam}}
+    <a href="../upload/{{this.security_related_fam}}">
+      <button type="button" class="btn btn-outline-warning">DOWNLOAD</button>
+
+    </a>
+  </div>
+
+  {{/if}}
+
 
   {{!-- Button with popover shore based courses --}}
 
@@ -198,6 +209,15 @@
     </div>
   </div>
 
+{{!-- DOWNLOAD BUTTON --}}
+  <div class='col mb-3'>
+    {{#if this.PSSR}}
+    <a href="../upload/{{this.PSSR}}">
+      <button type="button" class="btn btn-outline-warning">DOWNLOAD</button>
+
+    </a>
+  </div>
+{{/if}}
 
 
   {{!-- PERSONAL SURVIVAL TECHNIQUE --}}

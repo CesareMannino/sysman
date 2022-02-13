@@ -343,10 +343,10 @@ exports.update = async (req, res) => {
             var SSOD = find.SSOD[0].filename
         }
 
-        if (find.hasOwnProperty('leadeship_managerialD') == false) {
-            var leadership_managerialD = req.body.leadeship_managerialD
+        if (find.hasOwnProperty('leadership_managerialD') == false) {
+            var leadership_managerialD = req.body.leadership_managerialD
         } else {
-            var leadership_managerialD = find.leadeship_managerialD[0].filename
+            var leadership_managerialD = find.leadership_managerialD[0].filename
         }
 
         if (find.hasOwnProperty('high_voltageD') == false) {
@@ -438,10 +438,10 @@ exports.update = async (req, res) => {
     var security_related_fam = post.security_related_fam;
     var ecdis_specific = post.ecdis_specific;
 
-console.log(SURVIVAL)
 
 
-    connection.query('UPDATE user SET first_name=? ,last_name=?, email=?, phone=?, coc=?, expiration=?, covid_19=?, covid_19D=?,  fitness=? ,fitnessD=?, yellowF=?, yellowFD=?, basic_saf_famD=?, security_related_famD=?, PSSR=?, PSSRD=?,  SURVD=?, FFBD=?,  elementaryD=?, MAMSD=?, FRCD=?, medical_firstD=?, medical_careD=?, GMDSSD=?, RADARD=?, ARPAD=?, arpa_btwD=?, ecdis_genD=?, ecdis_specificD=?, SSOD=?, leadership_managerialD=?, high_voltageD=?, leader_teamwork_deckD=?,leader_teamwork_engineD=?, security_awaD=?, security_dutiesD=?,SURVIVAL=?, FFB=?, ADV=?, elementary=?, MAMS=?, FRC=?, medical_first=?, medical_care=?, GMDSS=?, RADAR=?, ARPA=?, arpa_btw=?, ecdis_gen=?, SSO=?, leadership_managerial=?, high_voltage=?, leader_teamwork_engine=?, leader_teamwork_deck=?, security_awa=?, security_duties=?, basic_saf_fam=?, security_related_fam=?,  ecdis_specific=?  WHERE id = ?', [first_name, last_name, email, phone, coc, expiration, covid_19, covid_19D, fitness, fitnessD, yellowF, yellowFD,  basic_saf_famD, security_related_famD, PSSR, PSSRD, SURVD, FFBD,  elementaryD, MAMSD, FRCD, medical_firstD, medical_careD, GMDSSD, RADARD, ARPAD, arpa_btwD, ecdis_genD, ecdis_specificD, SSOD, leadership_managerialD, high_voltageD, leader_teamwork_deckD ,leader_teamwork_engineD, security_awaD, security_dutiesD, SURVIVAL, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific, req.params.id],
+
+    connection.query('UPDATE user SET first_name=? ,last_name=?, email=?, phone=?, coc=?, expiration=?, covid_19=?, covid_19D=?,  fitness=? ,fitnessD=?, yellowF=?, yellowFD=?, basic_saf_famD=?, security_related_famD=?, PSSR=?, PSSRD=?,  SURVD=?, FFBD=?,ADVD=?,  elementaryD=?, MAMSD=?, FRCD=?, medical_firstD=?, medical_careD=?, GMDSSD=?, RADARD=?, ARPAD=?, arpa_btwD=?, ecdis_genD=?, ecdis_specificD=?, SSOD=?, leadership_managerialD=?, high_voltageD=?, leader_teamwork_deckD=?,leader_teamwork_engineD=?, security_awaD=?, security_dutiesD=?,SURVIVAL=?, FFB=?, ADV=?, elementary=?, MAMS=?, FRC=?, medical_first=?, medical_care=?, GMDSS=?, RADAR=?, ARPA=?, arpa_btw=?, ecdis_gen=?, SSO=?, leadership_managerial=?, high_voltage=?, leader_teamwork_engine=?, leader_teamwork_deck=?, security_awa=?, security_duties=?, basic_saf_fam=?, security_related_fam=?,  ecdis_specific=?  WHERE id = ?', [first_name, last_name, email, phone, coc, expiration, covid_19, covid_19D, fitness, fitnessD, yellowF, yellowFD,  basic_saf_famD, security_related_famD, PSSR, PSSRD, SURVD, FFBD,ADVD,  elementaryD, MAMSD, FRCD, medical_firstD, medical_careD, GMDSSD, RADARD, ARPAD, arpa_btwD, ecdis_genD, ecdis_specificD, SSOD, leadership_managerialD, high_voltageD, leader_teamwork_deckD ,leader_teamwork_engineD, security_awaD, security_dutiesD, SURVIVAL, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific, req.params.id],
         (err, rows) => {
 
             if (!err) {
