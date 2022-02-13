@@ -30,7 +30,7 @@
         changeMonth: true,
         changeYear: true
       });
-      $("#datepickerSURV").datepicker({
+      $("#datepickerSURVIVAL").datepicker({
         changeMonth: true,
         changeYear: true
       });
@@ -207,7 +207,7 @@
     #datepickercovid_19,
     #datepickeryellowF,
     #datepickerfitness,
-    #datepickerSURV,
+    #datepickerSURVIVAL,
     #datepickerPSSR,
     #datepickerFFB,
     #datepickerADV,
@@ -316,7 +316,7 @@
   </div>
 
   <div class="col-md-6 mt-5">
-<br>
+    <br>
     <input type="text" id="datepickercovid_19" value="{{this.covid_19}}" placeholder="iss. date (mm/dd/yyyy)"
       name='covid_19'>
   </div>
@@ -326,17 +326,16 @@
 
     <br>
     {{!-- input file box retrived from database --}}
-    
-<input class="form-control" type="text" placeholder="NO STORED CERTIFICATE"
-      aria-label="readonly input example" readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover"
-      title="Covid-19 vaccination stored certificate." id="file_box" value="{{this.covid_19D}}" placeholder="NO FILE INSERTED"
-      name='covid_19D'>
 
-{{!-- input file for new file name --}}
+    <input class="form-control" type="text" placeholder="NO STORED CERTIFICATE" aria-label="readonly input example"
+      readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover" title="{{this.covid_19D}}" id="file_box"
+      value="{{this.covid_19D}}" placeholder="NO FILE INSERTED" name='covid_19D'>
 
-    <input type="file" name="covid_19D" multiple id="file_box"/>
+    {{!-- input file for new file name --}}
 
-    
+    <input type="file" name="covid_19D" multiple id="file_box" />
+
+
 
   </div>
 
@@ -364,24 +363,23 @@
       name='fitness'>
   </div>
 
-{{!-- input file medical fitness certificate --}}
+  {{!-- input file medical fitness certificate --}}
 
   <div class="col-md-6 mb-2">
 
     <br>
 
 
-{{!-- input file box retrived from database --}}
-    
-<input class="form-control" type="text" placeholder="NO STORED CERTIFICATE"
-      aria-label="readonly input example" readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover"
-      title="Medical fitness stored certificate." id="file_box" value="{{this.fitnessD}}" placeholder="NO FILE INSERTED"
-      name='fitnessD'>
+    {{!-- input file box retrived from database --}}
+
+    <input class="form-control" type="text" placeholder="NO STORED CERTIFICATE" aria-label="readonly input example"
+      readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover" title="{{this.fitnessD}}" id="file_box"
+      value="{{this.fitnessD}}" placeholder="NO FILE INSERTED" name='fitnessD'>
 
 
-{{!-- input file for new file name --}}
+    {{!-- input file for new file name --}}
 
-    <input type="file" name="fitnessD" multiple id="file_box"  />
+    <input type="file" name="fitnessD" multiple id="file_box" />
 
   </div>
 
@@ -413,12 +411,11 @@
     <br>
 
 
-{{!-- input file box retrived from database --}}
-    
-<input class="form-control" type="text" placeholder="NO STORED CERTIFICATE"
-      aria-label="readonly input example" readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover"
-      title="Yellow fever stored certificate." id="file_box" value="{{this.yellowFD}}" placeholder="NO FILE INSERTED"
-      name='yellowFD'>
+    {{!-- input file box retrived from database --}}
+
+    <input class="form-control" type="text" placeholder="NO STORED CERTIFICATE" aria-label="readonly input example"
+      readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover" title="{{this.yellowFD}}" id="file_box"
+      value="{{this.yellowFD}}" placeholder="NO FILE INSERTED" name='yellowFD'>
 
 
     <input type="file" name="yellowFD" id="file_box" />
@@ -463,6 +460,13 @@
   <div class="col-md-6">
 
     <br>
+
+
+    <input class="form-control" type="text" placeholder="NO STORED CERTIFICATE" aria-label="readonly input example"
+      readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover" title="{{this.basic_saf_famD}}"
+      id="file_box" value="{{this.basic_saf_famD}}" placeholder="NO FILE INSERTED" name='basic_saf_famD'>
+
+
     <input type="file" name="basic_saf_famD" id="file_box" />
 
   </div>
@@ -491,6 +495,11 @@
   <div class="col-md-6 mb-5">
 
     <br>
+
+    <input class="form-control" type="text" placeholder="NO STORED CERTIFICATE" aria-label="readonly input example"
+      readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover" title="{{this.security_related_famD}}"
+      id="file_box" value="{{this.security_related_famD}}" placeholder="NO FILE INSERTED" name='security_related_famD'>
+
     <input type="file" name="security_related_famD" id="file_box" />
 
   </div>
@@ -529,7 +538,12 @@
   <div class="col-md-6">
 
     <br>
-    <input type="file" name=".PSSRD" id="file_box" />
+
+    <input class="form-control" type="text" placeholder="NO STORED CERTIFICATE" aria-label="readonly input example"
+      readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover" title="{{this.PSSRD}}" id="file_box"
+      value="{{this.PSSRD}}" placeholder="NO FILE INSERTED" name='PSSRD'>
+
+    <input type="file" name="PSSRD" id="file_box" />
 
   </div>
 </div>
@@ -541,6 +555,7 @@
 
   <div class="col-md-6">
     <br>
+
     <input class="form-control" type="text" placeholder="PERSONAL SURVIVAL TECHNIQUES STCW A-VI/1-1"
       aria-label="readonly input example" readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover"
       title="Part of basic training, usually under the same certificate are: PSSR-PERSONAL SURVIVAL TECHNIQUE-FIRE PREVENTION AND FIRE FIGHTING-ELEMENTARY FIRST AID.">
@@ -549,7 +564,7 @@
 
   <div class="col-md-2">
     <br>
-    <input type="text" id="datepickerSURV" value="{{this.SURV}}" placeholder="exp. date (mm/dd/yyyy)" name="SURV">
+    <input type="text" id="datepickerSURVIVAL" value="{{this.SURVIVAL}}" placeholder="exp. date (mm/dd/yyyy)" name="SURVIVAL">
 
   </div>
 
@@ -558,6 +573,12 @@
   <div class="col-md-6">
 
     <br>
+
+
+    <input class="form-control" type="text" placeholder="NO STORED CERTIFICATE" aria-label="readonly input example"
+      readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover" title="{{this.SURVD}}" id="file_box"
+      value="{{this.SURVD}}" placeholder="NO FILE INSERTED" name='SURVD'>
+
     <input type="file" name="SURVD" id="file_box" />
 
   </div>
@@ -585,6 +606,13 @@
   <div class="col-md-6">
 
     <br>
+
+
+    <input class="form-control" type="text" placeholder="NO STORED CERTIFICATE" aria-label="readonly input example"
+      readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover" title="{{this.FFBD}}" id="file_box"
+      value="{{this.FFBD}}" placeholder="NO FILE INSERTED" name='FFBD'>
+
+
     <input type="file" name="FFBD" id="file_box" />
 
   </div>
@@ -610,6 +638,14 @@
   <div class="col-md-6">
 
     <br>
+
+
+    <input class="form-control" type="text" placeholder="NO STORED CERTIFICATE" aria-label="readonly input example"
+      readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover" title="{{this.elementaryD}}" id="file_box"
+      value="{{this.elementaryD}}" placeholder="NO FILE INSERTED" name='elementaryD'>
+
+
+
     <input type="file" name="elementaryD" id="file_box" />
 
   </div>
@@ -634,6 +670,13 @@
   <div class="col-md-6">
 
     <br>
+
+    <input class="form-control" type="text" placeholder="NO STORED CERTIFICATE" aria-label="readonly input example"
+      readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover" title="{{this.ADVD}}" id="file_box"
+      value="{{this.ADVD}}" placeholder="NO FILE INSERTED" name='ADVD'>
+
+
+
     <input type="file" name="ADVD" id="file_box" />
 
   </div>
@@ -660,6 +703,13 @@
   <div class="col-md-6">
 
     <br>
+
+
+    <input class="form-control" type="text" placeholder="NO STORED CERTIFICATE" aria-label="readonly input example"
+      readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover" title="{{this.MAMSD}}" id="file_box"
+      value="{{this.MAMSD}}" placeholder="NO FILE INSERTED" name='MAMSD'>
+
+
     <input type="file" name="MAMSD" id="file_box" />
 
   </div>
@@ -687,6 +737,13 @@
   <div class="col-md-6">
 
     <br>
+
+
+    <input class="form-control" type="text" placeholder="NO STORED CERTIFICATE" aria-label="readonly input example"
+      readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover" title="{{this.FRCD}}" id="file_box"
+      value="{{this.FRCD}}" placeholder="NO FILE INSERTED" name='FRCD'>
+
+
     <input type="file" name="FRCD" id="file_box" />
 
   </div>
@@ -713,6 +770,14 @@
   <div class="col-md-6">
 
     <br>
+
+
+    <input class="form-control" type="text" placeholder="NO STORED CERTIFICATE" aria-label="readonly input example"
+      readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover" title="{{this.medical_firstD}}"
+      id="file_box" value="{{this.medical_firstD}}" placeholder="NO FILE INSERTED" name='medical_firstD'>
+
+
+
     <input type="file" name="medical_firstD" id="file_box" />
 
   </div>
@@ -739,6 +804,13 @@
   <div class="col-md-6">
 
     <br>
+
+
+    <input class="form-control" type="text" placeholder="NO STORED CERTIFICATE" aria-label="readonly input example"
+      readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover" title="{{this.medical_careD}}"
+      id="file_box" value="{{this.medical_careD}}" placeholder="NO FILE INSERTED" name='medical_careD'>
+
+
     <input type="file" name="medical_careD" id="file_box" />
 
   </div>
@@ -764,6 +836,14 @@
   <div class="col-md-6">
 
     <br>
+
+
+    <input class="form-control" type="text" placeholder="NO STORED CERTIFICATE" aria-label="readonly input example"
+      readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover" title="{{this.GMDSSD}}" id="file_box"
+      value="{{this.GMDSSD}}" placeholder="NO FILE INSERTED" name='GMDSSD'>
+
+
+
     <input type="file" name="GMDSSD" id="file_box" />
 
   </div>
@@ -788,6 +868,13 @@
   <div class="col-md-6">
 
     <br>
+
+
+    <input class="form-control" type="text" placeholder="NO STORED CERTIFICATE" aria-label="readonly input example"
+      readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover" title="{{this.RADARD}}" id="file_box"
+      value="{{this.RADARD}}" placeholder="NO FILE INSERTED" name='RADARD'>
+
+
     <input type="file" name="RADARD" id="file_box" />
 
   </div>
@@ -814,6 +901,13 @@
   <div class="col-md-6">
 
     <br>
+
+
+    <input class="form-control" type="text" placeholder="NO STORED CERTIFICATE" aria-label="readonly input example"
+      readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover" title="{{this.ARPAD}}" id="file_box"
+      value="{{this.ARPAD}}" placeholder="NO FILE INSERTED" name='ARPAD'>
+
+
     <input type="file" name="ARPAD" id="file_box" />
 
   </div>
@@ -842,6 +936,13 @@
   <div class="col-md-6">
 
     <br>
+
+
+    <input class="form-control" type="text" placeholder="NO STORED CERTIFICATE" aria-label="readonly input example"
+      readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover" title="{{this.arpa_btwD}}" id="file_box"
+      value="{{this.arpa_btwD}}" placeholder="NO FILE INSERTED" name='arpa_btwD'>
+
+
     <input type="file" name="arpa_btwD" id="file_box" />
 
   </div>
@@ -871,6 +972,13 @@
   <div class="col-md-6">
 
     <br>
+
+
+    <input class="form-control" type="text" placeholder="NO STORED CERTIFICATE" aria-label="readonly input example"
+      readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover" title="{{this.ecdis_genD}}" id="file_box"
+      value="{{this.ecdis_genD}}" placeholder="NO FILE INSERTED" name='ecdis_genD'>
+
+
     <input type="file" name="ecdis_genD" id="file_box" />
 
   </div>
@@ -898,6 +1006,14 @@
   <div class="col-md-6">
 
     <br>
+
+
+    <input class="form-control" type="text" placeholder="NO STORED CERTIFICATE" aria-label="readonly input example"
+      readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover" title="{{this.ecdis_specificD}}"
+      id="file_box" value="{{this.ecdis_specificD}}" placeholder="NO FILE INSERTED" name='ecdis_specificD'>
+
+
+
     <input type="file" name="ecdis_specificD" id="file_box" />
 
   </div>
@@ -926,6 +1042,13 @@
   <div class="col-md-6">
 
     <br>
+
+
+    <input class="form-control" type="text" placeholder="NO STORED CERTIFICATE" aria-label="readonly input example"
+      readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover" title="{{this.SSOD}}" id="file_box"
+      value="{{this.SSOD}}" placeholder="NO FILE INSERTED" name='SSOD'>
+
+
     <input type="file" name="SSOD" id="file_box" />
 
   </div>
@@ -954,6 +1077,15 @@
   <div class="col-md-6">
 
     <br>
+
+
+
+    <input class="form-control" type="text" placeholder="NO STORED CERTIFICATE" aria-label="readonly input example"
+      readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover" title="{{this.leadership_managerialD}}"
+      id="file_box" value="{{this.leadership_managerialD}}" placeholder="NO FILE INSERTED"
+      name='leadership_managerialD'>
+
+
     <input type="file" name="leadership_managerialD" id="file_box" />
 
   </div>
@@ -982,6 +1114,13 @@
   <div class="col-md-6">
 
     <br>
+
+
+    <input class="form-control" type="text" placeholder="NO STORED CERTIFICATE" aria-label="readonly input example"
+      readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover" title="{{this.high_voltageD}}"
+      id="file_box" value="{{this.high_voltageD}}" placeholder="NO FILE INSERTED" name='high_voltageD'>
+
+
     <input type="file" name="high_voltageD" id="file_box" />
 
   </div>
@@ -997,7 +1136,7 @@
   <div class="col-md-6">
     <br>
 
-    <input class="form-control" type="text" placeholder="LEADERSHIP & TEAM WORK
+    <input class="form-control" type="text" placeholder="LEADERSHIP & TEAM WORK DECK
 (Tables A-II/1, A-II/2)" aria-label="readonly input example" readonly>
   </div>
 
@@ -1011,7 +1150,14 @@
   <div class="col-md-6">
 
     <br>
-    <input type="file" name="profile_image" id="file_box" />
+
+
+    <input class="form-control" type="text" placeholder="NO STORED CERTIFICATE" aria-label="readonly input example"
+      readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover" title="{{this.leader_teamwork_deckD}}"
+      id="file_box" value="{{this.leader_teamwork_deckD}}" placeholder="NO FILE INSERTED" name='leader_teamwork_deckD'>
+
+
+    <input type="file" name="leader_teamwork_deckD" id="file_box" />
 
   </div>
 
@@ -1025,7 +1171,7 @@
   <div class="col-md-6">
     <br>
 
-    <input class="form-control" type="text" placeholder="LEADERSHIP & TEAMWORK
+    <input class="form-control" type="text" placeholder="LEADERSHIP & TEAMWORK ENGINE
 (Tables A-III/1, A-III/2)" aria-label="readonly input example" readonly>
   </div>
 
@@ -1038,7 +1184,15 @@
   <div class="col-md-6">
 
     <br>
-    <input type="file" name="profile_image" id="file_box" />
+
+
+    <input class="form-control" type="text" placeholder="NO STORED CERTIFICATE" aria-label="readonly input example"
+      readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover" title="{{this.leader_teamwork_engineD}}"
+      id="file_box" value="{{this.leader_teamwork_engineD}}" placeholder="NO FILE INSERTED"
+      name='leader_teamwork_engineD'>
+
+
+    <input type="file" name="leader_teamwork_engineD" id="file_box" />
 
   </div>
 
@@ -1067,7 +1221,15 @@
   <div class="col-md-6">
 
     <br>
-    <input type="file" name="profile_image" id="file_box" />
+
+
+    <input class="form-control" type="text" placeholder="NO STORED CERTIFICATE" aria-label="readonly input example"
+      readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover" title="{{this.security_awaD}}"
+      id="file_box" value="{{this.security_awaD}}" placeholder="NO FILE INSERTED" name='security_awaD'>
+
+
+
+    <input type="file" name="security_awaD" id="file_box" />
 
   </div>
 
@@ -1093,7 +1255,14 @@
   <div class="col-md-6">
 
     <br>
-    <input type="file" name="profile_image" id="file_box" />
+
+
+    <input class="form-control" type="text" placeholder="NO STORED CERTIFICATE" aria-label="readonly input example"
+      readonly data-bs-trigger="focus" role="button" data-bs-toggle="popover" title="{{this.security_dutiesD}}"
+      id="file_box" value="{{this.security_dutiesD}}" placeholder="NO FILE INSERTED" name='ADVD'>
+
+
+    <input type="file" name="security_dutiesD" id="file_box" />
 
   </div>
 

@@ -152,8 +152,8 @@
 
   {{!-- DOWNLOAD BUTTON --}}
   <div class='col mb-3'>
-    {{#if this.profile_image}}
-    <a href="../upload/{{this.profile_image}}">
+    {{#if this.basic_saf_famD}}
+    <a href="../upload/{{this.basic_saf_famD}}">
       <button type="button" class="btn btn-outline-warning">DOWNLOAD</button>
 
     </a>
@@ -209,7 +209,7 @@
   </div>
   <div class='row'>
     <div class='col mb-3'>
-      EXPIRY DATE: {{this.SURV}}
+      EXPIRY DATE: {{this.SURVIVAL}}
 
     </div>
   </div>
@@ -226,6 +226,17 @@
 
     </div>
   </div>
+  {{!-- DOWNLOAD BUTTON --}}
+<div class='col mb-3'>
+    {{#if this.FFBD}}
+    <a href="../upload/{{this.FFBD}}">
+      <button type="button" class="btn btn-outline-warning">DOWNLOAD</button>
+
+    </a>
+  </div>
+
+  {{/if}}
+
 
 
   {{!-- Elementary First Aid --}}
