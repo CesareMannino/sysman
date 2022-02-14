@@ -7,17 +7,11 @@ bodyParser = require("body-parser");
 require("dotenv").config();
 const cookieParser = require('cookie-parser');
 
-
-
 // Parsing middleware
 const app = express();
 
-
-
 //to load static file
 app.use(express.static("public"));
-// app.use(express.static("upload"));
-//Listen on port 5000
 app.use(express.urlencoded({ extended: true })); //To parse URL-encoded bodies (as sent by HTML forms) set from false to true as per bezkoder tutorial
 
 app.use(express.json()); //To parse the incoming requests with JSON bodies
@@ -25,8 +19,6 @@ app.use(cookieParser());
 
 app.engine("hbs", exphbs({ extname: ".hbs" }));//Templating engine to change the extenion of file from .handlebar to .hbs
 app.set("view engine", "hbs");
-
-
 
 app.use("/", require('./routes/user'));
 app.use('/auth', require('./routes/auth'));
