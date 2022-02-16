@@ -4,10 +4,10 @@ const bcrypt = require('bcryptjs');
 const { promisify } = require('util');
 
 var db_config = {
-    host: "us-cdbr-east-04.cleardb.com",
-    user: "bbaaff48f634c6",
-    password: "dacbf7fa",
-    database: "heroku_c7ad469172e97f3"
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: "nodejs-login"
 };
 
 
@@ -44,7 +44,7 @@ handleDisconnect();
 
 // code in case the user leave the login space empty
 
-exports.login = async (req, res) => {
+exports.login = async (req, res,next) => {
     try {
         const { email, password } = req.body;
 
@@ -57,11 +57,11 @@ exports.login = async (req, res) => {
         connection.query('SELECT * FROM login WHERE email=?', [email], async (error, results) => {
             // console.log(results);
             // conditional statement to handle the wrong username error
-            if (error === null) {
-                res.status(401).render('login', {
-                    message: 'Email or Password is incorrect'
-                })
-            }
+            // if (error === null) {
+            //     res.status(401).render('login', {
+            //         message: 'Email or Password is incorrect'
+            //     })
+            // }
             //conditional if statement to compare password in database and password inserted by the client
             if (!results || !(await bcrypt.compare(password, results[0].password))) {
                 res.status(401).render('login', {
