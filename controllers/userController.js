@@ -107,61 +107,179 @@ exports.create = async (req, res, next) => {
         var find = JSON.parse(JSON.stringify(req.files));//  to remove Object:null prototype
         // conditional statments to hanlde the front end file existence.
       
+        if (find.hasOwnProperty('covid_19D') == false) {
+            var covid_19D = req.body.covid_19D
+        } else {
             var covid_19D = find.covid_19D[0].filename
-        
+
+        }
+
+
+        if (find.hasOwnProperty('fitnessD') == false) {
+            var fitnessD = req.body.fitnessD
+        } else {
             var fitnessD = find.fitnessD[0].filename
-        
+        }
+
+        if (find.hasOwnProperty('yellowFD') == false) {
+            var yellowFD = req.body.yellowFD
+        } else {
             var yellowFD = find.yellowFD[0].filename
+        }
 
+
+        if (find.hasOwnProperty('basic_saf_famD') == false) {
+            var basic_saf_famD = req.body.basic_saf_famD
+        } else {
             var basic_saf_famD = find.basic_saf_famD[0].filename
+        }
 
+
+        if (find.hasOwnProperty('security_related_famD') == false) {
+            var security_related_famD = req.body.security_related_famD
+        } else {
             var security_related_famD = find.security_related_famD[0].filename
-        
+        }
+
+        if (find.hasOwnProperty('PSSRD') == false) {
+            var PSSRD = req.body.PSSRD
+        } else {
             var PSSRD = find.PSSRD[0].filename
+        }
 
+        if (find.hasOwnProperty('SURVD') == false) {
+            var SURVD = req.body.SURVD
+        } else {
             var SURVD = find.SURVD[0].filename
+        }
 
+        if (find.hasOwnProperty('FFBD') == false) {
+            var FFBD = req.body.FFBD
+        } else {
             var FFBD = find.FFBD[0].filename
+        }
 
+        if (find.hasOwnProperty('ADVD') == false) {
+            var ADVD = req.body.ADVD
+        } else {
             var ADVD = find.ADVD[0].filename
+        }
 
+
+        if (find.hasOwnProperty('elementaryD') == false) {
+            var elementaryD = req.body.elementaryD
+        } else {
             var elementaryD = find.elementaryD[0].filename
+        }
 
+        if (find.hasOwnProperty('MAMSD') == false) {
+            var MAMSD = req.body.MAMSD
+        } else {
             var MAMSD = find.MAMSD[0].filename
+        }
 
+        if (find.hasOwnProperty('FRCD') == false) {
+            var FRCD = req.body.FRCD
+        } else {
             var FRCD = find.FRCD[0].filename
+        }
 
+        if (find.hasOwnProperty('medical_firstD') == false) {
+            var medical_firstD = req.body.medical_firstD
+        } else {
             var medical_firstD = find.medical_firstD[0].filename
+        }
 
+        if (find.hasOwnProperty('medical_careD') == false) {
+            var medical_careD = req.body.medical_careD
+        } else {
             var medical_careD = find.medical_careD[0].filename
+        }
 
+        if (find.hasOwnProperty('GMDSSD') == false) {
+            var GMDSSD = req.body.GMDSSD
+        } else {
             var GMDSSD = find.GMDSSD[0].filename
+        }
 
+        if (find.hasOwnProperty('RADARD') == false) {
+            var RADARD = req.body.RADARD
+        } else {
             var RADARD = find.RADARD[0].filename
+        }
 
+        if (find.hasOwnProperty('ARPAD') == false) {
+            var ARPAD = req.body.ARPAD
+        } else {
             var ARPAD = find.ARPAD[0].filename
+        }
 
+        if (find.hasOwnProperty('arpa_btwD') == false) {
+            var arpa_btwD = req.body.arpa_btwD
+        } else {
             var arpa_btwD = find.arpa_btwD[0].filename
+        }
 
+        if (find.hasOwnProperty('ecdis_genD') == false) {
+            var ecdis_genD = req.body.ecdis_genD
+        } else {
             var ecdis_genD = find.ecdis_genD[0].filename
+        }
 
+        if (find.hasOwnProperty('ecdis_specificD') == false) {
+            var ecdis_specificD = req.body.ecdis_specificD
+        } else {
             var ecdis_specificD = find.ecdis_specificD[0].filename
+        }
 
+        if (find.hasOwnProperty('SSOD') == false) {
+            var SSOD = req.body.SSOD
+        } else {
             var SSOD = find.SSOD[0].filename
+        }
 
+        if (find.hasOwnProperty('leadership_managerialD') == false) {
+            var leadership_managerialD = req.body.leadership_managerialD
+        } else {
             var leadership_managerialD = find.leadership_managerialD[0].filename
+        }
 
+        if (find.hasOwnProperty('high_voltageD') == false) {
+            var high_voltageD = req.body.high_voltageD
+        } else {
             var high_voltageD = find.high_voltageD[0].filename
+        }
 
+        if (find.hasOwnProperty('leader_teamwork_deckD') == false) {
+            var leader_teamwork_deckD = req.body.leader_teamwork_deckD
+        } else {
             var leader_teamwork_deckD = find.leader_teamwork_deckD[0].filename
+        }
 
+        if (find.hasOwnProperty('security_awaD') == false) {
+            var security_awaD = req.body.security_awaD
+        } else {
             var security_awaD = find.security_awaD[0].filename
+        }
 
+
+        if (find.hasOwnProperty('security_dutiesD') == false) {
+            var security_dutiesD = req.body.security_dutiesD
+        } else {
             var security_dutiesD = find.security_dutiesD[0].filename
+        }
 
+        if (find.hasOwnProperty('leader_teamwork_engineD') == false) {
+            var leader_teamwork_engineD = req.body.leader_teamwork_engineD
+        } else {
             var leader_teamwork_engineD = find.leader_teamwork_engineD[0].filename
+        }
 
+        if (find.hasOwnProperty('security_awaD') == false) {
+            var security_awaD = req.body.security_awaD
+        } else {
             var security_awaD = find.security_awaD[0].filename
+        }
 
 
         // if (req.files.length <= 0) {
