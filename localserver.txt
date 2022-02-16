@@ -1,3 +1,6 @@
+local env
+
+
 DB_HOST = localhost
 DB_NAME = nodejs-login
 DB_USER = root
@@ -7,7 +10,7 @@ JWT_EXPIRES_IN = 90d
 JWT_COOKIE_EXPIRES = 90
 
 
-user database credential on the env file
+remote user database credential on the env file
 
 DB_HOST = us-cdbr-east-04.cleardb.com
 DB_NAME = heroku_d8bb60afbf4eabb
@@ -16,6 +19,18 @@ DB_PASS = 082fef8e
 JWT_SECRET = mysupersecretpassword
 JWT_EXPIRES_IN = 90d 
 JWT_COOKIE_EXPIRES = 90
+
+
+remote User controller credential
+
+var db_config = {
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME
+};
+
+
 
 login database credential on the authController.js file
 
