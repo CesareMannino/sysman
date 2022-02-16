@@ -4,12 +4,11 @@ const bcrypt = require('bcryptjs');
 const { promisify } = require('util');
 
 var db_config = {
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: "nodejs-login"
+    host: "us-cdbr-east-04.cleardb.com",
+    user: "bbaaff48f634c6",
+    password: "dacbf7fa",
+    database: "heroku_c7ad469172e97f3"
 };
-
 
 var connection;
 
@@ -44,7 +43,7 @@ handleDisconnect();
 
 // code in case the user leave the login space empty
 
-exports.login = async (req, res,next) => {
+exports.login = async (req, res) => {
     try {
         const { email, password } = req.body;
 
