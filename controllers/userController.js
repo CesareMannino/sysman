@@ -8,11 +8,13 @@ const upload = require("../middleware/upload");
 
 
 var db_config = {
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_NAME
+    host: "us-cdbr-east-04.cleardb.com",
+    user: "bbaaff48f634c6",
+    password: "dacbf7fa",
+    database: "heroku_c7ad469172e97f3"
 };
+
+
 
 var connection;
 
@@ -104,27 +106,64 @@ exports.create = async (req, res, next) => {
 
         // console.log(req.files)
 
-        var trova = JSON.parse(JSON.stringify(req.files));//  to remove Object:null prototype
+        var find = JSON.parse(JSON.stringify(req.files));//  to remove Object:null prototype
         // conditional statments to hanlde the front end file existence.
-        if (trova.hasOwnProperty('covid_19D') == false) {
-            var covid_19D = ""
-        } else {
-            var covid_19D = trova.covid_19D[0].filename
-        }
+      
+            var covid_19D = find.covid_19D[0].filename
+        
+            var fitnessD = find.fitnessD[0].filename
+        
+            var yellowFD = find.yellowFD[0].filename
 
+            var basic_saf_famD = find.basic_saf_famD[0].filename
 
-        if (trova.hasOwnProperty('fitnessD') == false) {
-            var fitnessD = ""
-        } else {
-            var fitnessD = trova.fitnessD[0].filename
-        }
+            var security_related_famD = find.security_related_famD[0].filename
+        
+            var PSSRD = find.PSSRD[0].filename
 
+            var SURVD = find.SURVD[0].filename
 
-        if (trova.hasOwnProperty('yellowFD') == false) {
-            var yellowFD = ""
-        } else {
-            var yellowFD = trova.yellowFD[0].filename
-        }
+            var FFBD = find.FFBD[0].filename
+
+            var ADVD = find.ADVD[0].filename
+
+            var elementaryD = find.elementaryD[0].filename
+
+            var MAMSD = find.MAMSD[0].filename
+
+            var FRCD = find.FRCD[0].filename
+
+            var medical_firstD = find.medical_firstD[0].filename
+
+            var medical_careD = find.medical_careD[0].filename
+
+            var GMDSSD = find.GMDSSD[0].filename
+
+            var RADARD = find.RADARD[0].filename
+
+            var ARPAD = find.ARPAD[0].filename
+
+            var arpa_btwD = find.arpa_btwD[0].filename
+
+            var ecdis_genD = find.ecdis_genD[0].filename
+
+            var ecdis_specificD = find.ecdis_specificD[0].filename
+
+            var SSOD = find.SSOD[0].filename
+
+            var leadership_managerialD = find.leadership_managerialD[0].filename
+
+            var high_voltageD = find.high_voltageD[0].filename
+
+            var leader_teamwork_deckD = find.leader_teamwork_deckD[0].filename
+
+            var security_awaD = find.security_awaD[0].filename
+
+            var security_dutiesD = find.security_dutiesD[0].filename
+
+            var leader_teamwork_engineD = find.leader_teamwork_engineD[0].filename
+
+            var security_awaD = find.security_awaD[0].filename
 
 
         // if (req.files.length <= 0) {
@@ -146,13 +185,13 @@ exports.create = async (req, res, next) => {
 
 
 
-    const { first_name, last_name, email, phone, coc, expiration, covid_19, fitness, yellowF, PSSR, SURV, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific } = req.body;
+    const { first_name, last_name, email, phone, coc, expiration, covid_19, fitness, yellowF, PSSR, SURVIVAL, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific } = req.body;
     // let searchTerm = req.body.search;
 
 
 
     //User the connection
-    connection.query('INSERT INTO user SET ?', { user_id: decoded.id, first_name: first_name, last_name: last_name, email: email, phone: phone, coc: coc, expiration: expiration, covid_19: covid_19, covid_19D: covid_19D, fitness: fitness, fitnessD: fitnessD, yellowF: yellowF, yellowFD: yellowFD, PSSR: PSSR, SURV: SURV, FFB: FFB, ADV: ADV, elementary: elementary, MAMS: MAMS, FRC: FRC, medical_first: medical_first, medical_care: medical_care, GMDSS: GMDSS, RADAR: RADAR, ARPA: ARPA, arpa_btw: arpa_btw, ecdis_gen: ecdis_gen, SSO: SSO, leadership_managerial: leadership_managerial, high_voltage: high_voltage, leader_teamwork_engine: leader_teamwork_engine, leader_teamwork_deck: leader_teamwork_deck, security_awa: security_awa, security_duties: security_duties, basic_saf_fam: basic_saf_fam, security_related_fam: security_related_fam, ecdis_specific: ecdis_specific }, (err, rows) => {
+    connection.query('INSERT INTO user SET ?', { user_id: decoded.id, first_name: first_name, last_name: last_name, email: email, phone: phone, coc: coc, expiration: expiration, covid_19: covid_19, covid_19D: covid_19D, fitness: fitness, fitnessD: fitnessD,  basic_saf_famD:basic_saf_famD, security_related_famD:security_related_famD, PSSRD:PSSRD, SURVD:SURVD, FFBD:FFBD, ADVD:ADVD, elementaryD:elementaryD, MAMSD:MAMSD, FRCD:FRCD, medical_firstD:medical_firstD, medical_careD:medical_careD, GMDSSD:GMDSSD, RADARD:RADARD, ARPAD:ARPAD, arpa_btwD:arpa_btwD, ecdis_genD:ecdis_genD, ecdis_specificD:ecdis_specificD, SSOD:SSOD, leadership_managerialD:leadership_managerialD, high_voltageD:high_voltageD, leader_teamwork_deckD:leader_teamwork_deckD, leader_teamwork_engineD:leader_teamwork_engineD, security_awaD:security_awaD, security_dutiesD:security_dutiesD,yellowF: yellowF, yellowFD: yellowFD, PSSR: PSSR, SURVIVAL: SURVIVAL, FFB: FFB, ADV: ADV, elementary: elementary, MAMS: MAMS, FRC: FRC, medical_first: medical_first, medical_care: medical_care, GMDSS: GMDSS, RADAR: RADAR, ARPA: ARPA, arpa_btw: arpa_btw, ecdis_gen: ecdis_gen, SSO: SSO, leadership_managerial: leadership_managerial, high_voltage: high_voltage, leader_teamwork_engine: leader_teamwork_engine, leader_teamwork_deck: leader_teamwork_deck, security_awa: security_awa, security_duties: security_duties, basic_saf_fam: basic_saf_fam, security_related_fam: security_related_fam, ecdis_specific: ecdis_specific }, (err, rows) => {
         if (!err) {
             res.render('add-crew', { alert: 'Crew member added succesfully!' });
         } else {
