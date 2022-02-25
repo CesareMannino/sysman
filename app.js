@@ -2,8 +2,12 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const path = require('path');
 bodyParser = require("body-parser");
-// to be removed when deployed in heroku
 
+
+
+// aws.config.region = 'us-east-1';
+
+// to be removed when deployed in heroku
 require("dotenv").config();
 const cookieParser = require('cookie-parser');
 
@@ -32,3 +36,4 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Listening on port ${port}`));
+
