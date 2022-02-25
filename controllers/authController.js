@@ -62,7 +62,7 @@ exports.login = async (req, res) => {
             //     })
             // }
             //conditional if statement to compare password in database and password inserted by the client
-            if (!results || !(await bcrypt.compare(password, results[0].password))) {
+            if (!results || !(await bcrypt.compare(password, results[0].password || error===null))) {
                 res.status(401).render('login', {
                     message: 'Email or Password is incorrect'
                 }) //conditional statement to fetch the id of the client and signign in with sign() function
