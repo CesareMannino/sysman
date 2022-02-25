@@ -4,12 +4,11 @@ const bcrypt = require('bcryptjs');
 const { promisify } = require('util');
 
 var db_config = {
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_NAME
+    host: "us-cdbr-east-04.cleardb.com",
+    user: "bbaaff48f634c6",
+    password: "dacbf7fa",
+    database: "heroku_c7ad469172e97f3"
 };
-
 var connection;
 
 
@@ -57,12 +56,9 @@ exports.login = async (req, res) => {
         
             // conditional statement to handle the wrong username error
             console.log("these are the results:",results)
-            // if (results == '') {
-            //     res.status(401).render('login', {
-            //         message: 'Email or Password is incorrect'
-            //     })
-            // }
+           
             //conditional if statement to compare password in database and password inserted by the client
+            // results =="" in case wrong user name or password inserted
             if (results == "" || !(await bcrypt.compare(password, results[0].password))) {
                 res.status(401).render('login', {
                     message: 'Email or Password is incorrect'
