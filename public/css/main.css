@@ -38,8 +38,17 @@ img {
   background-color: #008CBA;
 }
 
+.container {
+  max-width: 20%;
+}
+
+@media screen and (max-width: 900px) {
+  .container {
+    max-width: 100%;
+  }
+}
+
 .card {
-  margin-left: 7rem;
   margin-bottom: 10px;
   text-align: center;
   width: 360px;
@@ -198,16 +207,6 @@ navreg li a {
 
 navreg li a:hover {
   color: #e5ff00;
-}
-
-.container {
-  max-width: 40%;
-}
-
-@media screen and (max-width: 900px) {
-  .container {
-    max-width: 80%;
-  }
 }
 
 .avatar-ctn {
