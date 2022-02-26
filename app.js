@@ -15,7 +15,8 @@ const cookieParser = require('cookie-parser');
 const app = express();
 
 //to load static file
-app.use(express.static("public"));
+// app.use(express.static("public"));
+app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: true })); //To parse URL-encoded bodies (as sent by HTML forms) set from false to true as per bezkoder tutorial
 
 app.use(express.json()); //To parse the incoming requests with JSON bodies
@@ -31,7 +32,7 @@ app.use('/auth', require('./routes/auth'));
 app.set('views', __dirname + '/views');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, 'public')));
+
 
 
 const port = process.env.PORT || 5000;

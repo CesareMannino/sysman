@@ -332,7 +332,7 @@ exports.view = (req, res) => {
         //when done with the connection, release it
         if (!err) {
             let removedUser = req.query.removed;
-            res.render('ui', { rows, removedUser });
+            res.render('ui', {layout: 'main2', rows, removedUser });
         } else {
             console.log(err);
         }

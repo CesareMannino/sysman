@@ -13,24 +13,26 @@ const authController = require('../controllers/authController')
 
 
 router.get('/', (req, res) => {
-  res.render('home', { layout: 'main2' })
+  res.render('home', { layout: 'main' })
 });
 
 
 // routing for the register page
 router.get('/register', (req, res) => {
-  res.render('register', { layout: 'main2' })
+  res.render('register', { layout: 'main' })
 });
 
 router.get('/login', (req, res) => {
-  res.render('login', { layout: 'main2' })
+  res.render('login', { layout: 'main' })
 });
+
+
 
 
 router.get('/profile', authController.isLoggedIn, (req, res) => {
   // console.log(req.user);
   if (req.user) {
-    res.render('profile', { layout: 'main2', user: req.user });
+    res.render('profile', { layout: 'main', user: req.user });
   } else {
     res.redirect('/login');
   }
@@ -49,10 +51,10 @@ router.get('/ui', checkAuth, authController.isLoggedIn, userController.view, (re
 
 });
 
-router.get('/upload/:pic', function (req, res) {
-  var file = __dirname + '/../upload/' + req.params.pic;
-  res.download(file);
-});
+// router.get('/upload/:pic', function (req, res) {
+//   var file = __dirname + '/../upload/' + req.params.pic;
+//   res.download(file);
+// });
 
 router.get('/index', userController.readfile);
 
