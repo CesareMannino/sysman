@@ -38,8 +38,7 @@ img {
   background-color: #008CBA;
 }
 
-.card {
-  margin-left: 7rem;
+.cardp {
   margin-bottom: 10px;
   text-align: center;
   width: 360px;
@@ -50,7 +49,7 @@ img {
   background-color: #fff;
 }
 
-.card__image {
+.cardp__image {
   display: block;
   margin: 0 auto;
   width: 100px;
@@ -64,12 +63,12 @@ img {
   border: 3px solid #fff;
 }
 
-.card__title {
+.cardp__title {
   margin: 0;
   color: #c52936;
 }
 
-.card__job {
+.cardp__job {
   color: #6E8192;
 }
 

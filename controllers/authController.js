@@ -4,10 +4,10 @@ const bcrypt = require('bcryptjs');
 const { promisify } = require('util');
 
 var db_config = {
-    host: "us-cdbr-east-04.cleardb.com",
-    user: "bbaaff48f634c6",
-    password: "dacbf7fa",
-    database: "heroku_c7ad469172e97f3"
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME
 };
 
 var connection;
@@ -54,16 +54,11 @@ exports.login = async (req, res) => {
         }
 
         connection.query('SELECT * FROM login WHERE email=?', [email], async (error, results) => {
-        
-            // conditional statement to handle the wrong username error
-            console.log("these are the results:",results)
-           
-            //conditional if statement to compare password in database and password inserted by the client
-            // results =="" in case wrong user name or password inserted
-            if (results == "" || !(await bcrypt.compare(password, results[0].password))) {
+            // console.log(results);
+            if ( results == "" || !(await bcrypt.compare(password, results[0].password))) {
                 res.status(401).render('login', {
                     message: 'Email or Password is incorrect'
-                }) //conditional statement to fetch the id of the client and signign in with sign() function
+                })
             } else {
                 const id = results[0].id;
                 const token = jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -73,10 +68,10 @@ exports.login = async (req, res) => {
                 // console.log('the token is:' + token);
                 const cookieOptions = {
                     expires: new Date(
-                        Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000 // 24 hours converted in milliseconds to set the expiration cookies to 24 hours
+                        Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
                     ),
                     httpOnly: true
-                }//setting of cookies on the browser and redirecting to the user interface page
+                }
                 res.cookie('jwt', token, cookieOptions);
                 res.status(200).redirect('/ui');
             }
@@ -84,7 +79,7 @@ exports.login = async (req, res) => {
         });
 
     } catch (error) {
-        console.log("this is the error:", error)
+        console.log(error)
     }
 
 }
@@ -150,16 +145,16 @@ exports.isLoggedIn = async (req, res, next) => {
     if (req.cookies.jwt) {
         try {
             //1)verify the token
-            decoded = await promisify(jwt.verify)(req.cookies.jwt,
+             decoded = await promisify(jwt.verify)(req.cookies.jwt,
                 process.env.JWT_SECRET
             );
 
-
-
+           
+      
             //2) Check if the user still exists
             connection.query('SELECT * FROM login WHERE id = ?', [decoded.id], (error, result) => {
                 // console.log(result);
-
+               
                 if (!result) {
                     return next();
                 }
@@ -169,13 +164,13 @@ exports.isLoggedIn = async (req, res, next) => {
         } catch (error) {
             console.log(error);
             return next();
-        }
+        } 
     } else {
         next();
     }
 }
 
 exports.logout = async (req, res) => {
-    res.clearCookie('jwt');
-    res.status(200).redirect('/');
+res.clearCookie('jwt'); 
+res.status(200).redirect('/');
 }

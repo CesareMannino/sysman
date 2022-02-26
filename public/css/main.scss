@@ -37,8 +37,21 @@ img { width: 100%; }
 
 .btn-primary { background-color: #008CBA; }
 
-.card {
-  margin-left: 7rem;
+
+// .container{
+//   max-width: 39%;
+// }
+
+// @media screen and (max-width: 900px) {
+//   .container {
+//     max-width: 70%;
+//   }
+// }
+
+
+.cardp {
+  // margin-left: 7rem;
+  
   margin-bottom: 10px;
   text-align: center;
   width: 360px;
@@ -63,9 +76,9 @@ img { width: 100%; }
   color: #c52936 }
   &__job { color: #6E8192;}
 
-
-
 }
+
+
 // #download{
 //   display: flex;
 //   align-content: flex-end;
