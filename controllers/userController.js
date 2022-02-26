@@ -59,7 +59,7 @@ exports.find = (req, res) => {
     //User the connection
     connection.query('SELECT * FROM user WHERE first_name LIKE ? OR last_name LIKE ?', ['%' + searchTerm + '%', '%' + searchTerm + '%'], (err, rows) => {
         if (!err) {
-            res.render('ui', { rows });
+            res.render('ui', {layout: 'main2', rows });
         } else {
             console.log(err);
         }
@@ -68,7 +68,7 @@ exports.find = (req, res) => {
 };
 
 exports.form = (req, res) => {
-    res.render('add-crew');
+    res.render('add-crew',{layout: 'main2'});
 }
 
 //Add crew member
