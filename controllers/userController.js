@@ -552,9 +552,9 @@ exports.update = async (req, res) => {
     } catch (error) {
         console.log(error);
 
-        if (error.code === "LIMIT_UNEXPECTED_FILE") {
+        if (error.code === "LIMIT_UNEXPECTED_FILE" || "LIMIT_FILE_SIZE") {
 
-            return res.send("Too many files to upload.");
+            return res.send("File larger than 3 MB are not allowed.");
         }
         // return res.send(`Error when trying upload many files: ${error}`);
     }
