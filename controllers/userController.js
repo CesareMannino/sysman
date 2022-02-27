@@ -547,7 +547,7 @@ exports.update = async (req, res) => {
         }
 
 
-
+// --- Multer error.code handling for unespected file and size limit---
 
     } catch (error) {
         console.log(error);
