@@ -18,49 +18,51 @@
         <h4><a href='/ui'>Vessel Management System</a></h4>
         <ul>
 
-           {{#if user}}
-      {{!-- <li><a href="/profile">Profile</a></li> --}}
-      <li><a href="/auth/logout">Logout</a></li>
-      {{else}}
-      <li><a href="/login">Login</a></li>
-      <li><a href="/register">Register</a></li>
-      {{/if}}
+            {{#if user}}
+            {{!-- <li><a href="/profile">Profile</a></li> --}}
+            <li><a href="/auth/logout">Logout</a></li>
+            {{else}}
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Register</a></li>
+            {{/if}}
         </ul>
     </navreg>
 
 
-    
-        <div class='row'>
-            <div class='row justify-content-center'>
-                <div class="cardp">
-                    <div class="avatar-ctn">
-                        <img src='images/profile.png' class='avatar' alt='user profile picture'>
-                    </div>
-                    <div class="card-body">
-                        <h5 class='card-title'>{{user.name}}</h5>
-                        <p class="card-text"></p>
-                        <a href='#' class='btn btn-primary'>{{user.email}}</a>
-                    </div>
+
+    <div class='row'>
+        <div class='row justify-content-center'>
+            <div class="cardp">
+                <div class="avatar-ctn">
+                    <img src='images/profile.png' class='avatar' alt='user profile picture'>
+                </div>
+                <div class="card-body">
+                    <h5 class='card-title'>{{user.name}}</h5>
+                    <p class="card-text"></p>
+                    <a href='#' class='btn btn-primary'>{{user.email}}</a>
                 </div>
             </div>
 
+
             <div class='row justify-content-center'>
-                <div class="card text-center">
-                    <div class="card-header">
-                        Profile Page
+                <div class="cardp">
+                    <div class="card text-center">
+                        <div class="card-header">
+                            Profile Page
+                        </div>
+                        <div class="class body">
+                            <h5 class='card-title'>Hey {{user.name}} Welcome back</h5>
+                            <p class="card-text">
+                                this is you profile page
+                            </p>
+                            <a href='#' class='btn btn-primary'>GO UP</a>
+                        </div>
+                        <div class="card-footer text-muted">Crew management software</div>
                     </div>
-                    <div class="class body">
-                        <h5 class='card-title'>Hey {{user.name}} Welcome back</h5>
-                        <p class="card-text">
-                            this is you profile page
-                        </p>
-                        <a href='#' class='btn btn-primary'>GO UP</a>
-                    </div>
-                    <div class="card-footer text-muted">Crew management software</div>
                 </div>
             </div>
         </div>
-    
+
 
 </body>
 
