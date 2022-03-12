@@ -1,0 +1,4 @@
+curl https://api.gumroad.com/v2/licenses/verify \
+  -d "product_permalink=dpduj" \
+  -d "license_key=8860BCEB-D6D64A36-B47F0812-BFE9208E" \
+  -X POST
