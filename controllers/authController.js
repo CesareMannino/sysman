@@ -5,10 +5,10 @@ const { promisify } = require('util');
 
 
 var db_config = {
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_NAME
+    host: "us-cdbr-east-04.cleardb.com",
+    user: "bbaaff48f634c6",
+    password: "dacbf7fa",
+    database: "heroku_c7ad469172e97f3"
 };
 
 var connection;
@@ -65,6 +65,16 @@ exports.login = async (req, res) => {
                 const token = jwt.sign({ id }, process.env.JWT_SECRET, {
                     expiresIn: process.env.JWT_EXPIRES_IN
                 });
+
+
+// ------------request package to use the gumroad api--------------
+
+//                 var request = require('request');
+// request('http://www.httpbin.org', function (error, response, body) {
+//     if (!error && response.statusCode == 200) {
+//         console.log(body);
+//     }
+// })
 
                 // console.log('the token is:' + token);
                 const cookieOptions = {
