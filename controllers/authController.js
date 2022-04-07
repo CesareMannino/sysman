@@ -66,6 +66,16 @@ exports.login = async (req, res) => {
                     expiresIn: process.env.JWT_EXPIRES_IN
                 });
 
+
+// ------------request package to use the gumroad api--------------
+
+//                 var request = require('request');
+// request('http://www.httpbin.org', function (error, response, body) {
+//     if (!error && response.statusCode == 200) {
+//         console.log(body);
+//     }
+// })
+
                 // console.log('the token is:' + token);
                 const cookieOptions = {
                     expires: new Date(
