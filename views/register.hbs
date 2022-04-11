@@ -5,9 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="/css/main.css">
     <title>Home</title>
+
+
 
 </head>
 
@@ -51,17 +53,11 @@
                         <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm">
                     </div>
 
-<<<<<<< HEAD
-                       <div class="mb-3">
-                        <label for="License key" class="form-label">License key</label>
-                        <input type="text" class="form-control" id="passwordConfirm" name="licencekey">
-=======
 {{!-- licence key --}}
 
                        <div class="mb-3">
                         <label for="passwordConfirm" class="form-label">Licence key</label>
-                        <input type="text" class="form-control" id="passwordConfirm" name="passwordConfirm" maxlength="35">
->>>>>>> 1fa813ad27356f7d8427bc91dab5fe9aae1d259d
+                        <input type="text" class="form-control" id="licencekey" name="licencekey" maxlength="35">
                     </div>
 
 
@@ -77,17 +73,6 @@
 
     </div>
 
-
-<script>
-
-
-curl https://api.gumroad.com/v2/licenses/verify 
-  -d "product_permalink=dpduj" 
-  -d "license_key=974CF6A7-F0364212-81D91B15-AD604857" 
-  -X POST
-
-
-</script>
 
 </body>
 

@@ -3,12 +3,14 @@ const mysql = require('mysql');
 const bcrypt = require('bcryptjs');
 const { promisify } = require('util');
 
+
 var db_config = {
     host: "us-cdbr-east-04.cleardb.com",
     user: "bbaaff48f634c6",
     password: "dacbf7fa",
     database: "heroku_c7ad469172e97f3"
 };
+
 var connection;
 
 
@@ -41,17 +43,18 @@ handleDisconnect();
 
 
 // code in case the user leave the login space empty
+//------- login page middleware-------
 
 exports.login = async (req, res) => {
     try {
         const { email, password } = req.body;
-
+       
         if (!email || !password) {
             return res.status(400).render('login', {
                 message: 'Please provide an email and password'
             })
         }
-
+        
         connection.query('SELECT * FROM login WHERE email=?', [email], async (error, results) => {
             // console.log(results);
             if ( results == "" || !(await bcrypt.compare(password, results[0].password))) {
@@ -113,7 +116,23 @@ exports.register = (req, res) => {
     // const passwordConfirm = req.body.passwordConfirm;
 
     // Destructor
-    const { name, email, password, passwordConfirm } = req.body;
+    const { name, email, password, passwordConfirm,licencekey } = req.body;
+    console.log(licencekey)
+
+    // $.ajax({
+    //     type: "POST",
+    //     url: "https://api.gumroad.com/v2/licenses/verify",
+    //     data: {
+    //         product_permalink: "xdpduj",
+    //         license_key:"0E2AE1C4-1E1148FE-934E6027-F73F36A6"
+    //     },
+    //     success: function(data) {
+    //       console.log(data);
+    //       //do something when request is successfull
+    //     },
+    //     dataType: "json"
+    //   });
+    
     //query that order to MySQL to get the user email only once
     connection.query('SELECT email FROM login WHERE email = ?', [email], async (error, results) => {
         if (error) {
