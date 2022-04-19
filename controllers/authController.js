@@ -2,13 +2,16 @@ const jwt = require('jsonwebtoken');
 const mysql = require('mysql');
 const bcrypt = require('bcryptjs');
 const { promisify } = require('util');
+var XMLHttpRequest = require('xhr2');
+var xhr = new XMLHttpRequest();
+
 
 
 var db_config = {
-    host: "us-cdbr-east-04.cleardb.com",
-    user: "bbaaff48f634c6",
-    password: "dacbf7fa",
-    database: "heroku_c7ad469172e97f3"
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME
 };
 
 var connection;
@@ -48,16 +51,16 @@ handleDisconnect();
 exports.login = async (req, res) => {
     try {
         const { email, password } = req.body;
-       
+
         if (!email || !password) {
             return res.status(400).render('login', {
                 message: 'Please provide an email and password'
             })
         }
-        
+
         connection.query('SELECT * FROM login WHERE email=?', [email], async (error, results) => {
             // console.log(results);
-            if ( results == "" || !(await bcrypt.compare(password, results[0].password))) {
+            if (results == "" || !(await bcrypt.compare(password, results[0].password))) {
                 res.status(401).render('login', {
                     message: 'Email or Password is incorrect'
                 })
@@ -68,14 +71,6 @@ exports.login = async (req, res) => {
                 });
 
 
-// ------------request package to use the gumroad api--------------
-
-//                 var request = require('request');
-// request('http://www.httpbin.org', function (error, response, body) {
-//     if (!error && response.statusCode == 200) {
-//         console.log(body);
-//     }
-// })
 
                 // console.log('the token is:' + token);
                 const cookieOptions = {
@@ -97,43 +92,33 @@ exports.login = async (req, res) => {
 }
 
 
-
-
-
-// // home page
-// exports.view = (req, res) => {
-// res.render('home');
-// }
-
-
 exports.register = (req, res) => {
-    // console.log(req.body);
-
-    // is replaced by Destructor
-    // const name = req.body.name;
-    // const email = req.body.email;
-    // const password = req.body.password;
-    // const passwordConfirm = req.body.passwordConfirm;
-
     // Destructor
-    const { name, email, password, passwordConfirm,licencekey } = req.body;
-    console.log(licencekey)
+    const { name, email, password, passwordConfirm, licencekey } = req.body;
 
-    // $.ajax({
-    //     type: "POST",
-    //     url: "https://api.gumroad.com/v2/licenses/verify",
-    //     data: {
-    //         product_permalink: "xdpduj",
-    //         license_key:"0E2AE1C4-1E1148FE-934E6027-F73F36A6"
-    //     },
-    //     success: function(data) {
-    //       console.log(data);
-    //       //do something when request is successfull
-    //     },
-    //     dataType: "json"
-    //   });
+    var url = "https://api.gumroad.com/v2/licenses/verify";
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", url);
+
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            console.log(xhr.status);
+            console.log(xhr.responseText);
+            
+        }
+    };
+
+
+    var data = "product_permalink=dpduj" + "&" + "license_key=" + `${licencekey}`
+
+    xhr.send(data);
+
+
+
     
-    //query that order to MySQL to get the user email only once
     connection.query('SELECT email FROM login WHERE email = ?', [email], async (error, results) => {
         if (error) {
             console.log(error);
@@ -146,16 +131,16 @@ exports.register = (req, res) => {
             return res.render('register', {
                 message: 'Password do not match'
             });
-        }
+        } 
 
         let hashedPassword = await bcrypt.hash(password, 8);
-        // console.log(hashedPassword);
+       
 
         connection.query('INSERT INTO login SET ?', { name: name, email: email, password: hashedPassword }, (error, results) => {
             if (error) {
                 console.log(error);
             } else {
-                // console.log(results);
+               
                 return res.render('register', {
                     message: 'User registered'
                 });
@@ -173,16 +158,16 @@ exports.isLoggedIn = async (req, res, next) => {
     if (req.cookies.jwt) {
         try {
             //1)verify the token
-             decoded = await promisify(jwt.verify)(req.cookies.jwt,
+            decoded = await promisify(jwt.verify)(req.cookies.jwt,
                 process.env.JWT_SECRET
             );
 
-           
-      
+
+
             //2) Check if the user still exists
             connection.query('SELECT * FROM login WHERE id = ?', [decoded.id], (error, result) => {
                 // console.log(result);
-               
+
                 if (!result) {
                     return next();
                 }
@@ -192,13 +177,13 @@ exports.isLoggedIn = async (req, res, next) => {
         } catch (error) {
             console.log(error);
             return next();
-        } 
+        }
     } else {
         next();
     }
 }
 
 exports.logout = async (req, res) => {
-res.clearCookie('jwt'); 
-res.status(200).redirect('/');
+    res.clearCookie('jwt');
+    res.status(200).redirect('/');
 }
