@@ -29,13 +29,14 @@ var storage = multer.diskStorage({
 
 
 
-const  accessKeyId = 'AKIARQZCUZGTL2KHK6WK';
-const secretAccessKey = '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';
-
+const  accessKeyId = 'AKIAS3S6JLQFLQQ6H56D';
+const secretAccessKey = '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';
+const region = "eu-north-1"
 
 const s3 = new aws.S3({
   accessKeyId,
   secretAccessKey,
+  region
   
 });
 
@@ -43,7 +44,7 @@ var uploadFiles = multer({
   limits: { fileSize: 10000000 }, 
   storage:  multerS3({
     s3: s3,
-    bucket: 'uploadvms',
+    bucket: 's3-nodejs-bucket321',
     acl: "public-read",
     metadata: function (req, file, cb) {
       cb(null, {fieldName: file.fieldname});

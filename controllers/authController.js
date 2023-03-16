@@ -6,13 +6,21 @@ var XMLHttpRequest = require('xhr2');
 var xhr = new XMLHttpRequest();
 
 
-
 var db_config = {
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_NAME
+    host: "containers-us-west-195.railway.app",
+    user: "root",
+    password: "CoLsJ6ELIesOI7x5MuVv",
+    database: "railway"
 };
+
+
+
+// var db_config = {
+//     host: process.env.DB_HOST,
+//     user: process.env.DB_USER,
+//     password: process.env.DB_PASS,
+//     database: process.env.DB_NAME
+// };
 
 var connection;
 
