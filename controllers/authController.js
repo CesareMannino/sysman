@@ -10,7 +10,8 @@ var db_config = {
     host: "containers-us-west-195.railway.app",
     user: "root",
     password: "CoLsJ6ELIesOI7x5MuVv",
-    database: "railway"
+    database: "railway",
+    port: 6393
 };
 
 
