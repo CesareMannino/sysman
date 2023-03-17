@@ -9,8 +9,9 @@ var xhr = new XMLHttpRequest();
 var db_config = {
     host: "containers-us-west-195.railway.app",
     user: "root",
-    password: "CoLsJ6ELIesOI7x5MuVv",
-    database: "railway"
+    password: "IZkp2b6zIKGex78oVgQN",
+    database: "railway",
+    port: 6444
 };
 
 
