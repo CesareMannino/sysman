@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
-// const mysql = require('mysql');
-const mysql = require('mysql2/promise');
+const mysql = require('mysql');
 const bcrypt = require('bcryptjs');
 const { promisify } = require('util');
 var XMLHttpRequest = require('xhr2');
@@ -10,8 +9,8 @@ var xhr = new XMLHttpRequest();
 var db_config = {
     host: "containers-us-west-195.railway.app",
     user: "root",
-    password: process.env.RAILWAY_PASSWORD,
-    database: "railway",
+    password: "CoLsJ6ELIesOI7x5MuVv",
+    database: "railway"
 };
 
 
