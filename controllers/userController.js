@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const { promisify } = require('util');
 const upload = require("../middleware/upload");
+const emailNotifications = require('./emailNotifications');
 
 
 
@@ -305,13 +306,13 @@ exports.create = async (req, res, next) => {
 
 
 
-    const { first_name, last_name, email, phone, coc, expiration, covid_19, fitness, yellowF, PSSR, SURVIVAL, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific } = req.body;
+    const { first_name, last_name, email, phone, coc, certificate_of_competence, covid_19, fitness, yellowF, PSSR, SURVIVAL, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific } = req.body;
     // let searchTerm = req.body.search;
 
 
 
     //User the connection
-    connection.query('INSERT INTO user SET ?', { user_id: decoded.id, first_name: first_name, last_name: last_name, email: email, phone: phone, coc: coc, expiration: expiration, covid_19: covid_19, covid_19D: covid_19D, fitness: fitness, fitnessD: fitnessD, basic_saf_famD: basic_saf_famD, security_related_famD: security_related_famD, PSSRD: PSSRD, SURVD: SURVD, FFBD: FFBD, ADVD: ADVD, elementaryD: elementaryD, MAMSD: MAMSD, FRCD: FRCD, medical_firstD: medical_firstD, medical_careD: medical_careD, GMDSSD: GMDSSD, RADARD: RADARD, ARPAD: ARPAD, arpa_btwD: arpa_btwD, ecdis_genD: ecdis_genD, ecdis_specificD: ecdis_specificD, SSOD: SSOD, leadership_managerialD: leadership_managerialD, high_voltageD: high_voltageD, leader_teamwork_deckD: leader_teamwork_deckD, leader_teamwork_engineD: leader_teamwork_engineD, security_awaD: security_awaD, security_dutiesD: security_dutiesD, yellowF: yellowF, yellowFD: yellowFD, PSSR: PSSR, SURVIVAL: SURVIVAL, FFB: FFB, ADV: ADV, elementary: elementary, MAMS: MAMS, FRC: FRC, medical_first: medical_first, medical_care: medical_care, GMDSS: GMDSS, RADAR: RADAR, ARPA: ARPA, arpa_btw: arpa_btw, ecdis_gen: ecdis_gen, SSO: SSO, leadership_managerial: leadership_managerial, high_voltage: high_voltage, leader_teamwork_engine: leader_teamwork_engine, leader_teamwork_deck: leader_teamwork_deck, security_awa: security_awa, security_duties: security_duties, basic_saf_fam: basic_saf_fam, security_related_fam: security_related_fam, ecdis_specific: ecdis_specific }, (err, rows) => {
+    connection.query('INSERT INTO user SET ?', { user_id: decoded.id, first_name: first_name, last_name: last_name, email: email, phone: phone, coc: coc, certificate_of_competence: certificate_of_competence, covid_19: covid_19, covid_19D: covid_19D, fitness: fitness, fitnessD: fitnessD, basic_saf_famD: basic_saf_famD, security_related_famD: security_related_famD, PSSRD: PSSRD, SURVD: SURVD, FFBD: FFBD, ADVD: ADVD, elementaryD: elementaryD, MAMSD: MAMSD, FRCD: FRCD, medical_firstD: medical_firstD, medical_careD: medical_careD, GMDSSD: GMDSSD, RADARD: RADARD, ARPAD: ARPAD, arpa_btwD: arpa_btwD, ecdis_genD: ecdis_genD, ecdis_specificD: ecdis_specificD, SSOD: SSOD, leadership_managerialD: leadership_managerialD, high_voltageD: high_voltageD, leader_teamwork_deckD: leader_teamwork_deckD, leader_teamwork_engineD: leader_teamwork_engineD, security_awaD: security_awaD, security_dutiesD: security_dutiesD, yellowF: yellowF, yellowFD: yellowFD, PSSR: PSSR, SURVIVAL: SURVIVAL, FFB: FFB, ADV: ADV, elementary: elementary, MAMS: MAMS, FRC: FRC, medical_first: medical_first, medical_care: medical_care, GMDSS: GMDSS, RADAR: RADAR, ARPA: ARPA, arpa_btw: arpa_btw, ecdis_gen: ecdis_gen, SSO: SSO, leadership_managerial: leadership_managerial, high_voltage: high_voltage, leader_teamwork_engine: leader_teamwork_engine, leader_teamwork_deck: leader_teamwork_deck, security_awa: security_awa, security_duties: security_duties, basic_saf_fam: basic_saf_fam, security_related_fam: security_related_fam, ecdis_specific: ecdis_specific }, (err, rows) => {
         if (!err) {
             res.render('add-crew', { layout: 'main2', alert: 'Crew member added succesfully!' });
         } else {
@@ -336,6 +337,7 @@ exports.view = (req, res) => {
         if (!err) {
             let removedUser = req.query.removed;
             res.render('ui', { layout: 'main2', rows, removedUser });
+            
         } else {
             console.log(err);
         }
@@ -343,7 +345,8 @@ exports.view = (req, res) => {
     });
 };
 
-
+emailNotifications
+console.log(emailNotifications)
 
 // edit crew function
 exports.edit = (req, res) => {
@@ -572,7 +575,7 @@ exports.update = async (req, res) => {
     var email = post.email;
     var phone = post.phone;
     var coc = post.coc;
-    var expiration = post.expiration;
+    var certificate_of_competence = post.certificate_of_competence;
     var covid_19 = post.covid_19;
     var fitness = post.fitness;
     var yellowF = post.yellowF;
@@ -603,8 +606,7 @@ exports.update = async (req, res) => {
 
 
 
-
-    connection.query('UPDATE user SET first_name=? ,last_name=?, email=?, phone=?, coc=?, expiration=?, covid_19=?, covid_19D=?,  fitness=? ,fitnessD=?, yellowF=?, yellowFD=?, basic_saf_famD=?, security_related_famD=?, PSSR=?, PSSRD=?,  SURVD=?, FFBD=?,ADVD=?,  elementaryD=?, MAMSD=?, FRCD=?, medical_firstD=?, medical_careD=?, GMDSSD=?, RADARD=?, ARPAD=?, arpa_btwD=?, ecdis_genD=?, ecdis_specificD=?, SSOD=?, leadership_managerialD=?, high_voltageD=?, leader_teamwork_deckD=?,leader_teamwork_engineD=?, security_awaD=?, security_dutiesD=?,SURVIVAL=?, FFB=?, ADV=?, elementary=?, MAMS=?, FRC=?, medical_first=?, medical_care=?, GMDSS=?, RADAR=?, ARPA=?, arpa_btw=?, ecdis_gen=?, SSO=?, leadership_managerial=?, high_voltage=?, leader_teamwork_engine=?, leader_teamwork_deck=?, security_awa=?, security_duties=?, basic_saf_fam=?, security_related_fam=?,  ecdis_specific=?  WHERE id = ?', [first_name, last_name, email, phone, coc, expiration, covid_19, covid_19D, fitness, fitnessD, yellowF, yellowFD, basic_saf_famD, security_related_famD, PSSR, PSSRD, SURVD, FFBD, ADVD, elementaryD, MAMSD, FRCD, medical_firstD, medical_careD, GMDSSD, RADARD, ARPAD, arpa_btwD, ecdis_genD, ecdis_specificD, SSOD, leadership_managerialD, high_voltageD, leader_teamwork_deckD, leader_teamwork_engineD, security_awaD, security_dutiesD, SURVIVAL, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific, req.params.id],
+    connection.query('UPDATE user SET first_name=? ,last_name=?, email=?, phone=?, coc=?, certificate_of_competence=?, covid_19=?, covid_19D=?,  fitness=? ,fitnessD=?, yellowF=?, yellowFD=?, basic_saf_famD=?, security_related_famD=?, PSSR=?, PSSRD=?,  SURVD=?, FFBD=?,ADVD=?,  elementaryD=?, MAMSD=?, FRCD=?, medical_firstD=?, medical_careD=?, GMDSSD=?, RADARD=?, ARPAD=?, arpa_btwD=?, ecdis_genD=?, ecdis_specificD=?, SSOD=?, leadership_managerialD=?, high_voltageD=?, leader_teamwork_deckD=?,leader_teamwork_engineD=?, security_awaD=?, security_dutiesD=?,SURVIVAL=?, FFB=?, ADV=?, elementary=?, MAMS=?, FRC=?, medical_first=?, medical_care=?, GMDSS=?, RADAR=?, ARPA=?, arpa_btw=?, ecdis_gen=?, SSO=?, leadership_managerial=?, high_voltage=?, leader_teamwork_engine=?, leader_teamwork_deck=?, security_awa=?, security_duties=?, basic_saf_fam=?, security_related_fam=?,  ecdis_specific=?  WHERE id = ?', [first_name, last_name, email, phone, coc, certificate_of_competence, covid_19, covid_19D, fitness, fitnessD, yellowF, yellowFD, basic_saf_famD, security_related_famD, PSSR, PSSRD, SURVD, FFBD, ADVD, elementaryD, MAMSD, FRCD, medical_firstD, medical_careD, GMDSSD, RADARD, ARPAD, arpa_btwD, ecdis_genD, ecdis_specificD, SSOD, leadership_managerialD, high_voltageD, leader_teamwork_deckD, leader_teamwork_engineD, security_awaD, security_dutiesD, SURVIVAL, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific, req.params.id],
         (err, rows) => {
 
             if (!err) {

@@ -112,7 +112,7 @@ CREATE TABLE `user` (
   `email` varchar(100) NOT NULL,
   `phone` varchar(100) NOT NULL,
   `coc` varchar(100) NOT NULL,
-  `expiration` varchar(19) NOT NULL,
+  `certificate_of_competence` varchar(19) NOT NULL,
   `covid_19` varchar(100) NOT NULL,
   `fitness` varchar(100) NOT NULL,
   `yellowF` varchar(100) NOT NULL,

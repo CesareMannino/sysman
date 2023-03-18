@@ -7,12 +7,12 @@ var xhr = new XMLHttpRequest();
 
 
 var db_config = {
-    host: "containers-us-west-195.railway.app",
-    user: "root",
-    password: "IZkp2b6zIKGex78oVgQN",
-    database: "railway",
-    port: 6444
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: "nodejs-login"
 };
+
 
 
 
