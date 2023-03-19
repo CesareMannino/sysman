@@ -6,7 +6,20 @@
 </nav>
 <br>
 
+<script>
+const handlebars = require('handlebars');
 
+handlebars.registerHelper('notEqual', function(a, b, options) {
+  if (a !== b) {
+    return options.fn(this);
+  } else {
+    return options.inverse(this);
+  }
+});
+
+
+
+  </script>
 
 <div class='view-user p-5'>
 
@@ -55,11 +68,13 @@
     </div>
   </div>
 
-  <div class='row'>
-    <div class='col mb-3'>
-      ISSUING DATE: {{this.covid_19}}
-    </div>
+<div class='row'>
+  <div class='col mb-3'>
+    ISSUING DATE: {{#notEqual this.covid_19 "0000-00-00"}}{{this.covid_19}}{{/notEqual}}
   </div>
+</div>
+
+
   {{!-- DOWNLOAD BUTTON --}}
   <div class='col mb-4'>
     {{#if this.covid_19D}}
@@ -81,7 +96,7 @@
 
   <div class='row'>
     <div class='col mb-4'>
-      EXPIRY DATE: {{this.fitness}}
+   EXPIRY DATE: {{#notEqual this.fitness "0000-00-00"}}{{this.fitness}}{{/notEqual}}
     </div>
   </div>
   {{!-- DOWNLOAD BUTTON --}}
@@ -106,7 +121,7 @@
   </div>
   <div class='row'>
     <div class='col mb-4'>
-      ISSUING DATE: {{this.yellowF}}
+    ISSUING DATE: {{#notEqual this.yellowF "0000-00-00"}}{{this.yellowF}}{{/notEqual}}
     </div>
   </div>
 
@@ -146,7 +161,7 @@
   <div class='row'>
     <div class='col mb-3'>
 
-      ISSUING DATE: {{this.basic_saf_fam}}
+         ISSUING DATE: {{#notEqual this.basic_saf_fam "0000-00-00"}}{{this.basic_saf_fam}}{{/notEqual}}
     </div>
   </div>
 

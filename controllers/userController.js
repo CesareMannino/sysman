@@ -662,8 +662,7 @@ exports.delete = (req, res) => {
 
 //to view the single crew member based on his id
 exports.viewall = (req, res) => {
-
-    connection.query('SELECT * FROM user WHERE id=?', [req.params.id], (err, rows) => {
+    connection.query('SELECT id, first_name, email, DATE_FORMAT(covid_19, "%M %d, %Y") as covid_19 FROM user WHERE id=?', [req.params.id], (err, rows) => {
         //when done with the connection, release it
         if (!err) {
             res.render('view-crew', { layout: 'main2', rows });

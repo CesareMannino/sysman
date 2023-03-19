@@ -2,7 +2,7 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const path = require('path');
 bodyParser = require("body-parser");
-
+const helpers = require("./views/helpers");
 
 
 // aws.config.region = 'us-east-1';
@@ -22,7 +22,13 @@ app.use(express.urlencoded({ extended: true })); //To parse URL-encoded bodies (
 app.use(express.json()); //To parse the incoming requests with JSON bodies
 app.use(cookieParser());
 
-app.engine("hbs", exphbs({ extname: ".hbs" }));//Templating engine to change the extenion of file from .handlebar to .hbs
+app.engine("hbs", exphbs({
+     extname: ".hbs",
+     defaultLayout: "layout",
+    layoutsDir: __dirname + "/views/layouts/",
+    partialsDir: __dirname + "/views/partials/",
+    helpers: helpers
+    }));//Templating engine to change the extenion of file from .handlebar to .hbs
 app.set("view engine", "hbs");
 
 app.use("/", require('./routes/user'));
