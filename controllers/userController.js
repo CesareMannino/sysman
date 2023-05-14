@@ -295,7 +295,7 @@ exports.create = async (req, res, next) => {
     } catch (error) {
         console.log(error);
 
-        if (error.code === "LIMIT_UNEXPECTED_FILE" || "LIMIT_FILE_SIZE" ) {
+        if (error.code === "LIMIT_UNEXPECTED_FILE" || "LIMIT_FILE_SIZE") {
 
             return res.send("File larger than 3 MB are not allowed.");
         }
@@ -306,13 +306,13 @@ exports.create = async (req, res, next) => {
 
 
 
-    const { first_name, last_name, email, phone, coc, certificate_of_competence, covid_19, fitness, yellowF, PSSR, SURVIVAL, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific } = req.body;
+    const { first_name, last_name, email, phone, coc, certificate_of_competence_date, covid_19_date, fitness_date, yellowF_date, PSSR_date, SURVIVAL_date, FFB_date, ADV_date, elementary_date, MAMS_date, FRC_date, medical_first_date, medical_care_date, GMDSS_date, RADAR_date, ARPA_date, arpa_btw_date, ecdis_gen_date, SSO_date, leadership_managerial_date, high_voltage_date, leader_teamwork_engine_date, leader_teamwork_deck_date, security_awa_date, security_duties_date, basic_saf_fam_date, security_related_fam_date, ecdis_specific_date } = req.body;
     // let searchTerm = req.body.search;
 
 
 
     //User the connection
-    connection.query('INSERT INTO user SET ?', { user_id: decoded.id, first_name: first_name, last_name: last_name, email: email, phone: phone, coc: coc, certificate_of_competence: certificate_of_competence, covid_19: covid_19, covid_19D: covid_19D, fitness: fitness, fitnessD: fitnessD, basic_saf_famD: basic_saf_famD, security_related_famD: security_related_famD, PSSRD: PSSRD, SURVD: SURVD, FFBD: FFBD, ADVD: ADVD, elementaryD: elementaryD, MAMSD: MAMSD, FRCD: FRCD, medical_firstD: medical_firstD, medical_careD: medical_careD, GMDSSD: GMDSSD, RADARD: RADARD, ARPAD: ARPAD, arpa_btwD: arpa_btwD, ecdis_genD: ecdis_genD, ecdis_specificD: ecdis_specificD, SSOD: SSOD, leadership_managerialD: leadership_managerialD, high_voltageD: high_voltageD, leader_teamwork_deckD: leader_teamwork_deckD, leader_teamwork_engineD: leader_teamwork_engineD, security_awaD: security_awaD, security_dutiesD: security_dutiesD, yellowF: yellowF, yellowFD: yellowFD, PSSR: PSSR, SURVIVAL: SURVIVAL, FFB: FFB, ADV: ADV, elementary: elementary, MAMS: MAMS, FRC: FRC, medical_first: medical_first, medical_care: medical_care, GMDSS: GMDSS, RADAR: RADAR, ARPA: ARPA, arpa_btw: arpa_btw, ecdis_gen: ecdis_gen, SSO: SSO, leadership_managerial: leadership_managerial, high_voltage: high_voltage, leader_teamwork_engine: leader_teamwork_engine, leader_teamwork_deck: leader_teamwork_deck, security_awa: security_awa, security_duties: security_duties, basic_saf_fam: basic_saf_fam, security_related_fam: security_related_fam, ecdis_specific: ecdis_specific }, (err, rows) => {
+    connection.query('INSERT INTO user SET ?', { user_id: decoded.id, first_name: first_name, last_name: last_name, email: email, phone: phone, coc: coc, certificate_of_competence_date: certificate_of_competence_date, covid_19_date: covid_19_date, covid_19D: covid_19D, fitness_date: fitness_date, fitnessD: fitnessD, basic_saf_famD: basic_saf_famD, security_related_famD: security_related_famD, PSSRD: PSSRD, SURVD: SURVD, FFBD: FFBD, ADVD: ADVD, elementaryD: elementaryD, MAMSD: MAMSD, FRCD: FRCD, medical_firstD: medical_firstD, medical_careD: medical_careD, GMDSSD: GMDSSD, RADARD: RADARD, ARPAD: ARPAD, arpa_btwD: arpa_btwD, ecdis_genD: ecdis_genD, ecdis_specificD: ecdis_specificD, SSOD: SSOD, leadership_managerialD: leadership_managerialD, high_voltageD: high_voltageD, leader_teamwork_deckD: leader_teamwork_deckD, leader_teamwork_engineD: leader_teamwork_engineD, security_awaD: security_awaD, security_dutiesD: security_dutiesD, yellowF_date: yellowF_date, yellowFD: yellowFD, PSSR_date: PSSR_date, SURVIVAL_date: SURVIVAL_date, FFB_date: FFB_date, ADV_date: ADV_date, elementary_date: elementary_date, MAMS_date: MAMS_date, FRC_date: FRC_date, medical_first_date: medical_first_date, medical_care_date: medical_care_date, GMDSS_date: GMDSS_date, RADAR_date: RADAR_date, ARPA_date: ARPA_date, arpa_btw_date: arpa_btw_date, ecdis_gen_date: ecdis_gen_date, SSO_date: SSO_date, leadership_managerial_date: leadership_managerial_date, high_voltage_date: high_voltage_date, leader_teamwork_engine_date: leader_teamwork_engine_date, leader_teamwork_deck_date: leader_teamwork_deck_date, security_awa_date: security_awa_date, security_duties_date: security_duties_date, basic_saf_fam_date: basic_saf_fam_date, security_related_fam_date: security_related_fam_date, ecdis_specific_date: ecdis_specific_date }, (err, rows) => {
         if (!err) {
             res.render('add-crew', { layout: 'main2', alert: 'Crew member added succesfully!' });
         } else {
@@ -337,7 +337,7 @@ exports.view = (req, res) => {
         if (!err) {
             let removedUser = req.query.removed;
             res.render('ui', { layout: 'main2', rows, removedUser });
-            
+
         } else {
             console.log(err);
         }
@@ -575,38 +575,38 @@ exports.update = async (req, res) => {
     var email = post.email;
     var phone = post.phone;
     var coc = post.coc;
-    var certificate_of_competence = post.certificate_of_competence;
-    var covid_19 = post.covid_19;
-    var fitness = post.fitness;
-    var yellowF = post.yellowF;
-    var PSSR = post.PSSR;
-    var SURVIVAL = post.SURVIVAL;
-    var FFB = post.FFB;
-    var ADV = post.ADV;
-    var elementary = post.elementary;
-    var MAMS = post.MAMS;
-    var FRC = post.FRC;
-    var medical_first = post.medical_first;
-    var medical_care = post.medical_care;
-    var GMDSS = post.GMDSS;
-    var RADAR = post.RADAR;
-    var ARPA = post.ARPA;
-    var arpa_btw = post.arpa_btw;
-    var ecdis_gen = post.ecdis_gen;
-    var SSO = post.SSO;
-    var leadership_managerial = post.leadership_managerial;
-    var high_voltage = post.high_voltage;
-    var leader_teamwork_engine = post.leader_teamwork_engine;
-    var leader_teamwork_deck = post.leader_teamwork_deck;
-    var security_awa = post.security_awa;
-    var security_duties = post.security_duties;
-    var basic_saf_fam = post.basic_saf_fam;
-    var security_related_fam = post.security_related_fam;
-    var ecdis_specific = post.ecdis_specific;
+    var certificate_of_competence_date = post.certificate_of_competence_date;
+    var covid_19_date = post.covid_19_date;
+    var fitness_date = post.fitness_date;
+    var yellowF_date = post.yellowF_date;
+    var PSSR_date = post.PSSR_date;
+    var SURVIVAL_date = post.SURVIVAL_date;
+    var FFB_date = post.FFB_date;
+    var ADV_date = post.ADV_date;
+    var elementary_date = post.elementary_date;
+    var MAMS_date = post.MAMS_date;
+    var FRC_date = post.FRC_date;
+    var medical_first_date = post.medical_first_date;
+    var medical_care_date = post.medical_care_date;
+    var GMDSS_date = post.GMDSS_date;
+    var RADAR_date = post.RADAR_date;
+    var ARPA_date = post.ARPA_date;
+    var arpa_btw_date = post.arpa_btw_date;
+    var ecdis_gen_date = post.ecdis_gen_date;
+    var SSO_date = post.SSO_date;
+    var leadership_managerial_date = post.leadership_managerial_date;
+    var high_voltage_date = post.high_voltage_date;
+    var leader_teamwork_engine_date = post.leader_teamwork_engine_date;
+    var leader_teamwork_deck_date = post.leader_teamwork_deck_date;
+    var security_awa_date = post.security_awa_date;
+    var security_duties_date = post.security_duties_date;
+    var basic_saf_fam_date = post.basic_saf_fam_date;
+    var security_related_fam_date = post.security_related_fam_date;
+    var ecdis_specific_date = post.ecdis_specific_date;
 
 
 
-    connection.query('UPDATE user SET first_name=? ,last_name=?, email=?, phone=?, coc=?, certificate_of_competence=?, covid_19=?, covid_19D=?,  fitness=? ,fitnessD=?, yellowF=?, yellowFD=?, basic_saf_famD=?, security_related_famD=?, PSSR=?, PSSRD=?,  SURVD=?, FFBD=?,ADVD=?,  elementaryD=?, MAMSD=?, FRCD=?, medical_firstD=?, medical_careD=?, GMDSSD=?, RADARD=?, ARPAD=?, arpa_btwD=?, ecdis_genD=?, ecdis_specificD=?, SSOD=?, leadership_managerialD=?, high_voltageD=?, leader_teamwork_deckD=?,leader_teamwork_engineD=?, security_awaD=?, security_dutiesD=?,SURVIVAL=?, FFB=?, ADV=?, elementary=?, MAMS=?, FRC=?, medical_first=?, medical_care=?, GMDSS=?, RADAR=?, ARPA=?, arpa_btw=?, ecdis_gen=?, SSO=?, leadership_managerial=?, high_voltage=?, leader_teamwork_engine=?, leader_teamwork_deck=?, security_awa=?, security_duties=?, basic_saf_fam=?, security_related_fam=?,  ecdis_specific=?  WHERE id = ?', [first_name, last_name, email, phone, coc, certificate_of_competence, covid_19, covid_19D, fitness, fitnessD, yellowF, yellowFD, basic_saf_famD, security_related_famD, PSSR, PSSRD, SURVD, FFBD, ADVD, elementaryD, MAMSD, FRCD, medical_firstD, medical_careD, GMDSSD, RADARD, ARPAD, arpa_btwD, ecdis_genD, ecdis_specificD, SSOD, leadership_managerialD, high_voltageD, leader_teamwork_deckD, leader_teamwork_engineD, security_awaD, security_dutiesD, SURVIVAL, FFB, ADV, elementary, MAMS, FRC, medical_first, medical_care, GMDSS, RADAR, ARPA, arpa_btw, ecdis_gen, SSO, leadership_managerial, high_voltage, leader_teamwork_engine, leader_teamwork_deck, security_awa, security_duties, basic_saf_fam, security_related_fam, ecdis_specific, req.params.id],
+    connection.query('UPDATE user SET first_name=? ,last_name=?, email=?, phone=?, coc=?, certificate_of_competence_date=?, covid_19_date=?, covid_19D=?,  fitness_date=? ,fitnessD=?, yellowF_date=?, yellowFD=?, basic_saf_famD=?, security_related_famD=?, PSSR_date=?, PSSRD=?,  SURVD=?, FFBD=?,ADVD=?,  elementaryD=?, MAMSD=?, FRCD=?, medical_firstD=?, medical_careD=?, GMDSSD=?, RADARD=?, ARPAD=?, arpa_btwD=?, ecdis_genD=?, ecdis_specificD=?, SSOD=?, leadership_managerialD=?, high_voltageD=?, leader_teamwork_deckD=?,leader_teamwork_engineD=?, security_awaD=?, security_dutiesD=?,SURVIVAL_date=?, FFB_date=?, ADV_date=?, elementary_date=?, MAMS_date=?, FRC_date=?, medical_first_date=?, medical_care_date=?, GMDSS_date=?, RADAR_date=?, ARPA_date=?, arpa_btw_date=?, ecdis_gen_date=?, SSO_date=?, leadership_managerial_date=?, high_voltage_date=?, leader_teamwork_engine_date=?, leader_teamwork_deck_date=?, security_awa_date=?, security_duties_date=?, basic_saf_fam_date=?, security_related_fam_date=?,  ecdis_specific_date=?  WHERE id = ?', [first_name, last_name, email, phone, coc, certificate_of_competence_date, covid_19_date, covid_19D, fitness_date, fitnessD, yellowF_date, yellowFD, basic_saf_famD, security_related_famD, PSSR_date, PSSRD, SURVD, FFBD, ADVD, elementaryD, MAMSD, FRCD, medical_firstD, medical_careD, GMDSSD, RADARD, ARPAD, arpa_btwD, ecdis_genD, ecdis_specificD, SSOD, leadership_managerialD, high_voltageD, leader_teamwork_deckD, leader_teamwork_engineD, security_awaD, security_dutiesD, SURVIVAL_date, FFB_date, ADV_date, elementary_date, MAMS_date, FRC_date, medical_first_date, medical_care_date, GMDSS_date, RADAR_date, ARPA_date, arpa_btw_date, ecdis_gen_date, SSO_date, leadership_managerial_date, high_voltage_date, leader_teamwork_engine_date, leader_teamwork_deck_date, security_awa_date, security_duties_date, basic_saf_fam_date, security_related_fam_date, ecdis_specific_date, req.params.id],
         (err, rows) => {
 
             if (!err) {
@@ -662,19 +662,48 @@ exports.delete = (req, res) => {
 
 //to view the single crew member based on his id
 exports.viewall = (req, res) => {
-    connection.query('SELECT id, first_name, email, DATE_FORMAT(covid_19, "%M %d, %Y") as covid_19 FROM user WHERE id=?', [req.params.id], (err, rows) => {
-        //when done with the connection, release it
-        if (!err) {
-            res.render('view-crew', { layout: 'main2', rows });
-
-        } else {
-            console.log(err);
-
+    connection.query(
+        `SELECT id, first_name,last_name, email, phone, covid_19D, fitnessD,yellowFD, basic_saf_famD, security_related_famD, PSSRD, SURVD, FFBD, ADVD, elementaryD, MAMSD, FRCD, medical_firstD, medical_careD, GMDSSD, RADARD, ARPAD, arpa_btwD, ecdis_genD, ecdis_specificD, SSOD, leadership_managerialD, high_voltageD, leader_teamwork_deckD, leader_teamwork_engineD, security_awaD, security_dutiesD,
+      DATE_FORMAT(certificate_of_competence_date, "%M %d, %Y") as certificate_of_competence_date, 
+      DATE_FORMAT(covid_19_date, "%M %d, %Y") as covid_19_date, 
+      DATE_FORMAT(fitness_date, "%M %d, %Y") as fitness_date, 
+      DATE_FORMAT(yellowF_date, "%M %d, %Y") as yellowF_date, 
+      DATE_FORMAT(PSSR_date, "%M %d, %Y") as PSSR_date, 
+      DATE_FORMAT(SURVIVAL_date, "%M %d, %Y") as SURVIVAL_date, 
+      DATE_FORMAT(FFB_date, "%M %d, %Y") as FFB_date, 
+      DATE_FORMAT(ADV_date, "%M %d, %Y") as ADV_date, 
+      DATE_FORMAT(elementary_date, "%M %d, %Y") as elementary_date, 
+      DATE_FORMAT(MAMS_date, "%M %d, %Y") as MAMS_date, 
+      DATE_FORMAT(FRC_date, "%M %d, %Y") as FRC_date, 
+      DATE_FORMAT(medical_first_date, "%M %d, %Y") as medical_first_date, 
+      DATE_FORMAT(medical_care_date, "%M %d, %Y") as medical_care_date, 
+      DATE_FORMAT(GMDSS_date, "%M %d, %Y") as GMDSS_date, 
+      DATE_FORMAT(RADAR_date, "%M %d, %Y") as RADAR_date, 
+      DATE_FORMAT(ARPA_date, "%M %d, %Y") as ARPA_date, 
+      DATE_FORMAT(arpa_btw_date, "%M %d, %Y") as arpa_btw_date, 
+      DATE_FORMAT(ecdis_gen_date, "%M %d, %Y") as ecdis_gen_date, 
+      DATE_FORMAT(SSO_date, "%M %d, %Y") as SSO_date, 
+      DATE_FORMAT(leadership_managerial_date, "%M %d, %Y") as leadership_managerial_date, 
+      DATE_FORMAT(high_voltage_date, "%M %d, %Y") as high_voltage_date, 
+      DATE_FORMAT(leader_teamwork_engine_date, "%M %d, %Y") as leader_teamwork_engine_date, 
+      DATE_FORMAT(leader_teamwork_deck_date, "%M %d, %Y") as leader_teamwork_deck_date, 
+      DATE_FORMAT(security_awa_date, "%M %d, %Y") as security_awa_date, 
+      DATE_FORMAT(security_duties_date, "%M %d, %Y") as security_duties_date, 
+      DATE_FORMAT(basic_saf_fam_date, "%M %d, %Y") as basic_saf_fam_date, 
+      DATE_FORMAT(security_related_fam_date, "%M %d, %Y") as security_related_fam_date, 
+      DATE_FORMAT(ecdis_specific_date, "%M %d, %Y") as ecdis_specific_date 
+      FROM user 
+      WHERE id=?`,
+        [req.params.id],
+        (err, rows) => {
+            if (!err) {
+                res.render('view-crew', { layout: 'main2', rows });
+            } else {
+                console.log(err);
+            }
         }
-        // console.log('The data from user table:\n', rows);
-    });
+    );
 }
-
 
 
 

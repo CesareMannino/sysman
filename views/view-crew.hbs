@@ -70,7 +70,7 @@ handlebars.registerHelper('notEqual', function(a, b, options) {
 
 <div class='row'>
   <div class='col mb-3'>
-    ISSUING DATE: {{#notEqual this.covid_19 "0000-00-00"}}{{this.covid_19}}{{/notEqual}}
+    ISSUING DATE: {{#notEqual this.covid_19_date "0000-00-00"}}{{this.covid_19_date}}{{/notEqual}}
   </div>
 </div>
 
@@ -96,7 +96,7 @@ handlebars.registerHelper('notEqual', function(a, b, options) {
 
   <div class='row'>
     <div class='col mb-4'>
-   EXPIRY DATE: {{#notEqual this.fitness "0000-00-00"}}{{this.fitness}}{{/notEqual}}
+   EXPIRY DATE: {{#notEqual this.fitness_date "0000-00-00"}}{{this.fitness_date}}{{/notEqual}}
     </div>
   </div>
   {{!-- DOWNLOAD BUTTON --}}
@@ -121,7 +121,7 @@ handlebars.registerHelper('notEqual', function(a, b, options) {
   </div>
   <div class='row'>
     <div class='col mb-4'>
-    ISSUING DATE: {{#notEqual this.yellowF "0000-00-00"}}{{this.yellowF}}{{/notEqual}}
+    ISSUING DATE: {{#notEqual this.yellowF_date "0000-00-00"}}{{this.yellowF_date}}{{/notEqual}}
     </div>
   </div>
 
@@ -161,7 +161,7 @@ handlebars.registerHelper('notEqual', function(a, b, options) {
   <div class='row'>
     <div class='col mb-3'>
 
-         ISSUING DATE: {{#notEqual this.basic_saf_fam "0000-00-00"}}{{this.basic_saf_fam}}{{/notEqual}}
+         ISSUING DATE: {{#notEqual this.basic_saf_fam_date "0000-00-00"}}{{this.basic_saf_fam_date}}{{/notEqual}}
     </div>
   </div>
 
@@ -186,7 +186,7 @@ handlebars.registerHelper('notEqual', function(a, b, options) {
   </div>
   <div class='row'>
     <div class='col mb-3'>
-      ISSUING DATE: {{this.security_related_fam}}
+      ISSUING DATE: {{this.security_related_fam_date}}
     </div>
   </div>
 
@@ -219,7 +219,7 @@ handlebars.registerHelper('notEqual', function(a, b, options) {
   </div>
   <div class='row'>
     <div class='col mb-3'>
-      EXPIRY DATE: {{this.PSSR}}
+      EXPIRY DATE: {{this.PSSR_date}}
 
     </div>
   </div>
@@ -244,7 +244,7 @@ handlebars.registerHelper('notEqual', function(a, b, options) {
   </div>
   <div class='row'>
     <div class='col mb-3'>
-      EXPIRY DATE: {{this.SURVIVAL}}
+      EXPIRY DATE: {{this.SURVIVAL_date}}
 
     </div>
   </div>
@@ -269,7 +269,7 @@ handlebars.registerHelper('notEqual', function(a, b, options) {
   </div>
   <div class='row'>
     <div class='col mb-3'>
-      EXPIRY DATE: {{this.FFB}}
+      EXPIRY DATE: {{this.FFB_date}}
 
     </div>
   </div>
@@ -293,7 +293,7 @@ handlebars.registerHelper('notEqual', function(a, b, options) {
   </div>
   <div class='row'>
     <div class='col mb-3'>
-      EXPIRY DATE: {{this.elementary}}
+      EXPIRY DATE: {{this.elementary_date}}
 
     </div>
   </div>
@@ -317,7 +317,7 @@ handlebars.registerHelper('notEqual', function(a, b, options) {
   </div>
   <div class='row'>
     <div class='col mb-3'>
-      EXPIRY DATE: {{this.ADV}}
+      EXPIRY DATE: {{this.ADV_date}}
     </div>
   </div>
 
@@ -341,7 +341,7 @@ handlebars.registerHelper('notEqual', function(a, b, options) {
   </div>
   <div class='row'>
     <div class='col mb-3'>
-      EXPIRY DATE: {{this.MAMS}}
+      EXPIRY DATE: {{this.MAMS_date}}
     </div>
   </div>
 
@@ -365,7 +365,7 @@ handlebars.registerHelper('notEqual', function(a, b, options) {
   </div>
   <div class='row'>
     <div class='col mb-3'>
-      EXPIRY DATE: {{this.FRC}}
+      EXPIRY DATE: {{this.FRC_date}}
 
     </div>
   </div>
@@ -392,7 +392,7 @@ handlebars.registerHelper('notEqual', function(a, b, options) {
   </div>
   <div class='row'>
     <div class='col mb-3'>
-      EXPIRY DATE: {{this.medical_first}}
+      EXPIRY DATE: {{this.medical_first_date}}
     </div>
   </div>
 
@@ -416,7 +416,7 @@ handlebars.registerHelper('notEqual', function(a, b, options) {
   </div>
   <div class='row'>
     <div class='col mb-3'>
-      EXPIRY DATE: {{this.medical_care}}
+      EXPIRY DATE: {{this.medical_care_date}}
 
     </div>
   </div>
@@ -442,7 +442,7 @@ handlebars.registerHelper('notEqual', function(a, b, options) {
   </div>
   <div class='row'>
     <div class='col mb-3'>
-      EXPIRY DATE: {{this.GMDSS}}
+      EXPIRY DATE: {{this.GMDSS_date}}
 
     </div>
   </div>
@@ -467,7 +467,7 @@ handlebars.registerHelper('notEqual', function(a, b, options) {
   </div>
   <div class='row'>
     <div class='col mb-3'>
-      ISSUING DATE: {{this.RADAR}}
+      ISSUING DATE: {{this.RADAR_date}}
 
     </div>
   </div>
@@ -493,7 +493,7 @@ handlebars.registerHelper('notEqual', function(a, b, options) {
   </div>
   <div class='row'>
     <div class='col mb-3'>
-      ISSUING DATE: {{this.ARPA}}
+      ISSUING DATE: {{this.ARPA_date}}
 
     </div>
   </div>
@@ -520,7 +520,7 @@ handlebars.registerHelper('notEqual', function(a, b, options) {
   </div>
   <div class='row'>
     <div class='col mb-3'>
-      ISSUING DATE: {{this.arpa_btw}}
+      ISSUING DATE: {{this.arpa_btw_date}}
 
     </div>
   </div>
@@ -545,7 +545,7 @@ handlebars.registerHelper('notEqual', function(a, b, options) {
   </div>
   <div class='row'>
     <div class='col mb-3'>
-      EXPIRY DATE: {{this.ecdis_gen}}
+      EXPIRY DATE: {{this.ecdis_gen_date}}
 
     </div>
   </div>
@@ -572,7 +572,7 @@ handlebars.registerHelper('notEqual', function(a, b, options) {
   </div>
   <div class='row'>
     <div class='col mb-3'>
-      ISSUING DATE: {{this.ecdis_specific}}
+      ISSUING DATE: {{this.ecdis_specific_date}}
 
     </div>
   </div>
@@ -597,7 +597,7 @@ handlebars.registerHelper('notEqual', function(a, b, options) {
   </div>
   <div class='row'>
     <div class='col mb-3'>
-      EXPIRY DATE: {{this.SSO}}
+      EXPIRY DATE: {{this.SSO_date}}
 
     </div>
   </div>
@@ -623,7 +623,7 @@ handlebars.registerHelper('notEqual', function(a, b, options) {
   </div>
   <div class='row'>
     <div class='col mb-3'>
-      ISSUING DATE: {{this.leadership_managerial}}
+      ISSUING DATE: {{this.leadership_managerial_date}}
 
     </div>
   </div>
@@ -649,7 +649,7 @@ handlebars.registerHelper('notEqual', function(a, b, options) {
   </div>
   <div class='row'>
     <div class='col mb-3'>
-      ISSUING DATE: {{this.high_voltage}}
+      ISSUING DATE: {{this.high_voltage_date}}
 
     </div>
   </div>
@@ -675,7 +675,7 @@ handlebars.registerHelper('notEqual', function(a, b, options) {
   </div>
   <div class='row'>
     <div class='col mb-3'>
-      ISSUING DATE: {{this.leader_teamwork_deck}}
+      ISSUING DATE: {{this.leader_teamwork_deck_date}}
 
     </div>
   </div>
@@ -702,7 +702,7 @@ handlebars.registerHelper('notEqual', function(a, b, options) {
   </div>
   <div class='row'>
     <div class='col mb-3'>
-      ISSUING DATE: {{this.leader_teamwork_engine}}
+      ISSUING DATE: {{this.leader_teamwork_engine_date}}
 
     </div>
   </div>
@@ -729,7 +729,7 @@ handlebars.registerHelper('notEqual', function(a, b, options) {
   </div>
   <div class='row'>
     <div class='col mb-3'>
-      ISSUING DATE: {{this.security_awa}}
+      ISSUING DATE: {{this.security_awa_date}}
 
     </div>
   </div>
@@ -756,7 +756,7 @@ handlebars.registerHelper('notEqual', function(a, b, options) {
   </div>
   <div class='row'>
     <div class='col mb-3'>
-      ISSUING DATE: {{this.security_duties}}
+      ISSUING DATE: {{this.security_duties_date}}
 
     </div>
   </div>

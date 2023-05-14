@@ -5,7 +5,7 @@
 
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: #F4F6F8;
 }
 
@@ -14,7 +14,6 @@ img {
 }
 
 .wrapper {
-  display: -ms-grid;
   display: grid;
   place-items: center;
   height: 100vh;
@@ -44,11 +43,9 @@ img {
   width: 360px;
   padding: 20px;
   border-radius: 5px;
-  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0), 0 6px 36px rgba(0, 0, 0, 0.13);
-          box-shadow: 0 10px 20px rgba(0, 0, 0, 0), 0 6px 36px rgba(0, 0, 0, 0.13);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0), 0 6px 36px rgba(0, 0, 0, 0.13);
   background-color: #fff;
 }
-
 .cardp__image {
   display: block;
   margin: 0 auto;
@@ -58,16 +55,13 @@ img {
   overflow: hidden;
   -o-object-fit: cover;
      object-fit: cover;
-  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0), 0 6px 36px rgba(0, 0, 0, 0.13);
-          box-shadow: 0 10px 20px rgba(0, 0, 0, 0), 0 6px 36px rgba(0, 0, 0, 0.13);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0), 0 6px 36px rgba(0, 0, 0, 0.13);
   border: 3px solid #fff;
 }
-
 .cardp__title {
   margin: 0;
   color: #c52936;
 }
-
 .cardp__job {
   color: #6E8192;
 }
@@ -108,8 +102,7 @@ img {
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   text-align: center;
 }
 
@@ -129,17 +122,12 @@ nav {
 }
 
 nav ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-content: space-around;
 }
 
 nav li {
   padding: 0px 0px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   list-style: none;
 }
@@ -152,7 +140,7 @@ nav li a {
 }
 
 navreg h4, a {
-  color: white;
+  color: rgb(255, 255, 255);
   text-decoration: none;
   font-weight: bold;
   margin-top: 5px;
@@ -160,28 +148,21 @@ navreg h4, a {
 }
 
 navreg h4 a:hover {
-  color: #e5ff00;
+  color: rgb(229, 255, 0);
 }
 
 navreg {
   padding: 10px;
   background-color: purple;
   color: #fff;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
 }
 
 navreg ul {
   margin-top: 13px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-content: space-around;
 }
 
 navreg li {
@@ -189,14 +170,14 @@ navreg li {
 }
 
 navreg li a {
-  color: white;
+  color: rgb(255, 255, 255);
   text-decoration: none;
   font-weight: bold;
   padding: 5px 8px;
 }
 
 navreg li a:hover {
-  color: #e5ff00;
+  color: rgb(229, 255, 0);
 }
 
 .container {
@@ -208,7 +189,6 @@ navreg li a:hover {
     max-width: 80%;
   }
 }
-
 .avatar-ctn {
   background-color: orange;
   text-align: center;
@@ -217,5 +197,4 @@ navreg li a:hover {
 .avatar {
   width: 65%;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
-}
-/*# sourceMappingURL=main.css.map */
+}/*# sourceMappingURL=main.css.map */

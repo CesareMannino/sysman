@@ -4,7 +4,7 @@
 
 
 
-  
+
 
 </head>
 
@@ -81,31 +81,31 @@
     #datepicker,
     #datepickercovid_19,
     #datepickeryellowF,
-    #datepickerfitness,
-    #datepickerSURVIVAL,
-    #datepickerPSSR,
-    #datepickerFFB,
-    #datepickerADV,
-    #datepickerELEM,
-    #datepickerMAMS,
-    #datepickerFRC,
-    #datepickermedical_first,
-    #datepickermedical_care,
-    #datepickerGMDSS,
-    #datepickerRADAR,
-    #datepickerARPA,
-    #datepickerarpa_btw,
-    #datepickerecdis_gen,
-    #datepickerSSO,
-    #datepickerleadership_managerial,
-    #datepickerhigh_voltage,
-    #datepickerleader_teamwork_engine,
-    #datepickerleader_teamwork_deck,
-    #datepickersecurity_awa,
-    #datepickersecurity_duties,
-    #datepickerbasic_saf_fam,
-    #datepickersecurity_related_fam,
-    #datepickerecdis_specific {
+#datepickerfitness,
+#datepickerSURVIVAL,
+#datepickerPSSR,
+#datepickerFFB,
+#datepickerADV,
+#datepickerELEM,
+#datepickerMAMS,
+#datepickerFRC,
+#datepickermedical_first,
+#datepickermedical_care,
+#datepickerGMDSS,
+#datepickerRADAR,
+#datepickerARPA,
+#datepickerarpa_btw,
+#datepickerecdis_gen,
+#datepickerSSO,
+#datepickerleadership_managerial,
+#datepickerhigh_voltage,
+#datepickerleader_teamwork_engine,
+#datepickerleader_teamwork_deck,
+#datepickersecurity_awa,
+#datepickersecurity_duties,
+#datepickerbasic_saf_fam,
+#datepickersecurity_related_fam,
+#datepickerecdis_specific {
       padding: 5.5px;
       border-radius: 5px;
       border: 1.2px solid rgb(184, 184, 184);
@@ -143,8 +143,8 @@
 
   <div class="col-md-2">
     <label for="exampleFormControlSelect1">exp. date (mm/dd/yyyy)</label>
-    <input type="date" id="datepicker" value="{{this.expiration}}" placeholder="exp. date (mm/dd/yyyy)"
-      name='expiration'>
+    <input type="date" id="datepicker" value="{{this.certificate_of_competence_date}}" placeholder="exp. date (mm/dd/yyyy)"
+      name='certificate_of_competence_date'>
   </div>
 </div>
 
@@ -192,8 +192,8 @@
 
   <div class="col-md-6 mt-5">
     <br>
-    <input type="date" id="datepickercovid_19" value="{{this.covid_19}}" placeholder="iss. date (mm/dd/yyyy)"
-      name='covid_19'>
+    <input type="date" id="datepickercovid_19" value="{{this.covid_19_date}}" placeholder="iss. date (mm/dd/yyyy)"
+      name='covid_19_date'>
   </div>
 
   {{!-- input file covid_19 --}}
@@ -234,8 +234,8 @@
 
   <div class="col-md-2">
     <br>
-    <input type="date" id="datepickerfitness" value="{{this.fitness}}" placeholder="exp. date (mm/dd/yyyy)"
-      name='fitness'>
+    <input type="date" id="datepickerfitness" value="{{this.fitness_date}}" placeholder="exp. date (mm/dd/yyyy)"
+      name='fitness_date'>
   </div>
 
   {{!-- input file medical fitness certificate --}}
@@ -276,8 +276,8 @@
 
   <div class="col-md-2">
     <br>
-    <input type="date" id="datepickeryellowF" value="{{this.yellowF}}" placeholder="exp. date (mm/dd/yyyy)"
-      name='yellowF'>
+    <input type="date" id="datepickeryellowF" value="{{this.yellowF_date}}" placeholder="exp. date (mm/dd/yyyy)"
+      name='yellowF_date'>
   </div>
 
 
@@ -325,8 +325,8 @@
 
   <div class="col-md-2 mt-5">
     <br>
-    <input type="date" id="datepickerbasic_saf_fam" value="{{this.basic_saf_fam}}" placeholder="exp. date (mm/dd/yyyy)"
-      name='basic_saf_fam'>
+    <input type="date" id="datepickerbasic_saf_fam" value="{{this.basic_saf_fam_date}}" placeholder="exp. date (mm/dd/yyyy)"
+      name='basic_saf_fam_date'>
 
 
   </div>
@@ -362,8 +362,8 @@
 
   <div class="col-md-2">
     <br>
-    <input type="date" id="datepickersecurity_related_fam" value="{{this.security_related_fam}}"
-      placeholder="exp. date (mm/dd/yyyy)" name='security_related_fam'>
+    <input type="date" id="datepickersecurity_related_fam" value="{{this.security_related_fam_date}}"
+      placeholder="exp. date (mm/dd/yyyy)" name='security_related_fam_date'>
   </div>
 
 
@@ -407,7 +407,7 @@
   <div class="col-md-2 mt-5">
 
     <br>
-    <input type="date" id="datepickerPSSR" value="{{this.PSSR}}" placeholder="exp. date (mm/dd/yyyy)" name="PSSR">
+    <input type="date" id="datepickerPSSR" value="{{this.PSSR_date}}" placeholder="exp. date (mm/dd/yyyy)" name="PSSR_date">
 
   </div>
   <div class="col-md-6">
@@ -439,7 +439,8 @@
 
   <div class="col-md-2">
     <br>
-    <input type="date" id="datepickerSURVIVAL" value="{{this.SURVIVAL}}" placeholder="exp. date (mm/dd/yyyy)" name="SURVIVAL">
+    <input type="date" id="datepickerSURVIVAL" value="{{this.SURVIVAL_date}}" placeholder="exp. date (mm/dd/yyyy)"
+      name="SURVIVAL_date">
 
   </div>
 
@@ -473,7 +474,7 @@
 
   <div class="col-md-2">
     <br>
-    <input type="date" id="datepickerFFB" value="{{this.FFB}}" placeholder="exp. date (mm/dd/yyyy)" name='FFB'>
+    <input type="date" id="datepickerFFB" value="{{this.FFB_date}}" placeholder="exp. date (mm/dd/yyyy)" name='FFB_date'>
   </div>
 
 
@@ -506,8 +507,8 @@
 
   <div class="col-md-2">
     <br>
-    <input type="date" id="datepickerELEM" value="{{this.elementary}}" placeholder="exp. date (mm/dd/yyyy)"
-      name='elementary'>
+    <input type="date" id="datepickerELEM" value="{{this.elementary_date}}" placeholder="exp. date (mm/dd/yyyy)"
+      name='elementary_date'>
   </div>
 
   <div class="col-md-6">
@@ -540,7 +541,7 @@
 
   <div class="col-md-2">
     <br>
-    <input type="date" id="datepickerADV" value="{{this.ADV}}" placeholder="exp. date (mm/dd/yyyy)" name='ADV'>
+    <input type="date" id="datepickerADV" value="{{this.ADV_date}}" placeholder="exp. date (mm/dd/yyyy)" name='ADV_date'>
   </div>
   <div class="col-md-6">
 
@@ -571,7 +572,7 @@
 
   <div class="col-md-2">
     <br>
-    <input type="date" id="datepickerMAMS" value="{{this.MAMS}}" placeholder="exp. date (mm/dd/yyyy)" name='MAMS'>
+    <input type="date" id="datepickerMAMS" value="{{this.MAMS_date}}" placeholder="exp. date (mm/dd/yyyy)" name='MAMS_date'>
   </div>
 
 
@@ -606,7 +607,7 @@
 
   <div class="col-md-2">
     <br>
-    <input type="date" id="datepickerFRC" value="{{this.FRC}}" placeholder="exp. date (mm/dd/yyyy)" name='FRC'>
+    <input type="date" id="datepickerFRC" value="{{this.FRC_date}}" placeholder="exp. date (mm/dd/yyyy)" name='FRC_date'>
   </div>
 
   <div class="col-md-6">
@@ -638,8 +639,8 @@
 
   <div class="col-md-2">
     <br>
-    <input type="date" id="datepickermedical_first" value="{{this.medical_first}}" placeholder="exp. date (mm/dd/yyyy)"
-      name='medical_first'>
+    <input type="date" id="datepickermedical_first" value="{{this.medical_first_date}}" placeholder="exp. date (mm/dd/yyyy)"
+      name='medical_first_date'>
   </div>
 
   <div class="col-md-6">
@@ -672,8 +673,8 @@
 
   <div class="col-md-2">
     <br>
-    <input type="date" id="datepickermedical_care" value="{{this.medical_care}}" placeholder="exp. date (mm/dd/yyyy)"
-      name='medical_care'>
+    <input type="date" id="datepickermedical_care" value="{{this.medical_care_date}}" placeholder="exp. date (mm/dd/yyyy)"
+      name='medical_care_date'>
   </div>
 
   <div class="col-md-6">
@@ -705,7 +706,7 @@
 
   <div class="col-md-2">
     <br>
-    <input type="date" id="datepickerGMDSS" value="{{this.GMDSS}}" placeholder="exp. date (mm/dd/yyyy)" name='GMDSS'>
+    <input type="date" id="datepickerGMDSS" value="{{this.GMDSS_date}}" placeholder="exp. date (mm/dd/yyyy)" name='GMDSS_date'>
   </div>
 
   <div class="col-md-6">
@@ -738,7 +739,7 @@
 
   <div class="col-md-2">
     <br>
-    <input type="date" id="datepickerRADAR" value="{{this.RADAR}}" placeholder="iss. date (mm/dd/yyyy)" name='RADAR'>
+    <input type="date" id="datepickerRADAR" value="{{this.RADAR_date}}" placeholder="iss. date (mm/dd/yyyy)" name='RADAR_date'>
   </div>
   <div class="col-md-6">
 
@@ -770,7 +771,7 @@
 
   <div class="col-md-2">
     <br>
-    <input type="date" id="datepickerARPA" value="{{this.ARPA}}" placeholder="iss. date (mm/dd/yyyy)" name='ARPA'>
+    <input type="date" id="datepickerARPA" value="{{this.ARPA_date}}" placeholder="iss. date (mm/dd/yyyy)" name='ARPA_date'>
   </div>
 
   <div class="col-md-6">
@@ -804,8 +805,8 @@
 
   <div class="col-md-2">
     <br>
-    <input type="date" id="datepickerarpa_btw" value="{{this.arpa_btw}}" placeholder="iss. date (mm/dd/yyyy)"
-      name='arpa_btw'>
+    <input type="date" id="datepickerarpa_btw" value="{{this.arpa_btw_date}}" placeholder="iss. date (mm/dd/yyyy)"
+      name='arpa_btw_date'>
   </div>
 
   <div class="col-md-6">
@@ -839,8 +840,8 @@
 
   <div class="col-md-2">
     <br>
-    <input type="date" id="datepickerecdis_gen" value="{{this.ecdis_gen}}" placeholder="exp. date (mm/dd/yyyy)"
-      name='ecdis_gen'>
+    <input type="date" id="datepickerecdis_gen" value="{{this.ecdis_gen_date}}" placeholder="exp. date (mm/dd/yyyy)"
+      name='ecdis_gen_date'>
   </div>
 
 
@@ -874,8 +875,8 @@
 
   <div class="col-md-2">
     <br>
-    <input type="date" id="datepickerecdis_specific" value="{{this.ecdis_specific}}"
-      placeholder="exp. date (mm/dd/yyyy)" name='ecdis_specific'>
+    <input type="date" id="datepickerecdis_specific" value="{{this.ecdis_specific_date}}"
+      placeholder="exp. date (mm/dd/yyyy)" name='ecdis_specific_date'>
   </div>
 
   <div class="col-md-6">
@@ -910,7 +911,7 @@
 
   <div class="col-md-2">
     <br>
-    <input type="date" id="datepickerSSO" value="{{this.SSO}}" placeholder="exp. date (mm/dd/yyyy)" name='SSO'>
+    <input type="date" id="datepickerSSO" value="{{this.SSO_date}}" placeholder="exp. date (mm/dd/yyyy)" name='SSO_date'>
   </div>
 
 
@@ -945,8 +946,8 @@
 
   <div class="col-md-2">
     <br>
-    <input type="date" id="datepickerleadership_managerial" value="{{this.leadership_managerial}}"
-      placeholder="exp. date (mm/dd/yyyy)" name='leadership_managerial'>
+    <input type="date" id="datepickerleadership_managerial" value="{{this.leadership_managerial_date}}"
+      placeholder="exp. date (mm/dd/yyyy)" name='leadership_managerial_date'>
   </div>
 
   <div class="col-md-6">
@@ -981,8 +982,8 @@
 
   <div class="col-md-2">
     <br>
-    <input type="date" id="datepickerhigh_voltage" value="{{this.high_voltage}}" placeholder="exp. date (mm/dd/yyyy)"
-      name='high_voltage'>
+    <input type="date" id="datepickerhigh_voltage" value="{{this.high_voltage_date}}" placeholder="exp. date (mm/dd/yyyy)"
+      name='high_voltage_date'>
   </div>
 
 
@@ -1017,8 +1018,8 @@
 
   <div class="col-md-2">
     <br>
-    <input type="date" id="datepickerleader_teamwork_deck" value="{{this.leader_teamwork_deck}}"
-      placeholder="exp. date (mm/dd/yyyy)" name='leader_teamwork_deck'>
+    <input type="date" id="datepickerleader_teamwork_deck" value="{{this.leader_teamwork_deck_date}}"
+      placeholder="exp. date (mm/dd/yyyy)" name='leader_teamwork_deck_date'>
   </div>
 
 
@@ -1052,8 +1053,8 @@
 
   <div class="col-md-2">
     <br>
-    <input type="date" id="datepickerleader_teamwork_engine" value="{{this.leader_teamwork_engine}}"
-      placeholder="exp. date (mm/dd/yyyy)" name='leader_teamwork_engine'>
+    <input type="date" id="datepickerleader_teamwork_engine" value="{{this.leader_teamwork_engine_date}}"
+      placeholder="exp. date (mm/dd/yyyy)" name='leader_teamwork_engine_date'>
   </div>
 
   <div class="col-md-6">
@@ -1090,8 +1091,8 @@
 
   <div class="col-md-2">
     <br>
-    <input type="date" id="datepickersecurity_awa" value="{{this.security_awa}}" placeholder="iss. date (mm/dd/yyyy)"
-      name='security_awa'>
+    <input type="date" id="datepickersecurity_awa" value="{{this.security_awa_date}}" placeholder="iss. date (mm/dd/yyyy)"
+      name='security_awa_date'>
   </div>
   <div class="col-md-6">
 
@@ -1124,8 +1125,8 @@
 
   <div class="col-md-2">
     <br>
-    <input type="date" id="datepickersecurity_duties" value="{{this.security_duties}}"
-      placeholder="iss. date (mm/dd/yyyy)" name='security_duties'>
+    <input type="date" id="datepickersecurity_duties" value="{{this.security_duties_date}}"
+      placeholder="iss. date (mm/dd/yyyy)" name='security_duties_date'>
   </div>
   <div class="col-md-6">
 
