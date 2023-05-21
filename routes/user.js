@@ -64,6 +64,11 @@ router.post('/ui', userController.find);
 
 router.get('/addcrew', userController.form);
 router.post('/addcrew', userController.create);
+
+// router.get('/profile/:id', userController.editProfile);
+router.post('/profile', userController.updateUser);
+
+
 router.get('/editcrew/:id', userController.edit);
 
 router.post('/editcrew/:id', userController.update);

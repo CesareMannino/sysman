@@ -68,7 +68,7 @@ setInterval(checkForNewRecords, 1 * 60 * 1000); // Check for new records every 1
 
 // Email Notification Function
 // Email Notification Function
-async function sendEmailNotification(user) {
+async function sendEmailNotification(user, additionalEmails = []) {
   let expiringCertificates = [];
 
   // Loop through each property in the user object
@@ -96,7 +96,7 @@ async function sendEmailNotification(user) {
     const certificateList = expiringCertificates.map(cert => `"${cert.name}" - expires on ${cert.expirationDate}`).join('\n');
     const message = {
       from: process.env.EMAIL_USER,
-      to: user.email,
+      to: [user.email, ...additionalEmails].join(', '), // Concatenate additional emails here
       subject: 'Certificate Expiration Reminder',
       text: `Dear ${user.first_name} ${user.last_name},\n\nThis is a reminder that the following certificates are expiring within the next 30 days:\n\n${certificateList}\n\nBest regards,\nTraining Team`
     };
