@@ -198,3 +198,24 @@ navreg li a:hover {
   width: 65%;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }/*# sourceMappingURL=main.css.map */
+
+
+.input-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-group .form-control {
+    flex: 1;
+}
+
+.input-group .btn-link {
+    margin-left: 10px; /* Add some space between the input and the button */
+    color: blue;
+    text-decoration: none;
+    padding: 0;
+    border: none;
+    background: none;
+}
+

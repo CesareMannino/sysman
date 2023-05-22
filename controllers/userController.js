@@ -141,14 +141,18 @@ exports.create = async (req, res, next) => {
 
 
 exports.editProfile = (req, res) => {
-    //User the connection
     connection.query('SELECT * FROM user WHERE id = ?', [req.params.id], (err, rows) => {
         if (!err) {
-            res.render('profile', rows);
+            if (rows.length > 0) {
+                res.render('profile', { rows });
+                console.log(rows)
+            } else {
+                // handle case where no user was found
+                res.status(404).send('User not found');
+            }
         } else {
             console.log(err);
         }
-        // console.log('The data from uer table:\n', rows);
     });
 }
 
@@ -184,7 +188,7 @@ exports.updateUser = async (req, res, next) => {
         const userId = decoded.id;
 console.log(userId)
         // Create your MySQL query
-        const sql = "UPDATE user SET email1 = ?, email2 = ? WHERE user_id = ?";
+        const sql = "UPDATE login SET email1 = ?, email2 = ? WHERE id = ?";
 
         // Execute the query
         await query(sql, [email1, email2, userId]);

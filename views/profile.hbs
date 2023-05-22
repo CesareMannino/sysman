@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,16 +7,11 @@
 
   <link rel="stylesheet" href="css/main.css">
   <title>Home</title>
-
 </head>
-
-
 <body>
-
   <navreg>
     <h4><a href='/ui'>Vessel Management System</a></h4>
     <ul>
-
       {{#if user}}
       {{!-- <li><a href="/profile">Profile</a></li> --}}
       <li><a href="/auth/logout">Logout</a></li>
@@ -28,8 +22,6 @@
     </ul>
   </navreg>
 
-
-
   <div class='row'>
     <div class='row justify-content-center'>
       <div class="cardp">
@@ -37,34 +29,40 @@
           <img src='images/profile.png' class='avatar' alt='user profile picture'>
         </div>
         <div class="card-body">
+            <a href='#' class='btn btn-primary'>Account holder name</a>
           <h5 class='card-title'>{{user.name}}</h5>
           <p class="card-text"></p>
-          <a href='#' class='btn btn-primary'>{{user.email}}</a>
+               <a href='#' class='btn btn-primary'>Account holder email</a>
+          <h5 class='card-title'>{{user.email}}</h5>
+
         </div>
       </div>
-
-
-
-
 
       <div class='row justify-content-center'>
         <div class="cardp">
           <div class="card text-center">
-            <a tabindex="0" class="btn btn-lg btn btn-success" role="button" data-bs-toggle="popover"
-              data-bs-trigger="focus"
+            <a tabindex="0" class="btn btn-lg btn btn-success" role="button" data-bs-toggle="popover" data-bs-trigger="focus"
               title="Enter the email address of the person responsible for managing crew certifications (e.g., crew manager)."
               data-bs-content="And here's some amazing content. It's very engaging. Right?">Notification
               settings</a>
-            <div class="class body">
-              <form action="/profile/{{this.id}}" method="post" novalidate>
-                <div class="form-group">
-                  <label for="email1">Email Address 1:</label>
-                  <input type="email" class="form-control" id="email1" name="email1" required>
-                </div>
-                <div class="form-group">
-                  <label for="email2">Email Address 2:</label>
-                  <input type="email" class="form-control" id="email2" name="email2" required>
-                </div>
+            <div class="form-body">
+              <form action="/profile/{{user.user_id}}" method="post">
+               
+<div class="form-group d-flex justify-content-between align-items-center">
+    <div class="input-group">
+        <button type="button" class="btn btn-link text-primary" onclick="edit('email1')">Edit</button>
+        <input type="email" class="form-control" value="{{user.email1}}" id="email1" name="email1" required disabled>
+        <input type="hidden" id="hiddenEmail1" name="email1" value="{{user.email1}}">
+    </div>
+</div>
+<div class="form-group d-flex justify-content-between align-items-center">
+    <div class="input-group">
+        <button type="button" class="btn btn-link text-primary" onclick="edit('email2')">Edit</button>
+        <input type="email" class="form-control" value="{{user.email2}}" id="email2" name="email2" required disabled>
+        <input type="hidden" id="hiddenEmail2" name="email2" value="{{user.email2}}">
+    </div>
+</div>
+
                 <button type="submit" class="btn btn-primary">Submit</button>
               </form>
             </div>
@@ -72,3 +70,22 @@
           </div>
         </div>
       </div>
+  </div>
+
+<script>
+  function edit(id) {
+    let input = document.getElementById(id);
+    let hiddenInput = document.getElementById('hidden' + id.charAt(0).toUpperCase() + id.slice(1));
+
+    input.disabled = !input.disabled;
+
+    if(input.disabled) {
+        hiddenInput.disabled = false;
+    } else {
+        hiddenInput.disabled = true;
+    }
+}
+
+</script>
+</body>
+</html>
