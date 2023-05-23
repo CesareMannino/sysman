@@ -4,6 +4,13 @@ const bcrypt = require('bcryptjs');
 const { promisify } = require('util');
 var XMLHttpRequest = require('xhr2');
 var xhr = new XMLHttpRequest();
+const crypto = require('crypto');
+
+
+const { sendResetPasswordEmail } = require('./emailNotifications');
+
+
+
 
 
 var db_config = {
@@ -203,4 +210,92 @@ exports.isLoggedIn = async (req, res, next) => {
 exports.logout = async (req, res) => {
     res.clearCookie('jwt');
     res.status(200).redirect('/');
+}
+
+
+exports.forgotPassword = (req, res) => {
+    const { email } = req.body;
+
+    // generate reset token - this is a simple version, consider using a more secure method
+    const resetToken = crypto.randomBytes(32).toString('hex');
+
+    // hash the reset token to store in the database
+    const resetTokenHash = crypto.createHash('sha256').update(resetToken).digest('hex');
+
+    // set token expiration date
+    const resetTokenExpires = Date.now() + 10 * 60 * 1000; // 10 minutes from now
+
+    connection.query('SELECT * FROM login WHERE email = ?', [email], (error, results) => {
+        if (error) {
+            console.log(error);
+            return res.status(500).json({ message: 'An error occurred' });
+        }
+
+        if (results.length === 0) {
+            return res.status(404).json({ message: 'No user with that email found' });
+        }
+
+        const user = results[0];
+
+        connection.query('UPDATE login SET resetToken = ?, passwordResetExpires = ? WHERE id = ?', [resetTokenHash, resetTokenExpires, user.id], async (error, results) => {
+            if (error) {
+                console.log(error);
+                return res.status(500).json({ message: 'An error occurred' });
+            }
+
+            // send reset password email
+            await sendResetPasswordEmail(user, resetToken);
+
+            res.status(200).json({ message: 'Password reset token sent', resetToken: resetToken });
+        });
+    });
+};
+
+
+
+exports.resetPassword = (req, res) => {
+    const { email, password, passwordConfirm, resetToken } = req.body;
+
+    console.log('Received request:', { email, password, passwordConfirm, resetToken });
+
+    if (password !== passwordConfirm) {
+        return res.status(400).json({ message: 'Passwords do not match' });
+    }
+
+    // check if token is valid and not expired
+    const passwordResetTokenHash = crypto.createHash('sha256').update(resetToken).digest('hex');
+
+    console.log('Password reset token hash:', passwordResetTokenHash);
+
+    connection.query('SELECT * FROM login WHERE email = ? AND resetToken = ?', [email, passwordResetTokenHash], async (error, results) => {
+        console.log('Database response:', { error, results });
+        
+        if (error) {
+            console.log(error);
+            return res.status(500).json({ message: 'An error occurred' });
+        }
+
+        if (results.length === 0) {
+            return res.status(404).json({ message: 'Invalid token' });
+        }
+
+        const user = results[0];
+        console.log('User:', user);
+
+        if (user.passwordResetExpires < Date.now()) {
+            return res.status(400).json({ message: 'Token expired' });
+        }
+
+        // update user password and clear reset token
+        const hashedPassword = await bcrypt.hash(password, 8);
+
+        connection.query('UPDATE login SET password = ?, resetToken = NULL, passwordResetExpires = NULL WHERE id = ?', [hashedPassword, user.id], (error, results) => {
+            if (error) {
+                console.log(error);
+                return res.status(500).json({ message: 'An error occurred' });
+            }
+
+            res.status(200).json({ message: 'Password reset successful' });
+        });
+    });
 }

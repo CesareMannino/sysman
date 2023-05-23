@@ -1,6 +1,7 @@
 const mysql = require('mysql');
 const nodemailer = require('nodemailer');
 const moment = require('moment');
+const crypto = require('crypto');
 
 // MySQL Database Configuration
 const db = mysql.createConnection({
@@ -38,16 +39,20 @@ let lastCheckedTimestamp = moment();
 // let lastCheckedUserId = 0;
 
 function checkForNewRecords() {
-  const query = `SELECT * FROM user WHERE last_updated > '${lastCheckedTimestamp.format('YYYY-MM-DD HH:mm:ss')}' AND ((certificate_of_competence_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR covid_19_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR fitness_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR yellowF_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR PSSR_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR SURVIVAL_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR FFB_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR ADV_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR elementary_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR MAMS_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR FRC_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR medical_first_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR medical_care_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR GMDSS_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR RADAR_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR ARPA_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR arpa_btw_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR ecdis_gen_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR SSO_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR leadership_managerial_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR high_voltage_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR leader_teamwork_engine_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR leader_teamwork_deck_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR security_awa_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR security_duties_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR basic_saf_fam_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR security_related_fam_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR ecdis_specific_date <= DATE_ADD(NOW(), INTERVAL 30 DAY))) GROUP BY user.id`;
+  const query = `SELECT user.*, login.email1, login.email2  FROM user INNER JOIN login ON user.user_id = login.id WHERE last_updated > '${lastCheckedTimestamp.format('YYYY-MM-DD HH:mm:ss')}' AND ((certificate_of_competence_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR covid_19_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR fitness_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR yellowF_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR PSSR_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR SURVIVAL_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR FFB_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR ADV_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR elementary_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR MAMS_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR FRC_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR medical_first_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR medical_care_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR GMDSS_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR RADAR_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR ARPA_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR arpa_btw_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR ecdis_gen_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR SSO_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR leadership_managerial_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR high_voltage_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR leader_teamwork_engine_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR leader_teamwork_deck_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR security_awa_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR security_duties_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR basic_saf_fam_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR security_related_fam_date <= DATE_ADD(NOW(), INTERVAL 30 DAY) OR ecdis_specific_date <= DATE_ADD(NOW(), INTERVAL 30 DAY))) GROUP BY user.id`;
 
   db.query(query, async (err, results) => {
     if (err) {
       console.error('MySQL Query Error:', err);
     } else {
       console.log('New Records with Expiring Training Courses:', results);
-      const emailPromises = results.map((user) => sendEmailNotification(user));
-      await Promise.all(emailPromises);
-  
+      const emailPromises = results.map((user) =>{
+      // Extract additional emails from the user object
+      const additionalEmails = [user.email1, user.email2];
+      return sendEmailNotification(user, additionalEmails);
+      });
+
+      await Promise.all(emailPromises);  
       // Update the last checked timestamp
       lastCheckedTimestamp = moment();
     }
@@ -66,7 +71,7 @@ setInterval(checkForNewRecords, 1 * 60 * 1000); // Check for new records every 1
 
 // ... (rest of the code, including sendEmailNotification function)
 
-// Email Notification Function
+
 // Email Notification Function
 async function sendEmailNotification(user, additionalEmails = []) {
   let expiringCertificates = [];
@@ -115,3 +120,27 @@ async function sendEmailNotification(user, additionalEmails = []) {
     });
   }
 }
+
+
+
+async function sendResetPasswordEmail(login, resetToken, additionalEmails = []) {
+  const resetPasswordUrl = `http://127.0.0.1:5000/auth/reset-password?token=${resetToken}`;
+
+  const message = {
+      from: process.env.EMAIL_USER,
+      to: [login.email, ...additionalEmails].join(', '), // Concatenate additional emails here
+      subject: 'Password Reset',
+      text: `Dear ${login.name} ,\n\nYou have requested to reset your password. Please follow the link below to set a new password:\n\n${resetPasswordUrl}\n\nIf you did not request a password reset, please ignore this email.\n\nBest regards,\nYour Team`
+  };
+
+  // Send Email
+  await transporter.sendMail(message);
+
+  console.log(`Password reset email sent to user ${login.id}`);
+}
+
+module.exports = {
+  sendResetPasswordEmail,
+  // other exported functions...
+};
+

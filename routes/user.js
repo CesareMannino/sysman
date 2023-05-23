@@ -29,6 +29,8 @@ router.get('/login', (req, res) => {
 
 
 
+
+
 router.get('/profile', authController.isLoggedIn, (req, res) => {
   // console.log(req.user);
   if (req.user) {
@@ -37,6 +39,9 @@ router.get('/profile', authController.isLoggedIn, (req, res) => {
     res.redirect('/login');
   }
 });
+
+router.post('/profile', userController.updateUser);
+
 
 function checkAuth(req, res, next) {
   if (!req.cookies.jwt) {
@@ -65,8 +70,8 @@ router.post('/ui', userController.find);
 router.get('/addcrew', userController.form);
 router.post('/addcrew', userController.create);
 
-router.get('/profile/:id', userController.editProfile);
-router.post('/profile', userController.updateUser);
+// router.get('/profile/:id', userController.editProfile);
+
 
 
 router.get('/editcrew/:id', userController.edit);
