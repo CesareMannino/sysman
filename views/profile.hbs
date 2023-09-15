@@ -51,14 +51,14 @@
 <div class="form-group d-flex justify-content-between align-items-center">
     <div class="input-group">
         <button type="button" class="btn btn-link text-primary" onclick="edit('email1')">Edit</button>
-        <input type="email" class="form-control" value="{{user.email1}}" id="email1" name="email1" required disabled>
+        <input type="email" class="form-control" placeholder="Email 1" value="{{user.email1}}" id="email1" name="email1" disabled>
         <input type="hidden" id="hiddenEmail1" name="email1" value="{{user.email1}}">
     </div>
 </div>
 <div class="form-group d-flex justify-content-between align-items-center">
     <div class="input-group">
         <button type="button" class="btn btn-link text-primary" onclick="edit('email2')">Edit</button>
-        <input type="email" class="form-control" value="{{user.email2}}" id="email2" name="email2" required disabled>
+        <input type="email" class="form-control" placeholder="Email 2" value="{{user.email2}}" id="email2" name="email2" disabled>
         <input type="hidden" id="hiddenEmail2" name="email2" value="{{user.email2}}">
     </div>
 </div>
@@ -79,12 +79,21 @@
 
     input.disabled = !input.disabled;
 
-    if(input.disabled) {
-        hiddenInput.disabled = false;
-    } else {
+    if (!input.disabled) {
+        // Enable editing
         hiddenInput.disabled = true;
+    } else {
+        // Disable editing
+        if (input.value.trim() === '') {
+            // Handle empty input by setting the hidden input value to an empty string
+            hiddenInput.value = '';
+        } else {
+            hiddenInput.value = input.value;
+        }
+        hiddenInput.disabled = false;
     }
 }
+
 
 </script>
 </body>

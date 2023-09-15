@@ -15,6 +15,18 @@ var db_config = {
 };
 
 
+
+// aws DB RDS configurations
+
+// var db_config = {
+//     host: process.env.RDS_HOSTNAME,
+//     user: process.env.RDS_USERNAME,
+//     password: process.env.RDS_PASSWORD,
+//     database: process.env.RDS_DB_NAME,
+//     port: process.env.RDS_PORT
+// };
+
+
 var connection;
 
 

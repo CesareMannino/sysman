@@ -21,13 +21,14 @@ var db_config = {
 };
 
 
-
+// aws DB RDS configurations
 
 // var db_config = {
-//     host: process.env.DB_HOST,
-//     user: process.env.DB_USER,
-//     password: process.env.DB_PASS,
-//     database: process.env.DB_NAME
+//     host: process.env.RDS_HOSTNAME,
+//     user: process.env.RDS_USERNAME,
+//     password: process.env.RDS_PASSWORD,
+//     database: process.env.RDS_DB_NAME,
+//     port: process.env.RDS_PORT
 // };
 
 var connection;
@@ -121,57 +122,47 @@ exports.register = (req, res) => {
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
-           
             console.log(xhr.responseText);
 
-        }
+            // Check the response from Gumroad API for license validation
+            if (xhr.status === 200) {
+                connection.query('SELECT email FROM login WHERE email = ?', [email], async (error, results) => {
+                    if (error) {
+                        console.log(error);
+                    }
+                    if (results.length > 0) {
+                        return res.render('register', {
+                            message: 'That email is already in use'
+                        });
+                    } else if (password !== passwordConfirm) {
+                        return res.render('register', {
+                            message: 'Password do not match'
+                        });
+                    }
 
+                    let hashedPassword = await bcrypt.hash(password, 8);
 
-        
-
-
-        connection.query('SELECT email FROM login WHERE email = ?', [email], async (error, results) => {
-          
-            if (error) {
-                console.log(error);
-            }
-            if (results.length > 0) {
-                return res.render('register', {
-                    message: 'That email is already in use'
-                })
-            } else if (password !== passwordConfirm) {
-                return res.render('register', {
-                    message: 'Password do not match'
-                });
-            }  
-
-            let hashedPassword = await bcrypt.hash(password, 8);
-
-
-            connection.query('INSERT INTO login SET ?', { name: name, email: email, password: hashedPassword }, (error, results) => {
-                if (error) {
-                    console.log(error);
-                } else {
-                    return res.render('register', {
-                        message: 'User registered'
+                    connection.query('INSERT INTO login SET ?', { name: name, email: email, password: hashedPassword }, (error, results) => {
+                        if (error) {
+                            console.log(error);
+                        } else {
+                            // Render the 'User registered' message after successful registration
+                            return res.render('register', {
+                                message: 'User registered'
+                            });
+                        }
                     });
-
-                }
-            })
-
-        });
-        // console.log(xhr.status);
-        if (xhr.status != 200) {
-            return res.render('register', {
-                message: 'License number not valid'
-            })
+                });
+            } else {
+                return res.render('register', {
+                    message: 'License number not valid'
+                });
+            }
         }
-       
-    }
-   
-    var data = "product_permalink=dpduj" + "&" + "license_key=" + `${licencekey}`
-    xhr.send(data);
+    };
 
+    var data = "product_permalink=dpduj" + "&" + "license_key=" + `${licencekey}`;
+    xhr.send(data);
 };
 
 
